@@ -1,0 +1,28 @@
+{{define "success"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/connexion-page.css">
+</head>
+<body>
+    <section class="body-global">
+        <form action="/accueil" method="post" class="form_container">
+            <div class="logo_container">
+                <img src="../static/img/site/pokelog.png" alt="" height="80px" width="80px">
+            </div>
+            <div class="title_container">
+                <p class="title">Verified Code</p>
+            </div>
+            <br>
+                <button title="Sign In" type="submit" class="sign-in_btn">
+                    <span>Continue</span>
+                </button>
+            </form>
+        </form>
+    </section>
+</body>
+</html>
+{{end}}

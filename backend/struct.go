@@ -48,7 +48,6 @@ type Session struct {
 
 // IndexData est une structure qui gère les données envoyées à la page index
 type IndexData struct {
-	Articles   []Article
 	IsLoggedIn bool
 	AsAdmin    bool
 }
@@ -81,6 +80,7 @@ type LoginStatus struct {
 
 // AccountCreation est une structure qui stock des données temporaires liées à la création d'un compte
 type AccountCreation struct {
+	Picture  string `json:"picture"`
 	Username string `json:"username"`
 	Email    string `json:"email"`
 	Password string `json:"password"`

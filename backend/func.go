@@ -6,10 +6,253 @@ import (
 	"encoding/json"
 	"fmt"
 	"math/rand"
+	"net/http"
 	"os"
+	"pokemon/structure"
 	"strings"
-	"time"
 )
+
+var ToSend []structure.TypePokemon
+
+func PokemonProfilFire(w http.ResponseWriter, r *http.Request) {
+	ToSend = ToSend[:0]
+	fmt.Println("jysuisla")
+	var nbImgFire int
+	nbImgFire = 12
+	for i := 1; i <= nbImgFire; i++ {
+		var toGive structure.TypePokemon
+		toGive.Type = "fire"
+		toGive.Id = i
+		ToSend = append(ToSend, toGive)
+	}
+
+	fmt.Println(ToSend)
+	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+}
+
+func PokemonProfilBug(w http.ResponseWriter, r *http.Request) {
+	ToSend = ToSend[:0]
+	fmt.Println("jysuisla")
+	var nbImgbug int
+	nbImgbug = 12
+	for i := 1; i <= nbImgbug; i++ {
+		var toGive structure.TypePokemon
+		toGive.Type = "bug"
+		toGive.Id = i
+		ToSend = append(ToSend, toGive)
+	}
+
+	fmt.Println(ToSend)
+	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+}
+
+func PokemonProfilWater(w http.ResponseWriter, r *http.Request) {
+	ToSend = ToSend[:0]
+	fmt.Println("jysuisla")
+	var nbImgwater int
+	nbImgwater = 30
+	for i := 1; i <= nbImgwater; i++ {
+		var toGive structure.TypePokemon
+		toGive.Type = "water"
+		toGive.Id = i
+		ToSend = append(ToSend, toGive)
+	}
+
+	fmt.Println(ToSend)
+	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+}
+
+func PokemonProfilDragon(w http.ResponseWriter, r *http.Request) {
+	ToSend = ToSend[:0]
+	fmt.Println("jysuisla")
+	var nbImgdragon int
+	nbImgdragon = 3
+	for i := 1; i <= nbImgdragon; i++ {
+		var toGive structure.TypePokemon
+		toGive.Type = "dragon"
+		toGive.Id = i
+		ToSend = append(ToSend, toGive)
+	}
+
+	fmt.Println(ToSend)
+	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+}
+
+func PokemonProfilElectric(w http.ResponseWriter, r *http.Request) {
+	ToSend = ToSend[:0]
+	fmt.Println("jysuisla")
+	var nbImgelectric int
+	nbImgelectric = 9
+	for i := 1; i <= nbImgelectric; i++ {
+		var toGive structure.TypePokemon
+		toGive.Type = "electric"
+		toGive.Id = i
+		ToSend = append(ToSend, toGive)
+	}
+
+	fmt.Println(ToSend)
+	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+}
+
+func PokemonProfilFairy(w http.ResponseWriter, r *http.Request) {
+	ToSend = ToSend[:0]
+	fmt.Println("jysuisla")
+	var nbImgfairy int
+	nbImgfairy = 4
+	for i := 1; i <= nbImgfairy; i++ {
+		var toGive structure.TypePokemon
+		toGive.Type = "fairy"
+		toGive.Id = i
+		ToSend = append(ToSend, toGive)
+	}
+
+	fmt.Println(ToSend)
+	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+}
+
+func PokemonProfilFighting(w http.ResponseWriter, r *http.Request) {
+	ToSend = ToSend[:0]
+	fmt.Println("jysuisla")
+	var nbImgfighting int
+	nbImgfighting = 7
+	for i := 1; i <= nbImgfighting; i++ {
+		var toGive structure.TypePokemon
+		toGive.Type = "fighting"
+		toGive.Id = i
+		ToSend = append(ToSend, toGive)
+	}
+
+	fmt.Println(ToSend)
+	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+}
+
+func PokemonProfilGhost(w http.ResponseWriter, r *http.Request) {
+	ToSend = ToSend[:0]
+	fmt.Println("jysuisla")
+	var nbImgghost int
+	nbImgghost = 3
+	for i := 1; i <= nbImgghost; i++ {
+		var toGive structure.TypePokemon
+		toGive.Type = "ghost"
+		toGive.Id = i
+		ToSend = append(ToSend, toGive)
+	}
+
+	fmt.Println(ToSend)
+	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+}
+
+func PokemonProfilGrass(w http.ResponseWriter, r *http.Request) {
+	ToSend = ToSend[:0]
+	fmt.Println("jysuisla")
+	var nbImggrass int
+	nbImggrass = 12
+	for i := 1; i <= nbImggrass; i++ {
+		var toGive structure.TypePokemon
+		toGive.Type = "grass"
+		toGive.Id = i
+		ToSend = append(ToSend, toGive)
+	}
+
+	fmt.Println(ToSend)
+	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+}
+
+func PokemonProfilGround(w http.ResponseWriter, r *http.Request) {
+	ToSend = ToSend[:0]
+	fmt.Println("jysuisla")
+	var nbImgground int
+	nbImgground = 8
+	for i := 1; i <= nbImgground; i++ {
+		var toGive structure.TypePokemon
+		toGive.Type = "ground"
+		toGive.Id = i
+		ToSend = append(ToSend, toGive)
+	}
+
+	fmt.Println(ToSend)
+	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+}
+
+func PokemonProfilIce(w http.ResponseWriter, r *http.Request) {
+	ToSend = ToSend[:0]
+	fmt.Println("jysuisla")
+	var nbImgice int
+	nbImgice = 1
+	for i := 1; i <= nbImgice; i++ {
+		var toGive structure.TypePokemon
+		toGive.Type = "ice"
+		toGive.Id = i
+		ToSend = append(ToSend, toGive)
+	}
+
+	fmt.Println(ToSend)
+	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+}
+
+func PokemonProfilNormal(w http.ResponseWriter, r *http.Request) {
+	ToSend = ToSend[:0]
+	fmt.Println("jysuisla")
+	var nbImgnormal int
+	nbImgnormal = 20
+	for i := 1; i <= nbImgnormal; i++ {
+		var toGive structure.TypePokemon
+		toGive.Type = "normal"
+		toGive.Id = i
+		ToSend = append(ToSend, toGive)
+	}
+
+	fmt.Println(ToSend)
+	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+}
+
+func PokemonProfilPoison(w http.ResponseWriter, r *http.Request) {
+	ToSend = ToSend[:0]
+	fmt.Println("jysuisla")
+	var nbImgpoison int
+	nbImgpoison = 14
+	for i := 1; i <= nbImgpoison; i++ {
+		var toGive structure.TypePokemon
+		toGive.Type = "poison"
+		toGive.Id = i
+		ToSend = append(ToSend, toGive)
+	}
+
+	fmt.Println(ToSend)
+	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+}
+
+func PokemonProfilPsychic(w http.ResponseWriter, r *http.Request) {
+	ToSend = ToSend[:0]
+	fmt.Println("jysuisla")
+	var nbImgpsychic int
+	nbImgpsychic = 9
+	for i := 1; i <= nbImgpsychic; i++ {
+		var toGive structure.TypePokemon
+		toGive.Type = "psychic"
+		toGive.Id = i
+		ToSend = append(ToSend, toGive)
+	}
+
+	fmt.Println(ToSend)
+	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+}
+
+func PokemonProfilRock(w http.ResponseWriter, r *http.Request) {
+	ToSend = ToSend[:0]
+	fmt.Println("jysuisla")
+	var nbImgrock int
+	nbImgrock = 7
+	for i := 1; i <= nbImgrock; i++ {
+		var toGive structure.TypePokemon
+		toGive.Type = "rock"
+		toGive.Id = i
+		ToSend = append(ToSend, toGive)
+	}
+
+	fmt.Println(ToSend)
+	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+}
 
 // IsIDPresent vérifie si un id est présent dans une liste d'id
 func IsIDPresent(id int, ids []int) bool {
@@ -69,35 +312,9 @@ func TitleContains(s, substr string) bool {
 	return strings.Contains(strings.ToLower(s), strings.ToLower(substr))
 }
 
-// GetAllArticles récupère tous les articles contenus dans une structure JSONData
-func GetAllArticles(jsonData JSONData) []Article {
-	var allArticles []Article
-	for _, categorie := range jsonData.Categories {
-		allArticles = append(allArticles, categorie.Articles...)
-	}
-
-	return allArticles
-}
-
-// GetRandomArticles récupère 10 articles aléatoires parmi une liste complète d'articles
-func GetRandomArticles(jsonData JSONData) []Article {
-	rand.Seed(time.Now().UnixNano())
-
-	allArticles := GetAllArticles(jsonData)
-
-	if len(allArticles) <= 10 {
-		return allArticles
-	}
-
-	rand.Shuffle(len(allArticles), func(i, j int) {
-		allArticles[i], allArticles[j] = allArticles[j], allArticles[i]
-	})
-	return allArticles[:10]
-}
-
 // GetAccountState récupère le statut d'un utilisateur par son pseudonyme dans le fichier accounts.json
 func GetAccountState(username string) string {
-	file, _ := os.ReadFile("accounts.json")
+	file, _ := os.ReadFile("./json/accounts.json")
 
 	var accounts Accounts
 	json.Unmarshal(file, &accounts)
@@ -113,7 +330,7 @@ func GetAccountState(username string) string {
 
 // GetAccountMail récupère le mail d'un utilisateur par son pseudonyme dans le fichier accounts.json
 func GetAccountMail(username string) string {
-	file, _ := os.ReadFile("accounts.json")
+	file, _ := os.ReadFile("./json/accounts.json")
 
 	var accounts Accounts
 	json.Unmarshal(file, &accounts)
@@ -192,7 +409,7 @@ func AddAccountToFile(account AccountCreation, filePath string) error {
 
 // GetUsernameByEmail permet de récupérer le nom d'utilisateur d'un compte par son mail dans la base de données
 func GetUsernameByEmail(emailToFind string) string {
-	jsonFile, _ := os.ReadFile("accounts.json")
+	jsonFile, _ := os.ReadFile("./json/accounts.json")
 
 	var data Accounts
 	json.Unmarshal(jsonFile, &data)
@@ -303,4 +520,8 @@ func ClearRemember(filename string) error {
 	os.WriteFile(filename, newContent, 0644)
 
 	return nil
+}
+
+func IsAdmin() bool {
+	return GlobalSession.State == "member"
 }

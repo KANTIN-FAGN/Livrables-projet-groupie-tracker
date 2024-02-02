@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	active, user := backend.CheckRememberStatus("rememberSession.json")
+	active, user := backend.CheckRememberStatus("./json/rememberSession.json")
 	if active {
 		fmt.Println("Une session a été sauvegardée")
 		backend.GlobalSession = backend.Session{Username: user, State: backend.GetAccountState(user), Mail: backend.GetAccountMail(user)}

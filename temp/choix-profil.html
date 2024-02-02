@@ -1,0 +1,135 @@
+{{define "picture-profil"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose your profil picture</title>
+    <link rel="stylesheet" href="../static/css/choix-profil.css">
+</head>
+
+<body>
+    <header>
+        <section>
+            <div class="header-button">
+                <a href="/accueil">
+                    <button class="button">
+                        <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" version="1.1"
+                            viewBox="0 0 1024 1024">
+                            <path
+                                d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 188.083679 188.083679c7.992021 7.992021 7.992021 20.947078 0 28.939099-4.001127 3.990894-9.240455 5.996574-14.46955 5.996574-5.239328 0-10.478655-1.995447-14.479783-5.996574l-223.00912-223.00912c-3.837398-3.837398-5.996574-9.046027-5.996574-14.46955 0-5.433756 2.159176-10.632151 5.996574-14.46955l223.019353-223.029586c7.992021-7.992021 20.957311-7.992021 28.949332 0 7.992021 8.002254 7.992021 20.957311 0 28.949332l-188.073446 188.073446 604.753497 0C865.521592 475.058646 874.690416 484.217237 874.690416 495.52477z">
+                            </path>
+                        </svg>
+                        <span>Back</span>
+                    </button>
+                </a>
+            </div>
+            <div class="header-titre">
+                <p>CHOOSE YOUR PROFIL PICTURE</p>
+            </div>
+        </section>
+    </header>
+    <section>
+        <div class="body-global">
+            <div class="body-image">
+                <form action="/TypeBug" method="post">
+                    <button>
+                        <img title="Bug Type" src="../static/img/site/type/bug.png" alt="">
+                    </button>
+                </form>
+                <form action="/TypeDragon" method="post">
+                    <button>
+                        <img title="Dragon Type" src="../static/img/site/type/dragon.png" alt="">
+                    </button>
+                </form>
+                <form action="/TypeElectric" method="post">
+                    <button>
+                        <img title="Electric Type" src="../static/img/site/type/electric.png" alt="">
+                    </button>
+                </form>
+                <form action="/TypeFairy" method="post">
+                    <button>
+                        <img title="Fairy Type" src="../static/img/site/type/fairy.png" alt="">
+                    </button>
+                </form>
+                <form action="/TypeFighting" method="post">
+                    <button>
+                        <img title="Fighting Type" src="../static/img/site/type/fighting.png" alt="">
+                    </button>
+                </form>
+                <form action="/TypeFire" method="post">
+                    <button>
+                        <img title="Fire Type" src="../static/img/site/type/fire.png" alt="">
+                    </button>
+                </form>
+                <form action="/TypeGhost" method="post">
+                    <button>
+                        <img title="Ghost Type" src="../static/img/site/type/ghost.png" alt="">
+                    </button>
+                </form>
+                <form action="/TypeGrass" method="post">
+                    <button>
+                        <img title="Grass Type" src="../static/img/site/type/grass.png" alt="">
+                    </button>
+                </form>
+                <form action="/TypeGround" method="post">
+                    <button>
+                        <img title="Ground Type" src="../static/img/site/type/ground.png" alt="">
+                    </button>
+                </form>
+                <form action="/TypeIce" method="post">
+                    <button>
+                        <img title="Ice Type" src="../static/img/site/type/ice.png" alt="">
+                    </button>
+                </form>
+                <form action="/TypeNormal" method="post">
+                    <button>
+                        <img title="Normal Type" src="../static/img/site/type/normal.png" alt="">
+                    </button>
+                </form>
+                <form action="/TypePoison" method="post">
+                    <button>
+                        <img title="Poison Type" src="../static/img/site/type/poison.png" alt="">
+                    </button>
+                </form>
+                <form action="/TypePsychic" method="post">
+                    <button>
+                        <img title="Psychic Type" src="../static/img/site/type/psychic.png" alt="">
+                    </button>
+                </form>
+                <form action="/TypeRock" method="post">
+                    <button>
+                        <img title="Rock Type" src="../static/img/site/type/rock.png" alt="">
+                    </button>
+                </form>
+                <form action="/TypeWater" method="post">
+                    <button>
+                        <img title="Water Type" src="../static/img/site/type/water.png" alt="">
+                    </button>
+                </form>
+            </div>
+            <div class="body-profil">
+                <div class="img-profil-global">
+                    {{range .}}
+                    <label for="{{.Id}}">
+                        <input type="radio" id="picture" name="picture">
+                        <div class="img-profil">
+                            <img src="../static/img/POKEMON/{{.Type}}/{{.Id}}.png" alt="">
+                        </div>
+                    </label>
+                    {{end}}
+                    <!-- range d'une liste d'objet avec un id et un type -->
+                </div>
+            </div>
+            <div class="button-body">
+                <button type="submit"> Continue !
+                </button>
+            </div>
+        </div>
+
+    </section>
+</body>
+
+</html>
+{{end}}

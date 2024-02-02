@@ -3,9 +3,18 @@
     {
       "email": "testuser@gmail.com",
       "password": "9JMqTXfs_P4UCMhnFskEYgEkXxkeZLajmguidDDI6-4=",
+      "picture": "",
       "salt": "zOHspaUpajULcfHyjxRERQ==",
       "state": "admin",
       "username": "testuser"
+    },
+    {
+      "email": "kantin.fagn@gmail.com",
+      "password": "5ZGKl5SwM6HOYWrf8XvbIvMKaXAUz2or0EtOnGfI17Q=",
+      "picture": "",
+      "salt": "U2soHaRgDTnGtoThTbdkvw==",
+      "state": "member",
+      "username": "kantin"
     }
   ]
 }

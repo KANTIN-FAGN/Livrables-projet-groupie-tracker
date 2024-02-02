@@ -1,0 +1,46 @@
+{{define "mailverif"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/connexion-page.css">
+</head>
+
+<body>
+    <section class="body-global">
+        <form action="/verifycode" method="post" class="form_container">
+            <div class="logo_container">
+                <img src="../static/img/site/pokelog.png" alt="" height="80px" width="80px">
+            </div>
+            <div class="title_container">
+                <p class="title">Email verification</p>
+            </div>
+            <br>
+            <form action="/login_credits" method="post">
+                <div class="input_container">
+                    <label class="input_label" for="email_field">Code</label>
+                    <svg fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/300/svg"
+                        class="icon">
+                        <circle cx="12" cy="12" r="10" stroke="#141B34" stroke-width="1.5" fill="#FFFFFF"></circle>
+                        <path stroke="#141B34" stroke-width="1.5"
+                            d="M12 6C14.2091 6 16 7.79086 16 10C16 12.2091 14.2091 14 12 14C9.79086 14 8 12.2091 8 10C8 7.79086 9.79086 6 12 6Z">
+                        </path>
+                        <path stroke="#141B34" stroke-width="1.5"
+                            d="M12 16C10.667 16 9.33301 16.6667 9 17H15C14.6667 16.6667 13.333 16 12 16Z"></path>
+                    </svg>
+                    <input placeholder="Verification code" title="Verification code" name="verificationCode" type="text"
+                        class="input_field" id="verificationCode_field">
+                </div>
+                <button title="Sign In" type="submit" class="sign-in_btn">
+                    <span>Connexion !</span>
+                </button>
+            </form>
+        </form>
+    </section>
+</body>
+
+</html>
+{{end}}

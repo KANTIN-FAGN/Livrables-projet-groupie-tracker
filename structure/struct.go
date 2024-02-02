@@ -38,8 +38,8 @@ type PokemonCard struct {
 	RetreatCost          []string `json:"retreatCost"`
 	ConvertedRetreatCost int      `json:"convertedRetreatCost"`
 	Set                  struct {
-		Name         string `json:"name"`
-		Images      struct {
+		Name   string `json:"name"`
+		Images struct {
 			Symbol string `json:"symbol"`
 			Logo   string `json:"logo"`
 		} `json:"images"`
@@ -49,7 +49,7 @@ type PokemonCard struct {
 	Rarity                 string `json:"rarity"`
 	FlavorText             string `json:"flavorText"`
 	NationalPokedexNumbers []int  `json:"nationalPokedexNumbers"`
-	Images struct {
+	Images                 struct {
 		Small string `json:"small"`
 		Large string `json:"large"`
 	} `json:"images"`
@@ -86,4 +86,9 @@ type Set struct {
 
 type apiClient struct {
 	apiKey string
+}
+
+type TypePokemon struct {
+	Type string
+	Id   int
 }
