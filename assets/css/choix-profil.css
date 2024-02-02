@@ -31,21 +31,23 @@ header section {
 .header-button {
     padding-left: 25px;
 }
+
 .img-profil {
-    border: 2px solid #ccc; /* Ajoutez un style de bordure */
+    border: 2px solid #7c7c7c; /* Ajoutez un style de bordure */
     cursor: pointer;
     transition: background-color 0.3s ease; /* Animation pour une transition en douceur */
 }
 
 /* Style de la bordure lorsqu'il est sélectionné */
 input[type="radio"]:checked + .img-profil {
-    border-color: #007bff; /* Couleur de la bordure pour l'état sélectionné */
-    background-color: #e6f7ff; /* Couleur de fond pour l'état sélectionné */
+    border-color: #002fff; /* Couleur de la bordure pour l'état sélectionné */
+    background-color: #bbe5f8; /* Couleur de fond pour l'état sélectionné */
 }
 
 input[type="radio"] {
     display: none;
 }
+
 .button {
     display: flex;
     height: 3em;

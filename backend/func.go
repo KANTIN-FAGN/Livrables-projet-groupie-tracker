@@ -27,7 +27,7 @@ func PokemonProfilFire(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(ToSend)
-	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 
 func PokemonProfilBug(w http.ResponseWriter, r *http.Request) {
@@ -43,7 +43,7 @@ func PokemonProfilBug(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(ToSend)
-	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 
 func PokemonProfilWater(w http.ResponseWriter, r *http.Request) {
@@ -59,7 +59,7 @@ func PokemonProfilWater(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(ToSend)
-	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 
 func PokemonProfilDragon(w http.ResponseWriter, r *http.Request) {
@@ -75,7 +75,7 @@ func PokemonProfilDragon(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(ToSend)
-	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 
 func PokemonProfilElectric(w http.ResponseWriter, r *http.Request) {
@@ -91,7 +91,7 @@ func PokemonProfilElectric(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(ToSend)
-	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 
 func PokemonProfilFairy(w http.ResponseWriter, r *http.Request) {
@@ -107,7 +107,7 @@ func PokemonProfilFairy(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(ToSend)
-	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 
 func PokemonProfilFighting(w http.ResponseWriter, r *http.Request) {
@@ -123,7 +123,7 @@ func PokemonProfilFighting(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(ToSend)
-	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 
 func PokemonProfilGhost(w http.ResponseWriter, r *http.Request) {
@@ -139,7 +139,7 @@ func PokemonProfilGhost(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(ToSend)
-	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 
 func PokemonProfilGrass(w http.ResponseWriter, r *http.Request) {
@@ -155,7 +155,7 @@ func PokemonProfilGrass(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(ToSend)
-	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 
 func PokemonProfilGround(w http.ResponseWriter, r *http.Request) {
@@ -171,7 +171,7 @@ func PokemonProfilGround(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(ToSend)
-	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 
 func PokemonProfilIce(w http.ResponseWriter, r *http.Request) {
@@ -187,7 +187,7 @@ func PokemonProfilIce(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(ToSend)
-	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 
 func PokemonProfilNormal(w http.ResponseWriter, r *http.Request) {
@@ -203,7 +203,7 @@ func PokemonProfilNormal(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(ToSend)
-	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 
 func PokemonProfilPoison(w http.ResponseWriter, r *http.Request) {
@@ -219,7 +219,7 @@ func PokemonProfilPoison(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(ToSend)
-	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 
 func PokemonProfilPsychic(w http.ResponseWriter, r *http.Request) {
@@ -235,7 +235,7 @@ func PokemonProfilPsychic(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(ToSend)
-	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 
 func PokemonProfilRock(w http.ResponseWriter, r *http.Request) {
@@ -251,7 +251,7 @@ func PokemonProfilRock(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(ToSend)
-	http.Redirect(w, r, "/profil", http.StatusSeeOther)
+	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 
 // IsIDPresent vérifie si un id est présent dans une liste d'id
@@ -373,6 +373,7 @@ func AddAccountToFile(account AccountCreation, filePath string) error {
 
 	var data map[string][]map[string]interface{}
 	err = json.Unmarshal(jsonFile, &data)
+	fmt.Println(data)
 	if err != nil {
 		return fmt.Errorf("Erreur lors du parsing du JSON : %v", err)
 	}
@@ -381,6 +382,7 @@ func AddAccountToFile(account AccountCreation, filePath string) error {
 	hashedPassword := HashPassword(account.Password, salt)
 
 	newAccount := map[string]interface{}{
+		"picture" : account.Picture,
 		"username": account.Username,
 		"email":    account.Email,
 		"password": hashedPassword,

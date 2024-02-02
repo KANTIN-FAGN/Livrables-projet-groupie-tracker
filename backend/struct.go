@@ -27,6 +27,7 @@ type Article struct {
 
 // Account est une structure qui stock toutes les données d'un compte
 type Account struct {
+	Picture  string `json:"picture"`
 	Username string `json:"username"`
 	Password string `json:"password"`
 	Email    string `json:"email"`
@@ -48,6 +49,7 @@ type Session struct {
 
 // IndexData est une structure qui gère les données envoyées à la page index
 type IndexData struct {
+	Picture    string
 	IsLoggedIn bool
 	AsAdmin    bool
 }

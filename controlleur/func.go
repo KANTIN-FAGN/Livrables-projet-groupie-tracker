@@ -15,18 +15,41 @@ import (
 	"time"
 )
 
+var SelectedPokemon string
+
 // IndexPage est la fonction handel de la page d'accueil
 func IndexPage(w http.ResponseWriter, r *http.Request) {
 	session := backend.GetSession() != backend.Session{}
 	isAdmin := backend.IsAdmin()
+	user := backend.GetSession()
+
+	fmt.Println(user.Username)
+
+	filedata, err := os.ReadFile("./json/accounts.json")
+	if err != nil {
+		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		return
+	}
+
+	var DataDecode backend.Accounts
+
+	json.Unmarshal(filedata, &DataDecode)
+
+	var picture string
+
+	for _, i := range DataDecode.Comptes {
+		
+		if i.Username == user.Username {
+			picture = i.Picture
+		}
+	}
 
 	data := backend.IndexData{
+		Picture:    picture,
 		IsLoggedIn: session,
 		AsAdmin:    isAdmin,
 	}
 
-	fmt.Println(session)
-	fmt.Println(isAdmin)
 	temp.Temp.ExecuteTemplate(w, "accueil", data)
 }
 
@@ -182,7 +205,7 @@ func MailVerifPage(w http.ResponseWriter, r *http.Request) {
 
 	log.Println("E-mail envoyé avec succès!")
 
-	tempaccount := backend.AccountCreation{Username: username, Email: emailDestinataire, Password: passwordAccount, MailCode: codeMailString}
+	tempaccount := backend.AccountCreation{Picture: SelectedPokemon, Username: username, Email: emailDestinataire, Password: passwordAccount, MailCode: codeMailString}
 	backend.GlobalAccount = tempaccount
 
 	data := backend.MailCodeData{
@@ -217,4 +240,9 @@ func SuccessPage(w http.ResponseWriter, r *http.Request) {
 	backend.ClearAccount()
 	fmt.Println(backend.GlobalAccount)
 	temp.Temp.ExecuteTemplate(w, "success", nil)
+}
+
+func SubmitPicture(w http.ResponseWriter, r *http.Request) {
+	SelectedPokemon = r.FormValue("picture")
+	http.Redirect(w, r, "/create-account", http.StatusMovedPermanently)
 }

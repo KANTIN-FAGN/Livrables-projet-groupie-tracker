@@ -109,27 +109,34 @@
                     </button>
                 </form>
             </div>
-            <div class="body-profil">
-                <div class="img-profil-global">
-                    {{range .}}
-                    <label for="{{.Id}}">
-                        <input type="radio" id="picture" name="picture">
-                        <div class="img-profil">
-                            <img src="../static/img/POKEMON/{{.Type}}/{{.Id}}.png" alt="">
-                        </div>
-                    </label>
-                    {{end}}
-                    <!-- range d'une liste d'objet avec un id et un type -->
+            <form action="/treatement/picture/profil" method="post">
+                <div class="body-profil">
+                    <div class="img-profil-global">
+                        {{range .}}
+                        <label for="picture{{.Id}}">
+                            <input type="radio" id="picture{{.Id}}" name="picture" value="../static/img/POKEMON/{{.Type}}/{{.Id}}.png">
+                            <div class="img-profil" onclick="checkRadio('picture{{.Id}}')">
+                                <img src="../static/img/POKEMON/{{.Type}}/{{.Id}}.png" alt="">
+                            </div>
+                        </label>
+                        {{end}}
+                        <!-- range d'une liste d'objet avec un id et un type -->
+                    </div>
                 </div>
-            </div>
-            <div class="button-body">
-                <button type="submit"> Continue !
-                </button>
-            </div>
+                <div class="button-body">
+                    <button type="submit"> Continue !
+                    </button>
+                </div>
+            </form>
         </div>
 
     </section>
 </body>
+<script>
+    function checkRadio(id) {
+        document.getElementById(id).checked = true;
+    }
+</script>
 
 </html>
 {{end}}
