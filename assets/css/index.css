@@ -35,6 +35,8 @@ header section {
 
 .logo-header {
     width: 33.33%;
+    display: flex;
+    align-items: center;
 }
 
 nav {
@@ -126,6 +128,20 @@ nav>ul li:hover .sous {
 
 .login-div {
     padding-right: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-header a .login-div p {
+    color: #000000;
+    text-decoration: none;
+}
+
+.href {
+    text-decoration: none;
+    color: #000000;
 }
 
 .body {

@@ -99,7 +99,13 @@ section {
     border-radius: 25px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+}
+
+.form-picture {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .body-image {
@@ -195,6 +201,12 @@ section {
 .button-body {
     display: flex;
     justify-content: center;
+    padding-bottom: 20px;
+}
+
+.href {
+    text-decoration: none;
+    color: #000000;
 }
 
 .button-body button:hover {

@@ -45,7 +45,7 @@
             </nav>
             {{if .AsAdmin}}
             <div class="login-header">
-                <a href="/pokecount">
+                <a href="/pokecount" class="href">
                     <div class="login-div">
                         <img src="{{.Picture}}" alt="">
                         <p>PokéCount</p>
@@ -55,7 +55,7 @@
             {{else}}
             {{if not .IsLoggedIn}}
             <div class="login-header">
-                <a href="/login">
+                <a href="/login" class="href">
                     <div class="login-div">
                         <img src="../static/img/site/pokeball.png" alt="">
                         <p>LOGIN</p>

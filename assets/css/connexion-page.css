@@ -19,6 +19,16 @@ header {
     height: 10vh;
 }
 
+.href {
+    text-decoration: none;
+    color: #000000;
+}
+.create-account {
+    width: 100%;
+    text-decoration: none;
+}
+
+
 header section {
     width: 50%;
     height: 100%;

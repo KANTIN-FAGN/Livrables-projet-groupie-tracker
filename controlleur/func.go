@@ -183,12 +183,12 @@ func MailVerifPage(w http.ResponseWriter, r *http.Request) {
 
 	smtpHost := "smtp.gmail.com"
 	smtpPort := 587
-	email := "octogamesverify@gmail.com"
-	password := "womp qoly znmc krqe"
+	email := "pokecenter.verified@gmail.com"
+	password := "rkjq rwfu mhby zwyh"
 
 	to := []string{emailDestinataire}
-	subject := "Code de vérification Octo Games"
-	body := "Bonjour " + username + ",\nVoici votre code de vérification : " + codeMailString
+	subject := "PokéCenter verification code"
+	body := "Hello " + username + ",\nHere is your verification code : " + codeMailString
 
 	auth := smtp.PlainAuth("", email, password, smtpHost)
 

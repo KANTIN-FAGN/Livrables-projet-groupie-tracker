@@ -7,14 +7,6 @@
       "salt": "zOHspaUpajULcfHyjxRERQ==",
       "state": "admin",
       "username": "testuser"
-    },
-    {
-      "email": "kantin.fagn@gmail.com",
-      "password": "2zToPigt4311hX2_F3lYYRP4w4svCx1vhc8ztFThlIY=",
-      "picture": "../static/img/POKEMON/ice/1.png",
-      "salt": "k94KJQPiajvSlCbgYUHUiA==",
-      "state": "member",
-      "username": "kantin"
     }
   ]
 }
