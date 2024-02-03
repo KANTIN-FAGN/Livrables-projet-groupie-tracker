@@ -50,6 +50,8 @@ type Session struct {
 // IndexData est une structure qui gère les données envoyées à la page index
 type IndexData struct {
 	Picture    string
+	Username   string
+	Email   string
 	IsLoggedIn bool
 	AsAdmin    bool
 }

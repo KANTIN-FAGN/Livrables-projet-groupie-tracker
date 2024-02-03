@@ -38,7 +38,7 @@ func IndexPage(w http.ResponseWriter, r *http.Request) {
 	var picture string
 
 	for _, i := range DataDecode.Comptes {
-		
+
 		if i.Username == user.Username {
 			picture = i.Picture
 		}
@@ -51,6 +51,43 @@ func IndexPage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	temp.Temp.ExecuteTemplate(w, "accueil", data)
+}
+
+func ProfilPage(w http.ResponseWriter, r *http.Request) {
+	user := backend.GetSession()
+
+	fmt.Println(user.Username)
+
+	filedata, err := os.ReadFile("./json/accounts.json")
+	if err != nil {
+		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		return
+	}
+
+	var DataDecode backend.Accounts
+
+	json.Unmarshal(filedata, &DataDecode)
+
+	var picture string
+	var username string
+	var email string
+
+	for _, i := range DataDecode.Comptes {
+
+		if i.Username == user.Username {
+			picture = i.Picture
+			username = i.Username
+			email = i.Email
+		}
+	}
+
+	data := backend.IndexData{
+		Picture:  picture,
+		Username: username,
+		Email:    email,
+	}
+
+	temp.Temp.ExecuteTemplate(w, "profil", data)
 }
 
 func DisplayProfil(w http.ResponseWriter, r *http.Request) {
@@ -188,7 +225,7 @@ func MailVerifPage(w http.ResponseWriter, r *http.Request) {
 
 	to := []string{emailDestinataire}
 	subject := "PokéCenter verification code"
-	body := "Hello " + username + ",\nHere is your verification code : " + codeMailString
+	body :="Hello " + username + ",\nHere is your verification code : " + codeMailString
 
 	auth := smtp.PlainAuth("", email, password, smtpHost)
 
@@ -245,4 +282,10 @@ func SuccessPage(w http.ResponseWriter, r *http.Request) {
 func SubmitPicture(w http.ResponseWriter, r *http.Request) {
 	SelectedPokemon = r.FormValue("picture")
 	http.Redirect(w, r, "/create-account", http.StatusMovedPermanently)
+}
+
+func Deconnexion(w http.ResponseWriter, r *http.Request) {
+	backend.ClearSession()
+	backend.ClearRemember("./json/rememberSession.json")
+	http.Redirect(w, r, "/accueil", http.StatusSeeOther)
 }

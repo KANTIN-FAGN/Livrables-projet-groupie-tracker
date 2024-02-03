@@ -22,6 +22,8 @@ func Initserv() {
 	http.HandleFunc("/success_code", controlleur.SuccessPage)
 	http.HandleFunc("/picture-profil", controlleur.DisplayProfil)
 	http.HandleFunc("/treatement/picture/profil", controlleur.SubmitPicture)
+	http.HandleFunc("/pokecount", controlleur.ProfilPage)
+	http.HandleFunc("/deconnexion", controlleur.Deconnexion)
 
 	// affichage des pokemon celon leurs types
 	http.HandleFunc("/TypeFire", backend.PokemonProfilFire)

@@ -16,7 +16,6 @@ var ToSend []structure.TypePokemon
 
 func PokemonProfilFire(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
-	fmt.Println("jysuisla")
 	var nbImgFire int
 	nbImgFire = 12
 	for i := 1; i <= nbImgFire; i++ {
@@ -32,7 +31,6 @@ func PokemonProfilFire(w http.ResponseWriter, r *http.Request) {
 
 func PokemonProfilBug(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
-	fmt.Println("jysuisla")
 	var nbImgbug int
 	nbImgbug = 12
 	for i := 1; i <= nbImgbug; i++ {
@@ -48,7 +46,6 @@ func PokemonProfilBug(w http.ResponseWriter, r *http.Request) {
 
 func PokemonProfilWater(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
-	fmt.Println("jysuisla")
 	var nbImgwater int
 	nbImgwater = 30
 	for i := 1; i <= nbImgwater; i++ {
@@ -64,7 +61,6 @@ func PokemonProfilWater(w http.ResponseWriter, r *http.Request) {
 
 func PokemonProfilDragon(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
-	fmt.Println("jysuisla")
 	var nbImgdragon int
 	nbImgdragon = 3
 	for i := 1; i <= nbImgdragon; i++ {
@@ -80,7 +76,6 @@ func PokemonProfilDragon(w http.ResponseWriter, r *http.Request) {
 
 func PokemonProfilElectric(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
-	fmt.Println("jysuisla")
 	var nbImgelectric int
 	nbImgelectric = 9
 	for i := 1; i <= nbImgelectric; i++ {
@@ -96,7 +91,6 @@ func PokemonProfilElectric(w http.ResponseWriter, r *http.Request) {
 
 func PokemonProfilFairy(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
-	fmt.Println("jysuisla")
 	var nbImgfairy int
 	nbImgfairy = 4
 	for i := 1; i <= nbImgfairy; i++ {
@@ -112,7 +106,6 @@ func PokemonProfilFairy(w http.ResponseWriter, r *http.Request) {
 
 func PokemonProfilFighting(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
-	fmt.Println("jysuisla")
 	var nbImgfighting int
 	nbImgfighting = 7
 	for i := 1; i <= nbImgfighting; i++ {
@@ -128,7 +121,6 @@ func PokemonProfilFighting(w http.ResponseWriter, r *http.Request) {
 
 func PokemonProfilGhost(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
-	fmt.Println("jysuisla")
 	var nbImgghost int
 	nbImgghost = 3
 	for i := 1; i <= nbImgghost; i++ {
@@ -144,7 +136,6 @@ func PokemonProfilGhost(w http.ResponseWriter, r *http.Request) {
 
 func PokemonProfilGrass(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
-	fmt.Println("jysuisla")
 	var nbImggrass int
 	nbImggrass = 12
 	for i := 1; i <= nbImggrass; i++ {
@@ -160,7 +151,6 @@ func PokemonProfilGrass(w http.ResponseWriter, r *http.Request) {
 
 func PokemonProfilGround(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
-	fmt.Println("jysuisla")
 	var nbImgground int
 	nbImgground = 8
 	for i := 1; i <= nbImgground; i++ {
@@ -176,7 +166,6 @@ func PokemonProfilGround(w http.ResponseWriter, r *http.Request) {
 
 func PokemonProfilIce(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
-	fmt.Println("jysuisla")
 	var nbImgice int
 	nbImgice = 1
 	for i := 1; i <= nbImgice; i++ {
@@ -192,7 +181,6 @@ func PokemonProfilIce(w http.ResponseWriter, r *http.Request) {
 
 func PokemonProfilNormal(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
-	fmt.Println("jysuisla")
 	var nbImgnormal int
 	nbImgnormal = 20
 	for i := 1; i <= nbImgnormal; i++ {
@@ -208,7 +196,6 @@ func PokemonProfilNormal(w http.ResponseWriter, r *http.Request) {
 
 func PokemonProfilPoison(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
-	fmt.Println("jysuisla")
 	var nbImgpoison int
 	nbImgpoison = 14
 	for i := 1; i <= nbImgpoison; i++ {
@@ -224,7 +211,6 @@ func PokemonProfilPoison(w http.ResponseWriter, r *http.Request) {
 
 func PokemonProfilPsychic(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
-	fmt.Println("jysuisla")
 	var nbImgpsychic int
 	nbImgpsychic = 9
 	for i := 1; i <= nbImgpsychic; i++ {
@@ -240,7 +226,6 @@ func PokemonProfilPsychic(w http.ResponseWriter, r *http.Request) {
 
 func PokemonProfilRock(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
-	fmt.Println("jysuisla")
 	var nbImgrock int
 	nbImgrock = 7
 	for i := 1; i <= nbImgrock; i++ {
