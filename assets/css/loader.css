@@ -1,0 +1,24 @@
+body {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img img {
+    height: 200px;
+    width: auto;
+}
+
+/* .bar {
+    border: 1px solid #4b4b4b;
+    width: 300px;
+    translate: 0px -50px;
+} */
+
+.body-global {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -225,7 +225,7 @@ func MailVerifPage(w http.ResponseWriter, r *http.Request) {
 
 	to := []string{emailDestinataire}
 	subject := "PokéCenter verification code"
-	body :="Hello " + username + ",\nHere is your verification code : " + codeMailString
+	body := "Hello " + username + ",\nHere is your verification code : " + codeMailString
 
 	auth := smtp.PlainAuth("", email, password, smtpHost)
 
@@ -288,4 +288,9 @@ func Deconnexion(w http.ResponseWriter, r *http.Request) {
 	backend.ClearSession()
 	backend.ClearRemember("./json/rememberSession.json")
 	http.Redirect(w, r, "/accueil", http.StatusSeeOther)
+}
+
+func Loading(w http.ResponseWriter, r *http.Request) {
+	errMessage := r.URL.Query().Get("error")
+	temp.Temp.ExecuteTemplate(w, "loading", errMessage)
 }
