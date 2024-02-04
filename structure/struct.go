@@ -50,7 +50,6 @@ type PokemonCard struct {
 	FlavorText             string `json:"flavorText"`
 	NationalPokedexNumbers []int  `json:"nationalPokedexNumbers"`
 	Images                 struct {
-		Small string `json:"small"`
 		Large string `json:"large"`
 	} `json:"images"`
 	TCGPlayer struct {
@@ -84,11 +83,11 @@ type Set struct {
 	} `json:"images"`
 }
 
-type apiClient struct {
-	apiKey string
-}
-
 type TypePokemon struct {
 	Type string
 	Id   int
+}
+
+type ApiClient struct {
+	ApiKey string
 }

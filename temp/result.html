@@ -6,58 +6,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Result</title>
+    <link rel="stylesheet" href="../static/css/result.css">
     <link rel="icon" href="../static/img/site/pokeball.png">
-    <style>
-        /* Styles pour les images et le loader */
-        .body-global {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: rgba(255, 255, 255, 0.8);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 9999;
-            /* Ajoutez d'autres styles selon vos besoins */
-        }
-
-        .img {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        .pokemon-image {
-            margin-bottom: 20px;
-            /* Ajoutez d'autres styles selon vos besoins */
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
 </head>
 
 <body>
-    <!-- Contenu de la page -->
-    <div class="body-global" id="body-global">
-        <div class="img">
-            <img id="image1" class="pokemon-image" src="../static/img/site/loader/loader-1.png" alt="Image 1" height="150px" width="auto">
-            <img id="image2" class="pokemon-image hidden" src="../static/img/site/loader/loader-2.png" alt="Image 2" height="150px" width="auto">
+    <header>
+        <section>
+            <a href="/welcome" style="width: 33.33%;">
+                <div class="logo-header">
+                    <img src="../static/img/site/logo.png" alt="">
+                </div>
+            </a>
+            <div class="group">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+                    <g>
+                        <path
+                            d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                        </path>
+                    </g>
+                </svg>
+                <form class="body-search" action="/search/cards" method="GET">
+                    <label for="pokemonName" style="display: none;">Nom du Pokémon:</label>
+                    <input class="input" placeholder="Search" type="text" id="pokemonName" name="name" required>
+                    <button type="submit" style="display: none;">Rechercher</button>
+                </form>
+            </div>
+            <nav>
+                <ul>
+                    <li class="deroulant"><a href="#">FILTRE &ensp;</a>
+                        <ul class="sous">
+                            <li><a href="#">RARITY</a></li>
+                            <li><a href="#">RESEAL DATE</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+    <section>
+        <div class="body-global" id="body-global">
+            <div class="img">
+                <img id="image1" class="pokemon-image" src="../static/img/site/loader/loader-1.png" alt="Image 1"
+                    height="150px" width="auto">
+                <img id="image2" class="pokemon-image hidden" src="../static/img/site/loader/loader-2.png" alt="Image 2"
+                    height="150px" width="auto">
+            </div>
         </div>
-    </div>
+        <section class="section-cards">
+            <div class="card-global">
+                {{ range . }}
+                <div class="cards">
+                    <img src="{{.Images.Large}}" alt="">
+                </div>
+                {{ end }}
+            </div>
+        </section>
 
-    {{ range . }}
-    <div>
-        <img src="{{.Images.Small}}" alt="">
-        <!-- Ajoutez d'autres champs selon vos besoins -->
-    </div>
-    {{ end }}
+    </section>
 
-    <!-- JavaScript pour masquer les images une fois que la page est chargée -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var image1 = document.getElementById("image1");
@@ -74,7 +81,7 @@
                 }
 
                 isImage1Visible = !isImage1Visible;
-            }, 150); // Change every 150 milliseconds (adjust as needed)
+            }, 150);
         });
 
         window.addEventListener("load", function () {

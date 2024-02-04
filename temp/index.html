@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
+    <title>Welcome</title>
     <link rel="stylesheet" href="../static/css/index.css">
     <link rel="icon" href="../static/img/site/pokeball.png">
 </head>
@@ -13,33 +13,86 @@
 <body>
     <header>
         <section>
-            <div class="logo-header">
-                <img src="../static/img/site/logo.png" alt="">
-            </div>
+            <a href="/welcome" style="width: 33.33%;">
+                <div class="logo-header">
+                    <img src="../static/img/site/logo.png" alt="">
+                </div>
+            </a>
             <nav>
                 <ul>
                     <li class="deroulant"><a href="#">POKÉMON &ensp;</a>
                         <ul class="sous">
-                            <li><a href="#">ALL</a></li>
-                            <li><a href="#">NAME</a></li>
-                            <li><a href="#">RARITY</a></li>
-                            <li><a href="#">RESEAL DATE</a></li>
+                            <li>
+                                <form class="contenaire-btn" action="/cards/pokemon" method="GET">
+                                    <input type="hidden" name="q" value="supertype:pokemon">
+                                    <input type="hidden" name="orderBy" value="name">
+                                    <button type="submit" class="btn-form">ALL</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="contenaire-btn" action="/cards/pokemon_rarity" method="GET">
+                                    <input type="hidden" name="q" value="supertype:pokemon">
+                                    <input type="hidden" name="orderBy" value="rarity">
+                                    <button type="submit" class="btn-form">RARITY</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="contenaire-btn" action="/cards/pokemon_releaseDate" method="GET">
+                                    <input type="hidden" name="q" value="supertype:pokemon">
+                                    <input type="hidden" name="orderBy" value="set.releaseDate">
+                                    <button type="submit" class="btn-form">RELEASE DATE</button>
+                                </form>
+                            </li>
                         </ul>
                     </li>
                     <li class="deroulant"><a href="#">TRAINER &ensp;</a>
                         <ul class="sous">
-                            <li><a href="#">ALL</a></li>
-                            <li><a href="#">NAME</a></li>
-                            <li><a href="#">RARITY</a></li>
-                            <li><a href="#">RESEAL DATE</a></li>
+                            <li>
+                                <form class="contenaire-btn" action="/cards/trainer" method="GET">
+                                    <input type="hidden" name="q" value="supertype:trainer">
+                                    <input type="hidden" name="orderBy" value="name">
+                                    <button type="submit" class="btn-form">ALL</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="contenaire-btn" action="/cards/trainer_rarity" method="GET">
+                                    <input type="hidden" name="q" value="supertype:trainer">
+                                    <input type="hidden" name="orderBy" value="rarity">
+                                    <button type="submit" class="btn-form">RARITY</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="contenaire-btn" action="/cards/trainer_releaseDate" method="GET">
+                                    <input type="hidden" name="q" value="supertype:trainer">
+                                    <input type="hidden" name="orderBy" value="set.releaseDate">
+                                    <button type="submit" class="btn-form">RELEASE DATE</button>
+                                </form>
+                            </li>
                         </ul>
                     </li>
                     <li class="deroulant"><a href="#">ENERGY &ensp;</a>
                         <ul class="sous">
-                            <li><a href="#">ALL</a></li>
-                            <li><a href="#">NAME</a></li>
-                            <li><a href="#">RARITY</a></li>
-                            <li><a href="#">RESEAL DATE</a></li>
+                            <li>
+                                <form class="contenaire-btn" action="/cards/energy" method="GET">
+                                    <input type="hidden" name="q" value="supertype:energy">
+                                    <input type="hidden" name="orderBy" value="name">
+                                    <button type="submit" class="btn-form">ALL</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="contenaire-btn" action="/cards/energy_rarity" method="GET">
+                                    <input type="hidden" name="q" value="supertype:energy">
+                                    <input type="hidden" name="orderBy" value="rarity">
+                                    <button type="submit" class="btn-form">RARITY</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="contenaire-btn" action="/cards/energy_releaseDate" method="GET">
+                                    <input type="hidden" name="q" value="supertype:energy">
+                                    <input type="hidden" name="orderBy" value="set.releaseDate">
+                                    <button type="submit" class="btn-form">RELEASE DATE</button>
+                                </form>
+                            </li>
                         </ul>
                     </li>
                 </ul>

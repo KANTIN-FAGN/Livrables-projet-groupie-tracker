@@ -13,7 +13,7 @@ func Initserv() {
 	css := http.FileServer(http.Dir("./assets"))
 	http.Handle("/static/", http.StripPrefix("/static/", css))
 
-	http.HandleFunc("/accueil", controlleur.IndexPage)
+	http.HandleFunc("/welcome", controlleur.IndexPage)
 
 	// route relative connexion du compte
 	http.HandleFunc("/login", controlleur.LoginPage)
@@ -30,7 +30,16 @@ func Initserv() {
 	http.HandleFunc("/deconnexion", controlleur.Deconnexion)
 
 	// route pour la recherche
-	http.HandleFunc("/search/cards", backend.SearchPokemon)
+	http.HandleFunc("/search/cards", backend.SearchPokemonName)
+	http.HandleFunc("/cards/pokemon", backend.SearchPokemonAll)
+	http.HandleFunc("/cards/pokemon_rarity", backend.SearchPokemonRarity)
+	http.HandleFunc("/cards/pokemon_releaseDate", backend.SearchPokemonReleaseDate)
+	http.HandleFunc("/cards/trainer", backend.SearchTrainerAll)
+	http.HandleFunc("/cards/trainer_rarity", backend.SearchTrainerRarity)
+	http.HandleFunc("/cards/trainer_releaseDate", backend.SearchTrainerReleaseDate)
+	http.HandleFunc("/cards/energy", backend.SearchEnergyAll)
+	http.HandleFunc("/cards/energy_rarity", backend.SearchEnergyRarity)
+	http.HandleFunc("/cards/energy_releaseDate", backend.SearchEnergyReleaseDate)
 
 	// route de chargement
 	http.HandleFunc("/loading", controlleur.LoadingPage)
@@ -57,6 +66,6 @@ func Initserv() {
 
 	// Démarrage du serveur
 	log.Println("[✅] Serveur lancé !")
-	fmt.Println("[🌐] http://localhost:8080/accueil")
+	fmt.Println("[🌐] http://localhost:8080/welcome")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
