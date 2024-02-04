@@ -7,6 +7,14 @@
       "salt": "zOHspaUpajULcfHyjxRERQ==",
       "state": "admin",
       "username": "testuser"
+    },
+    {
+      "email": "kantin.fagn@gmail.com",
+      "password": "3Z3cque62CIaDHfbUJNFRL7q6qGn44PwnWigRtsFzvU=",
+      "picture": "../static/img/POKEMON/electric/7.png",
+      "salt": "cpsnT3Lf3TE837QYhazOpw==",
+      "state": "member",
+      "username": "kavtiv"
     }
   ]
 }

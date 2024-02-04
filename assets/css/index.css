@@ -163,13 +163,14 @@ nav>ul li:hover .sous {
 .group {
     display: flex;
     line-height: 28px;
+    justify-content: space-between;
     align-items: center;
     position: relative;
     max-width: 100%;
 }
 
 .input {
-    width: 100%;
+    width: 180%;
     height: 40px;
     line-height: 28px;
     padding: 0 1rem;

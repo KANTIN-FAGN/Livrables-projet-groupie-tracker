@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
     <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="icon" href="../static/img/site/pokeball.png">
 </head>
 
 <body>
@@ -82,7 +83,11 @@
                             </path>
                         </g>
                     </svg>
-                    <input placeholder="Search" type="search" class="input">
+                    <form class="body-search" action="/search/cards" method="GET">
+                        <label for="pokemonName" style="display: none;">Nom du Pokémon:</label>
+                        <input class="input" placeholder="Search" type="text" id="pokemonName" name="name" required>
+                        <button type="submit" style="display: none;">Rechercher</button>
+                    </form>
                 </div>
             </div>
         </div>

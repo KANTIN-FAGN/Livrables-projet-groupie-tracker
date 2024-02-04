@@ -290,7 +290,7 @@ func Deconnexion(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/accueil", http.StatusSeeOther)
 }
 
-func Loading(w http.ResponseWriter, r *http.Request) {
+func LoadingPage(w http.ResponseWriter, r *http.Request) {
 	errMessage := r.URL.Query().Get("error")
 	temp.Temp.ExecuteTemplate(w, "loading", errMessage)
 }

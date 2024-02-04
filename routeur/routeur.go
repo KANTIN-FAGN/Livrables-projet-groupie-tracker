@@ -14,7 +14,11 @@ func Initserv() {
 	http.Handle("/static/", http.StripPrefix("/static/", css))
 
 	http.HandleFunc("/accueil", controlleur.IndexPage)
+
+	// route relative connexion du compte
 	http.HandleFunc("/login", controlleur.LoginPage)
+
+	// route relative à la création du compte
 	http.HandleFunc("/login_credits", controlleur.GetCreds)
 	http.HandleFunc("/create-account", controlleur.CreateAccountPage)
 	http.HandleFunc("/mail_verif", controlleur.MailVerifPage)
@@ -24,7 +28,12 @@ func Initserv() {
 	http.HandleFunc("/treatement/picture/profil", controlleur.SubmitPicture)
 	http.HandleFunc("/pokecount", controlleur.ProfilPage)
 	http.HandleFunc("/deconnexion", controlleur.Deconnexion)
-	http.HandleFunc("/loading", controlleur.Loading)
+
+	// route pour la recherche
+	http.HandleFunc("/search/cards", backend.SearchPokemon)
+
+	// route de chargement
+	http.HandleFunc("/loading", controlleur.LoadingPage)
 
 	// affichage des pokemon celon leurs types
 	http.HandleFunc("/TypeFire", backend.PokemonProfilFire)
@@ -43,6 +52,7 @@ func Initserv() {
 	http.HandleFunc("/TypeRock", backend.PokemonProfilRock)
 	http.HandleFunc("/TypeWater", backend.PokemonProfilWater)
 
+	// Route Error 404
 	http.HandleFunc("/", controlleur.DefaultHandler)
 
 	// Démarrage du serveur

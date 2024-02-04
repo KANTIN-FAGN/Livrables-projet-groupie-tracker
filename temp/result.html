@@ -1,0 +1,87 @@
+{{define "result"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="icon" href="../static/img/site/pokeball.png">
+    <style>
+        /* Styles pour les images et le loader */
+        .body-global {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgba(255, 255, 255, 0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+            /* Ajoutez d'autres styles selon vos besoins */
+        }
+
+        .img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .pokemon-image {
+            margin-bottom: 20px;
+            /* Ajoutez d'autres styles selon vos besoins */
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Contenu de la page -->
+    <div class="body-global" id="body-global">
+        <div class="img">
+            <img id="image1" class="pokemon-image" src="../static/img/site/loader/loader-1.png" alt="Image 1" height="150px" width="auto">
+            <img id="image2" class="pokemon-image hidden" src="../static/img/site/loader/loader-2.png" alt="Image 2" height="150px" width="auto">
+        </div>
+    </div>
+
+    {{ range . }}
+    <div>
+        <img src="{{.Images.Small}}" alt="">
+        <!-- Ajoutez d'autres champs selon vos besoins -->
+    </div>
+    {{ end }}
+
+    <!-- JavaScript pour masquer les images une fois que la page est chargée -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var image1 = document.getElementById("image1");
+            var image2 = document.getElementById("image2");
+            var isImage1Visible = true;
+
+            setInterval(function () {
+                if (isImage1Visible) {
+                    image1.classList.add("hidden");
+                    image2.classList.remove("hidden");
+                } else {
+                    image1.classList.remove("hidden");
+                    image2.classList.add("hidden");
+                }
+
+                isImage1Visible = !isImage1Visible;
+            }, 150); // Change every 150 milliseconds (adjust as needed)
+        });
+
+        window.addEventListener("load", function () {
+            document.getElementById("body-global").style.display = "none";
+        });
+    </script>
+</body>
+
+</html>
+{{end}}

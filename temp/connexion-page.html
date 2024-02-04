@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
     <link rel="stylesheet" href="../static/css/connexion-page.css">
+    <link rel="icon" href="../static/img/site/pokeball.png">
 </head>
 
 <body>
@@ -53,7 +54,7 @@
                             d="M2.01577 13.4756C2.08114 16.5412 2.11383 18.0739 3.24496 19.2094C4.37608 20.3448 5.95033 20.3843 9.09883 20.4634C11.0393 20.5122 12.9607 20.5122 14.9012 20.4634C18.0497 20.3843 19.6239 20.3448 20.7551 19.2094C21.8862 18.0739 21.9189 16.5412 21.9842 13.4756C22.0053 12.4899 22.0053 11.5101 21.9842 10.5244C21.9189 7.45886 21.8862 5.92609 20.7551 4.79066C19.6239 3.65523 18.0497 3.61568 14.9012 3.53657C12.9607 3.48781 11.0393 3.48781 9.09882 3.53656C5.95033 3.61566 4.37608 3.65521 3.24495 4.79065C2.11382 5.92608 2.08114 7.45885 2.01576 10.5244C1.99474 11.5101 1.99475 12.4899 2.01577 13.4756Z">
                         </path>
                     </svg>
-                    <input placeholder="name@mail.com" title="Inpit title" name="email" type="email" class="input_field"
+                    <input placeholder="name@mail.com" title="Your Email" name="email" type="email" class="input_field"
                         id="email_field">
                 </div>
                 <div class="input_container">
@@ -69,37 +70,44 @@
                             d="M21.2046 15.1045L20.6242 15.6956V15.6956L21.2046 15.1045ZM21.4196 16.4767C21.7461 16.7972 22.2706 16.7924 22.5911 16.466C22.9116 16.1395 22.9068 15.615 22.5804 15.2945L21.4196 16.4767ZM18.0228 15.1045L17.4424 14.5134V14.5134L18.0228 15.1045ZM18.2379 18.0387C18.5643 18.3593 19.0888 18.3545 19.4094 18.028C19.7299 17.7016 19.7251 17.1771 19.3987 16.8565L18.2379 18.0387ZM14.2603 20.7619C13.7039 21.3082 12.7957 21.3082 12.2394 20.7619L11.0786 21.9441C12.2794 23.1232 14.2202 23.1232 15.4211 21.9441L14.2603 20.7619ZM12.2394 20.7619C11.6914 20.2239 11.6914 19.358 12.2394 18.82L11.0786 17.6378C9.86927 18.8252 9.86927 20.7567 11.0786 21.9441L12.2394 20.7619ZM12.2394 18.82C12.7957 18.2737 13.7039 18.2737 14.2603 18.82L15.4211 17.6378C14.2202 16.4587 12.2794 16.4587 11.0786 17.6378L12.2394 18.82ZM14.2603 18.82C14.8082 19.358 14.8082 20.2239 14.2603 20.7619L15.4211 21.9441C16.6304 20.7567 16.6304 18.8252 15.4211 17.6378L14.2603 18.82ZM20.6242 15.6956L21.4196 16.4767L22.5804 15.2945L21.785 14.5134L20.6242 15.6956ZM15.4211 18.82L17.8078 16.4767L16.647 15.2944L14.2603 17.6377L15.4211 18.82ZM17.8078 16.4767L18.6032 15.6956L17.4424 14.5134L16.647 15.2945L17.8078 16.4767ZM16.647 16.4767L18.2379 18.0387L19.3987 16.8565L17.8078 15.2945L16.647 16.4767ZM21.785 14.5134C21.4266 14.1616 21.0998 13.8383 20.7993 13.6131C20.4791 13.3732 20.096 13.1716 19.6137 13.1716V14.8284C19.6145 14.8284 19.619 14.8273 19.6395 14.8357C19.6663 14.8466 19.7183 14.8735 19.806 14.9391C19.9969 15.0822 20.2326 15.3112 20.6242 15.6956L21.785 14.5134ZM18.6032 15.6956C18.9948 15.3112 19.2305 15.0822 19.4215 14.9391C19.5091 14.8735 19.5611 14.8466 19.5879 14.8357C19.6084 14.8273 19.6129 14.8284 19.6137 14.8284V13.1716C19.1314 13.1716 18.7483 13.3732 18.4281 13.6131C18.1276 13.8383 17.8008 14.1616 17.4424 14.5134L18.6032 15.6956Z">
                         </path>
                     </svg>
-                    <input placeholder="Password" title="Inpit title" name="password" type="password"
+                    <input placeholder="Password" title="Your Password" name="password" type="password"
                         class="input_field" id="password_field">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" id="eyes-closed" viewBox="0 0 512 512" style="translate: 450px;" onclick="togglePassword()">
+                        <path
+                            d="M432 448a15.92 15.92 0 01-11.31-4.69l-352-352a16 16 0 0122.62-22.62l352 352A16 16 0 01432 448zM255.66 384c-41.49 0-81.5-12.28-118.92-36.5-34.07-22-64.74-53.51-88.7-91v-.08c19.94-28.57 41.78-52.73 65.24-72.21a2 2 0 00.14-2.94L93.5 161.38a2 2 0 00-2.71-.12c-24.92 21-48.05 46.76-69.08 76.92a31.92 31.92 0 00-.64 35.54c26.41 41.33 60.4 76.14 98.28 100.65C162 402 207.9 416 255.66 416a239.13 239.13 0 0075.8-12.58 2 2 0 00.77-3.31l-21.58-21.58a4 4 0 00-3.83-1 204.8 204.8 0 01-51.16 6.47zM490.84 238.6c-26.46-40.92-60.79-75.68-99.27-100.53C349 110.55 302 96 255.66 96a227.34 227.34 0 00-74.89 12.83 2 2 0 00-.75 3.31l21.55 21.55a4 4 0 003.88 1 192.82 192.82 0 0150.21-6.69c40.69 0 80.58 12.43 118.55 37 34.71 22.4 65.74 53.88 89.76 91a.13.13 0 010 .16 310.72 310.72 0 01-64.12 72.73 2 2 0 00-.15 2.95l19.9 19.89a2 2 0 002.7.13 343.49 343.49 0 0068.64-78.48 32.2 32.2 0 00-.1-34.78z" />
+                        <path
+                            d="M256 160a95.88 95.88 0 00-21.37 2.4 2 2 0 00-1 3.38l112.59 112.56a2 2 0 003.38-1A96 96 0 00256 160zM165.78 233.66a2 2 0 00-3.38 1 96 96 0 00115 115 2 2 0 001-3.38z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon hidden" id="eyes-open" viewBox="0 0 512 512" style="translate: 450px;" onclick="togglePassword()">
+                        <path
+                            d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 00-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 000-17.47C428.89 172.28 347.8 112 255.66 112z"
+                            fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="32" />
+                        <circle cx="256" cy="256" r="80" fill="none" stroke="currentColor" stroke-miterlimit="10"
+                            stroke-width="32" />
+                    </svg>
                 </div>
                 <div class="checkbox-wrapper-12">
                     <div class="cbx">
-                      <input id="cbx-12" type="checkbox" id="remember" name="remember" />
-                      <label for="cbx-12" for="remember"></label>
-                      <svg width="15" height="14" viewBox="0 0 15 14" fill="none">
-                        <path d="M2 8.36364L6.23077 12L13 2"></path>
-                      </svg>
+                        <input id="cbx-12" type="checkbox" id="remember" name="remember" />
+                        <label for="cbx-12" for="remember"></label>
+                        <svg width="15" height="14" viewBox="0 0 15 14" fill="none">
+                            <path d="M2 8.36364L6.23077 12L13 2"></path>
+                        </svg>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-                      <defs>
-                        <filter id="goo-12">
-                          <feGaussianBlur
-                            in="SourceGraphic"
-                            stdDeviation="4"
-                            result="blur"
-                          ></feGaussianBlur>
-                          <feColorMatrix
-                            in="blur"
-                            mode="matrix"
-                            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -7"
-                            result="goo-12"
-                          ></feColorMatrix>
-                          <feBlend in="SourceGraphic" in2="goo-12"></feBlend>
-                        </filter>
-                      </defs>
+                        <defs>
+                            <filter id="goo-12">
+                                <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"></feGaussianBlur>
+                                <feColorMatrix in="blur" mode="matrix"
+                                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -7" result="goo-12">
+                                </feColorMatrix>
+                                <feBlend in="SourceGraphic" in2="goo-12"></feBlend>
+                            </filter>
+                        </defs>
                     </svg>
                     <span>Remember me</span>
-                  </div>
+                </div>
                 <button title="Sign In" type="submit" class="sign-in_btn">
                     <span>Sign In</span>
                 </button>
@@ -117,6 +125,23 @@
             </a>
         </div>
     </section>
+    <script>
+        function togglePassword() {
+            var passwordField = document.getElementById('password_field');
+            var eyesClosed = document.getElementById('eyes-closed');
+            var eyesOpen = document.getElementById('eyes-open');
+    
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                eyesClosed.classList.add('hidden');
+                eyesOpen.classList.remove('hidden');
+            } else {
+                passwordField.type = "password";
+                eyesClosed.classList.remove('hidden');
+                eyesOpen.classList.add('hidden');
+            }
+        }
+    </script>
 </body>
 
 </html>

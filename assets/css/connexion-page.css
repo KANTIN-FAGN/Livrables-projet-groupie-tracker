@@ -396,3 +396,7 @@ header section {
             -32px 16px 0 -10px transparent, -32px -16px 0 -10px transparent;
     }
 }
+
+.hidden {
+    display: none;
+}
