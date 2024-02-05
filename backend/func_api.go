@@ -1,16 +1,30 @@
 package backend
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"pokemon/temp"
+	"strings"
 
 	tcg "github.com/PokemonTCG/pokemon-tcg-sdk-go-v2/pkg"
 	"github.com/PokemonTCG/pokemon-tcg-sdk-go-v2/pkg/request"
 )
 
-type ResultData struct {
-	Cards []tcg.PokemonCard
+func DisplayPokemonCards(w http.ResponseWriter, r *http.Request) {
+    c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
+
+    // Extract the Pokémon ID from the URL path
+    PokemonID := strings.TrimPrefix(r.URL.Path, "/card/")
+
+    fmt.Println(PokemonID)
+
+    cards, err := c.GetCardByID(PokemonID)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    temp.Temp.ExecuteTemplate(w, "cards", cards)
 }
 
 func SearchPokemonName(w http.ResponseWriter, r *http.Request) {

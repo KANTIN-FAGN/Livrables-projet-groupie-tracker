@@ -42,82 +42,6 @@ header section {
     align-items: center;
 }
 
-nav {
-    width: 33.33%;
-    margin: 0 auto;
-    position: sticky;
-    top: 0px;
-}
-
-nav ul {
-    list-style-type: none;
-}
-
-nav ul li {
-    float: left;
-    width: 33.33%;
-    text-align: center;
-    position: relative;
-}
-
-nav ul::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-nav a {
-    display: block;
-    text-decoration: none;
-    color: black;
-    border-bottom: 2px solid transparent;
-    padding: 10px 0px;
-}
-
-nav a:hover {
-    color: orange;
-    border-bottom: 2px solid gold;
-}
-
-.sous {
-    display: none;
-    box-shadow: 0px 1px 2px #CCC;
-    background-color: white;
-    position: absolute;
-    width: 100%;
-    z-index: 1000;
-}
-
-nav>ul li:hover .sous {
-    display: block;
-}
-
-.sous li {
-    float: none;
-    width: 100%;
-    text-align: center;
-}
-
-.sous a {
-    padding: 10px;
-    border-bottom: none;
-}
-
-.sous a:hover {
-    border-bottom: none;
-    background-color: RGBa(200, 200, 200, 0.1);
-}
-
-.deroulant>a::after {
-    content: " ▼";
-    font-size: 12px;
-}
-
-.conteneur {
-    margin: 50px 20px;
-    height: 1500px;
-}
-
 .login-header img {
     width: 50px;
 }
@@ -158,19 +82,6 @@ nav>ul li:hover .sous {
     left: 0;
     width: 100%;
     z-index: 9999;
-    /* Ajoutez d'autres styles selon vos besoins */
-}
-
-.img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.pokemon-image {
-    margin-bottom: 20px;
-    /* Ajoutez d'autres styles selon vos besoins */
 }
 
 .hidden {
@@ -224,55 +135,168 @@ input:hover {
     height: 1rem;
 }
 
-.section-cards {
+.img {
+    max-width: 33.33%;
+    height: 100%;
+}
+
+.img img {
+    width: 100%;
+    padding-top: 50px;
+}
+
+.info-card-global {
+    width: 70%;
+    display: flex;
+}
+
+.body-global_card {
+    display: flex;
+    justify-content: center;
+}
+
+.name-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 50px;
+    width: 100%;
+}
+
+.name {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.hp {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.info-maxi-global {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-left: 8.33333337%;
+}
+
+.bar {
+    margin-top: 15px;
+    border: 1px solid #000;
+    width: 100%;
+}
+
+.prices {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+.price-maxi-global {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.price-global {
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.prices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titre-price {
+    font-size: 30px;
+}
+
+.name-attack {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 15px;
+}
+
+.attack-maxi-global {
+    width: 100%;
+}
+
+.display-attacks {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.display-attacks p {
+    font-size: 25px;
+}
+
+.damage-attacks p {
+    font-size: 25px;
+}
+
+.petite-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.petite-info .hhhhh {
+    display: flex;
+    align-items: center;
+}
+
+.petit-info-complementaire {
+    padding-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 70px;
+}
+
+/* .petit-info-complementaire div {
+    height: 100px;
+} */
+
+button {
+    border: 2px solid #24b4fb;
+    background-color: #24b4fb;
+    border-radius: 0.9em;
+    padding: 0.8em 1.2em 0.8em 1em;
+    transition: all ease-in-out 0.2s;
+    font-size: 16px;
+}
+
+button span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 600;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #0071e2;
+}
+
+.bouton-section {
+    padding-top: 50px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.card-global {
-    padding-top: 50px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-}
-
-.cards img {
-    border-radius: 20px;
-    box-shadow: 0.5em 0.5em .6em rgb(90, 90, 90);
-    width: 350px;
-    height: auto;
-}
-
-.img-poke {
-    border: none;
-    background: none;
-    animation: myAnimOut 0.5s ease 0s 1 normal forwards;
-}
-
-.img-poke:hover {
-    cursor: pointer;
-    animation: myAnim 0.5s ease 0s 1 normal forwards;
-}
-
-@keyframes myAnimOut {
-	0% {
-		transform: scale(1.05);
-	}
-
-	100% {
-		transform: scale(1);
-	}
-}
-@keyframes myAnim {
-	0% {
-		transform: scale(1);
-	}
-
-	100% {
-		transform: scale(1.05);
-	}
 }

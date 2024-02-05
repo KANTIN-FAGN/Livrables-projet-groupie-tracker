@@ -41,6 +41,9 @@ func Initserv() {
 	http.HandleFunc("/cards/energy_rarity", backend.SearchEnergyRarity)
 	http.HandleFunc("/cards/energy_releaseDate", backend.SearchEnergyReleaseDate)
 
+	// route pour display les pokemon
+	http.HandleFunc("/card/", backend.DisplayPokemonCards)
+
 	// route de chargement
 	http.HandleFunc("/loading", controlleur.LoadingPage)
 

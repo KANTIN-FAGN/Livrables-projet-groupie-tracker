@@ -38,6 +38,7 @@ type PokemonCard struct {
 	RetreatCost          []string `json:"retreatCost"`
 	ConvertedRetreatCost int      `json:"convertedRetreatCost"`
 	Set                  struct {
+		ID     string `json:"id"`
 		Name   string `json:"name"`
 		Images struct {
 			Symbol string `json:"symbol"`
@@ -55,6 +56,26 @@ type PokemonCard struct {
 	TCGPlayer struct {
 		URL       string `json:"url"`
 		UpdatedAt string `json:"updatedAt"`
+		Prices    struct {
+			Holofoil *struct {
+				Low    float64 `json:"low"`
+				Mid    float64 `json:"mid"`
+				High   float64 `json:"high"`
+				Market float64 `json:"market"`
+			} `json:"holofoil,omitempty"`
+			ReverseHolofoil *struct {
+				Low    float64 `json:"low"`
+				Mid    float64 `json:"mid"`
+				High   float64 `json:"high"`
+				Market float64 `json:"market"`
+			} `json:"reverseHolofoil,omitempty"`
+			Normal *struct {
+				Low    float64 `json:"low"`
+				Mid    float64 `json:"mid"`
+				High   float64 `json:"high"`
+				Market float64 `json:"market"`
+			} `json:"normal,omitempty"`
+		} `json:"prices"`
 	} `json:"tcgplayer"`
 	CardMarket struct {
 		URL       string `json:"url"`
