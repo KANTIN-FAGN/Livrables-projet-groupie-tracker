@@ -161,7 +161,7 @@ func GetCreds(w http.ResponseWriter, r *http.Request) {
 		}
 		fmt.Println(session)
 		backend.SetSession(session)
-		http.Redirect(w, r, "/accueil", http.StatusSeeOther)
+		http.Redirect(w, r, "/welcome", http.StatusSeeOther)
 	} else {
 		fmt.Println("Identifiants incorrects")
 		http.Redirect(w, r, "/login", http.StatusSeeOther)
@@ -287,7 +287,7 @@ func SubmitPicture(w http.ResponseWriter, r *http.Request) {
 func Deconnexion(w http.ResponseWriter, r *http.Request) {
 	backend.ClearSession()
 	backend.ClearRemember("./json/rememberSession.json")
-	http.Redirect(w, r, "/accueil", http.StatusSeeOther)
+	http.Redirect(w, r, "/welcome", http.StatusSeeOther)
 }
 
 func LoadingPage(w http.ResponseWriter, r *http.Request) {

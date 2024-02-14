@@ -7,6 +7,15 @@
       "salt": "zOHspaUpajULcfHyjxRERQ==",
       "state": "admin",
       "username": "testuser"
+    },
+    {
+      "email": "kantin.fagn@gmail.com",
+      "favCard": null,
+      "password": "v3UXootWo6B3BGL7lUj1xXq-nnTPiaSnmxuhcUT3mS8=",
+      "picture": "../static/img/POKEMON/water/26.png",
+      "salt": "ziws30r67bwmosJeg2DG1Q==",
+      "state": "member",
+      "username": "kweentinoux"
     }
   ]
 }

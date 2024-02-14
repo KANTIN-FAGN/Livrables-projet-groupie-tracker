@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{.Name}} / {{.ID}}</title>
+    <title>PokeCard</title>
     <link rel="icon" href="../static/img/site/pokeball.png">
     <link rel="stylesheet" href="../static/css/cards.css">
 </head>
@@ -32,9 +32,31 @@
                     <button type="submit" style="display: none;">Rechercher</button>
                 </form>
             </div>
+            {{if .DataCompte.AsAdmin}}
+            <div class="login-header" style="width: 25%;">
+                <a href="/pokecount" class="href">
+                    <div class="login-div">
+                        <img src="{{.DataCompte.Picture}}" alt="">
+                        <p>PokéCount</p>
+                    </div>
+                </a>
+            </div>
+            {{else}}
+            {{if not .DataCompte.IsLoggedIn}}
+            <div class="login-header" style="width: 25%;">
+                <a href="/login" class="href">
+                    <div class="login-div">
+                        <img src="../static/img/site/pokeball.png" alt="">
+                        <p>LOGIN</p>
+                    </div>
+                </a>
+            </div>
+            {{end}}
+            {{end}}
         </section>
     </header>
     <section class="body-global_card">
+        {{range .Cards}}
         <div class="info-card-global">
             <div class="img">
                 <img src="{{.Images.Large}}" alt="{{.Name}}">
@@ -48,40 +70,8 @@
                     <div class="hp">
                         <p>HP {{.Hp}}</p>
                         {{range .Types}}
-                        {{if eq . "Fire"}}
-                        <img src="../static/img/site/type/pokemonCard/fire.png" alt="Fire Pokemon" width="30px"
+                        <img src="../static/img/site/type/pokemonCard/{{.}}.png" alt="Metal Pokemon" width="30px"
                             height="30px">
-                        {{else if eq . "Water"}}
-                        <img src="../static/img/site/type/pokemonCard/water.png" alt="Water Pokemon" width="30px"
-                            height="30px">
-                        {{else if eq . "Psychic"}}
-                        <img src="../static/img/site/type/pokemonCard/psychic.png" alt="Psychic Pokemon" width="30px"
-                            height="30px">
-                        {{else if eq . "Grass"}}
-                        <img src="../static/img/site/type/pokemonCard/grass.png" alt="Grass Pokemon" width="30px"
-                            height="30px">
-                        {{else if eq . "Fighting"}}
-                        <img src="../static/img/site/type/pokemonCard/fighting.png" alt="Fighting Pokemon" width="30px"
-                            height="30px">
-                        {{else if eq . "Dragon"}}
-                        <img src="../static/img/site/type/pokemonCard/dragon.png" alt="Dragon Pokemon" width="30px"
-                            height="30px">
-                        {{else if eq . "Fairy"}}
-                        <img src="../static/img/site/type/pokemonCard/fairy.png" alt="Fairy Pokemon" width="30px"
-                            height="30px">
-                        {{else if eq . "Lightning"}}
-                        <img src="../static/img/site/type/pokemonCard/lightning.png" alt="Lightning Pokemon"
-                            width="30px" height="30px">
-                        {{else if eq . "Colorless"}}
-                        <img src="../static/img/site/type/pokemonCard/colorless.png" alt="Colorless Pokemon"
-                            width="30px" height="30px">
-                        {{else if eq . "Darkness"}}
-                        <img src="../static/img/site/type/pokemonCard/darkness.png" alt="Darkness Pokemon" width="30px"
-                            height="30px">
-                        {{else if eq . "Metal"}}
-                        <img src="../static/img/site/type/pokemonCard/metal.png" alt="Metal Pokemon" width="30px"
-                            height="30px">
-                        {{end}}
                         {{end}}
                     </div>
                 </div>
@@ -96,40 +86,8 @@
                                 <div class="icon-attacks">
                                     {{range .Attacks}}
                                     {{range .Cost}}
-                                    {{if eq . "Fire"}}
-                                    <img src="../static/img/site/type/pokemonCard/fire.png" alt="Fire Pokemon"
+                                    <img src="../static/img/site/type/pokemonCard/{{.}}.png" alt="Metal Pokemon"
                                         width="30px" height="30px">
-                                    {{else if eq . "Water"}}
-                                    <img src="../static/img/site/type/pokemonCard/water.png" alt="Water Pokemon"
-                                        width="30px" height="30px">
-                                    {{else if eq . "Psychic"}}
-                                    <img src="../static/img/site/type/pokemonCard/psychic.png" alt="Psychic Pokemon"
-                                        width="30px" height="30px">
-                                    {{else if eq . "Grass"}}
-                                    <img src="../static/img/site/type/pokemonCard/grass.png" alt="Grass Pokemon"
-                                        width="30px" height="30px">
-                                    {{else if eq . "Fighting"}}
-                                    <img src="../static/img/site/type/pokemonCard/fighting.png" alt="Fighting Pokemon"
-                                        width="30px" height="30px">
-                                    {{else if eq . "Dragon"}}
-                                    <img src="../static/img/site/type/pokemonCard/dragon.png" alt="Dragon Pokemon"
-                                        width="30px" height="30px">
-                                    {{else if eq . "Fairy"}}
-                                    <img src="../static/img/site/type/pokemonCard/fairy.png" alt="Fairy Pokemon"
-                                        width="30px" height="30px">
-                                    {{else if eq . "Lightning"}}
-                                    <img src="../static/img/site/type/pokemonCard/lightning.png" alt="Lightning Pokemon"
-                                        width="30px" height="30px">
-                                    {{else if eq . "Colorless"}}
-                                    <img src="../static/img/site/type/pokemonCard/colorless.png" alt="Colorless Pokemon"
-                                        width="30px" height="30px">
-                                    {{else if eq . "Darkness"}}
-                                    <img src="../static/img/site/type/pokemonCard/darkness.png" alt="Darkness Pokemon"
-                                        width="30px" height="30px">
-                                    {{else if eq . "Metal"}}
-                                    <img src="../static/img/site/type/pokemonCard/metal.png" alt="Metal Pokemon"
-                                        width="30px" height="30px">
-                                    {{end}}
                                     {{end}}
                                     {{end}}
                                 </div>
@@ -159,40 +117,8 @@
                         </div>
                         <div class="hhhhh">
                             {{range .Weaknesses}}
-                            {{if eq .Type "Fire"}}
-                            <img src="../static/img/site/type/pokemonCard/fire.png" alt="Fire Pokemon" width="30px"
+                            <img src="../static/img/site/type/pokemonCard/{{.Type}}.png" alt="Metal Pokemon" width="30px"
                                 height="30px">
-                            {{else if eq .Type "Water"}}
-                            <img src="../static/img/site/type/pokemonCard/water.png" alt="Water Pokemon" width="30px"
-                                height="30px">
-                            {{else if eq .Type "Psychic"}}
-                            <img src="../static/img/site/type/pokemonCard/psychic.png" alt="Psychic Pokemon"
-                                width="30px" height="30px">
-                            {{else if eq .Type "Grass"}}
-                            <img src="../static/img/site/type/pokemonCard/grass.png" alt="Grass Pokemon" width="30px"
-                                height="30px">
-                            {{else if eq .Type "Fighting"}}
-                            <img src="../static/img/site/type/pokemonCard/fighting.png" alt="Fighting Pokemon"
-                                width="30px" height="30px">
-                            {{else if eq .Type "Dragon"}}
-                            <img src="../static/img/site/type/pokemonCard/dragon.png" alt="Dragon Pokemon" width="30px"
-                                height="30px">
-                            {{else if eq .Type "Fairy"}}
-                            <img src="../static/img/site/type/pokemonCard/fairy.png" alt="Fairy Pokemon" width="30px"
-                                height="30px">
-                            {{else if eq .Type "Lightning"}}
-                            <img src="../static/img/site/type/pokemonCard/lightning.png" alt="Lightning Pokemon"
-                                width="30px" height="30px">
-                            {{else if eq .Type "Colorless"}}
-                            <img src="../static/img/site/type/pokemonCard/colorless.png" alt="Colorless Pokemon"
-                                width="30px" height="30px">
-                            {{else if eq .Type "Darkness"}}
-                            <img src="../static/img/site/type/pokemonCard/darkness.png" alt="Darkness Pokemon"
-                                width="30px" height="30px">
-                            {{else if eq .Type "Metal"}}
-                            <img src="../static/img/site/type/pokemonCard/metal.png" alt="Metal Pokemon" width="30px"
-                                height="30px">
-                            {{end}}
                             <p>{{.Value}}</p>
                             {{end}}
                         </div>
@@ -204,42 +130,11 @@
                         </div>
                         <div>
                             {{range .RetreatCost}}
-                            {{if eq . "Fire"}}
-                            <img src="../static/img/site/type/pokemonCard/fire.png" alt="Fire Pokemon" width="30px"
-                                height="30px">
-                            {{else if eq . "Water"}}
-                            <img src="../static/img/site/type/pokemonCard/water.png" alt="Water Pokemon" width="30px"
-                                height="30px">
-                            {{else if eq . "Psychic"}}
-                            <img src="../static/img/site/type/pokemonCard/psychic.png" alt="Psychic Pokemon"
-                                width="30px" height="30px">
-                            {{else if eq . "Grass"}}
-                            <img src="../static/img/site/type/pokemonCard/grass.png" alt="Grass Pokemon" width="30px"
-                                height="30px">
-                            {{else if eq . "Fighting"}}
-                            <img src="../static/img/site/type/pokemonCard/fighting.png" alt="Fighting Pokemon"
-                                width="30px" height="30px">
-                            {{else if eq . "Dragon"}}
-                            <img src="../static/img/site/type/pokemonCard/dragon.png" alt="Dragon Pokemon" width="30px"
-                                height="30px">
-                            {{else if eq . "Fairy"}}
-                            <img src="../static/img/site/type/pokemonCard/fairy.png" alt="Fairy Pokemon" width="30px"
-                                height="30px">
-                            {{else if eq . "Lightning"}}
-                            <img src="../static/img/site/type/pokemonCard/lightning.png" alt="Lightning Pokemon"
-                                width="30px" height="30px">
-                            {{else if eq . "Colorless"}}
-                            <img src="../static/img/site/type/pokemonCard/colorless.png" alt="Colorless Pokemon"
-                                width="30px" height="30px">
-                            {{else if eq . "Darkness"}}
-                            <img src="../static/img/site/type/pokemonCard/darkness.png" alt="Darkness Pokemon"
-                                width="30px" height="30px">
-                            {{else if eq . "Metal"}}
-                            <img src="../static/img/site/type/pokemonCard/metal.png" alt="Metal Pokemon" width="30px"
-                                height="30px">
-                            {{else}}
-                            <p>N/A</p>
-                            {{end}}
+                                {{if eq . "Colorless"}}
+                                    <img src="../static/img/site/type/pokemonCard/colorless.png" alt="Colorless Pokemon" width="30px" height="30px">
+                                {{else}}
+                                    <p>N/A</p>
+                                {{end}}
                             {{end}}
                         </div>
                     </div>
@@ -270,16 +165,22 @@
                 </div>
             </section>
         </div>
+        {{end}}
     </section>
     <section class="bouton-section">
-        <button>
-            <span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    <path fill="none" d="M0 0h24v24H0z"></path>
-                    <path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path>
-                </svg> Add {{.Name}} in your PokeDex 
-            </span>
-        </button>
+        <form action="/treatement/fav" method="post">
+            <input type="hidden" name="pokemonID" value="{{range .Cards}}{{.ID}}{{end}}">
+            <input type="hidden" name="pokemonName" value="{{range .Cards}}{{.Name}}{{end}}">
+            <input type="hidden" name="pokemonImage" value="{{range .Cards}}{{.Images.Large}}{{end}}">
+            <button>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="none" d="M0 0h24v24H0z"></path>
+                        <path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path>
+                    </svg> Add {{range .Cards}}{{.Name}}{{end}} in your PokeDex
+                </span>
+            </button>
+        </form>
     </section>
 </body>
 

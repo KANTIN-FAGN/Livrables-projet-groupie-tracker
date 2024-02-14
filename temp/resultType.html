@@ -1,4 +1,4 @@
-{{define "result"}}
+{{define "resultType"}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,14 +11,14 @@
 </head>
 
 <body>
-    <header id="header">
+    <header>
         <section>
-            <a href="/welcome" style="width: 25%;">
+            <a href="/welcome" style="width: 33.33%;">
                 <div class="logo-header">
                     <img src="../static/img/site/logo.png" alt="">
                 </div>
             </a>
-            <div class="group" style="width: 25%;">
+            <div class="group">
                 <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
                     <g>
                         <path
@@ -32,7 +32,7 @@
                     <button type="submit" style="display: none;">Rechercher</button>
                 </form>
             </div>
-            <nav style="width: 25%;">
+            <nav>
                 <ul>
                     <li class="deroulant"><a href="#">FILTRE &ensp;</a>
                         <ul class="sous">
@@ -53,7 +53,7 @@
                 </ul>
             </nav>
             {{if .DataCompte.AsAdmin}}
-            <div class="login-header" style="width: 25%;">
+            <div class="login-header">
                 <a href="/pokecount" class="href">
                     <div class="login-div">
                         <img src="{{.DataCompte.Picture}}" alt="">
@@ -63,7 +63,7 @@
             </div>
             {{else}}
             {{if not .DataCompte.IsLoggedIn}}
-            <div class="login-header" style="width: 25%;">
+            <div class="login-header">
                 <a href="/login" class="href">
                     <div class="login-div">
                         <img src="../static/img/site/pokeball.png" alt="">
@@ -96,16 +96,9 @@
                 {{ end }}
             </div>
         </section>
-        <div class="pagination-global">
-            <div>
-                <a href="/result?move=before">Précedent</a>
-            </div>
-            <div>
-                <a href="/result?move=next">Suivant</a>
-            </div>
-        </div>
 
     </section>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Disable pointer events on all elements inside the header

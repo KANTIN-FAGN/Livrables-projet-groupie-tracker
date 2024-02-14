@@ -367,12 +367,13 @@ func AddAccountToFile(account AccountCreation, filePath string) error {
 	hashedPassword := HashPassword(account.Password, salt)
 
 	newAccount := map[string]interface{}{
-		"picture" : account.Picture,
+		"picture":  account.Picture,
 		"username": account.Username,
 		"email":    account.Email,
 		"password": hashedPassword,
 		"state":    "member",
 		"salt":     salt,
+		"favCard":  account.FavCards,
 	}
 
 	accounts, ok := data["comptes"]
@@ -511,4 +512,28 @@ func ClearRemember(filename string) error {
 
 func IsAdmin() bool {
 	return GlobalSession.State == "member"
+}
+
+func AddToFav(w http.ResponseWriter, r *http.Request) {
+    // Récupérez les informations du formulaire
+    pokemonID := r.FormValue("pokemonID")
+    pokemonName := r.FormValue("pokemonName")
+    pokemonImage := r.FormValue("pokemonImage")
+
+	session := GetSession() != Session{}
+	isAdmin := IsAdmin()
+	user := GetSession()
+
+	fmt.Println(user.Username, "1")
+	fmt.Println(isAdmin, "2")
+	fmt.Println(session, "3")
+
+	fmt.Println(pokemonID , "4")
+	fmt.Println(pokemonName, "5")
+	fmt.Println(pokemonImage, "6")
+
+
+
+    // Redirigez l'utilisateur vers une autre page (par exemple, son profil)
+    http.Redirect(w, r, "/profil", http.StatusSeeOther)
 }

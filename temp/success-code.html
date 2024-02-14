@@ -1,6 +1,7 @@
 {{define "success"}}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="../static/css/connexion-page.css">
     <link rel="icon" href="../static/img/site/pokeball.png">
 </head>
+
 <body>
     <section class="body-global">
         <form action="/welcome" method="post" class="form_container">
@@ -18,12 +20,12 @@
                 <p class="title">Verified Code</p>
             </div>
             <br>
-                <button title="Sign In" type="submit" class="sign-in_btn">
-                    <span>Continue</span>
-                </button>
-            </form>
+            <button title="Continue" type="submit" class="sign-in_btn">
+                <span>Continue</span>
+            </button>
         </form>
     </section>
 </body>
+
 </html>
 {{end}}

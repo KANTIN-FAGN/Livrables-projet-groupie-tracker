@@ -41,6 +41,13 @@ func Initserv() {
 	http.HandleFunc("/cards/energy_rarity", backend.SearchEnergyRarity)
 	http.HandleFunc("/cards/energy_releaseDate", backend.SearchEnergyReleaseDate)
 
+	// Ajout d'une carte en favorie
+	http.HandleFunc("/treatement/fav", backend.AddToFav)
+
+	// Filtre pour la recherche des pokemon
+	http.HandleFunc("/cards/filtre_rarity", backend.FiltreRarity)
+	http.HandleFunc("/cards/filtre_releaseDate", backend.FiltreReleaseDate)
+
 	// route pour display les pokemon
 	http.HandleFunc("/card/", backend.DisplayPokemonCards)
 

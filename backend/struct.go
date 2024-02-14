@@ -3,28 +3,6 @@ package backend
 var GlobalSession Session
 var GlobalAccount AccountCreation
 
-// Categorie est une structure qui stock le nom d'une catégorie et une liste d'Article
-type Categorie struct {
-	Name     string    `json:"name"`
-	Articles []Article `json:"articles"`
-}
-
-// JSONData est une structure qui stock une liste de Categorie
-type JSONData struct {
-	Categories []Categorie `json:"categories"`
-}
-
-// Article est une structure qui stock toutes les données d'un article
-type Article struct {
-	Id     int    `json:"id"`
-	Titre  string `json:"titre"`
-	Image  string `json:"image"`
-	Intro  string `json:"introduction"`
-	Auteur string `json:"auteur"`
-	Date   string `json:"date"`
-	Body   string `json:"corps"`
-}
-
 // Account est une structure qui stock toutes les données d'un compte
 type Account struct {
 	Picture  string `json:"picture"`
@@ -51,17 +29,11 @@ type Session struct {
 type IndexData struct {
 	Picture    string
 	Username   string
-	Email   string
+	Email      string
 	IsLoggedIn bool
 	AsAdmin    bool
 }
 
-// CategorieData est une structure qui gère les données envoyées à la page catégorie
-type CategorieData struct {
-	IsLoggedIn bool
-	AsAdmin    bool
-	Categorie  Categorie
-}
 
 // MailCodeData est une structure qui gère les données envoyées à la page de vérification mail
 type MailCodeData struct {
@@ -82,13 +54,22 @@ type LoginStatus struct {
 	AsAdmin    bool
 }
 
+type FavoriteCard struct {
+	ID    string `json:"id"`
+	Name  string `json:"name"`
+	Image string `json:"image"`
+}
+
 // AccountCreation est une structure qui stock des données temporaires liées à la création d'un compte
 type AccountCreation struct {
-	Picture  string `json:"picture"`
-	Username string `json:"username"`
-	Email    string `json:"email"`
-	Password string `json:"password"`
-	MailCode string
+	Picture  string         `json:"picture"`
+	Username string         `json:"username"`
+	Email    string         `json:"email"`
+	Password string         `json:"password"`
+	State    string         `json:"state"`
+	Salt     string         `json:"salt"`
+	FavCards []FavoriteCard `json:"favCard"`
+	MailCode string         `json:"-"`
 }
 
 // AccountsCreation est une structure qui stock une liste d'AccountCreation
@@ -102,4 +83,10 @@ type RememberData struct {
 		Active   string `json:"Active"`
 		Username string `json:"Username"`
 	} `json:"remember"`
+}
+
+type PokemonInfo struct {
+	PokemonID    string `json:"pokemonID"`
+	PokemonName  string `json:"pokemonName"`
+	PokemonImage string `json:"pokemonImage"`
 }
