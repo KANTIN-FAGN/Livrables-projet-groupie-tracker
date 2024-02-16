@@ -1,4 +1,4 @@
-{{define "resultType"}}
+{{define "ResultTrainerAll"}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,7 +96,57 @@
                 {{ end }}
             </div>
         </section>
-
+        <div class="pagination-global">
+            {{if eq .CurrentPage 1}}
+            <section class="pagination-eq1">
+                <div>
+                    <form action="/cards/trainer?page={{.CurrentPage}}&move=Plus&q=supertype:energy"
+                        method="post">
+                        <input type="hidden" name="page" value="Moins">
+                        <input type="hidden" name="name" value="{{.DataSearch}}">
+                        <button class="bouton-page-next" type="submit">
+                            NEXT
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="48" d="M268 112l144 144-144 144M392 256H100" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </section>
+            {{else}}
+            <section class="pagination">
+                <div>
+                    <form action="/cards/trainer?page={{.CurrentPage}}&move=Moins&q=supertype:energy"
+                        method="post">
+                        <input type="hidden" name="page" value="Plus">
+                        <input type="hidden" name="name" value="{{.DataSearch}}">
+                        <button class="bouton-page-previous" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="48" d="M244 400L100 256l144-144M120 256h292" />
+                            </svg>
+                            PREVIOUS
+                        </button>
+                    </form>
+                </div>
+                <div>
+                    <form action="/cards/trainer?page={{.CurrentPage}}&move=Plus&q=supertype:energy"
+                        method="post">
+                        <input type="hidden" name="page" value="Moins">
+                        <input type="hidden" name="name" value="{{.DataSearch}}">
+                        <button class="bouton-page-next" type="submit">
+                            NEXT
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="48" d="M268 112l144 144-144 144M392 256H100" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </section>
+            {{end}}
+        </div>
     </section>
 
     <script>

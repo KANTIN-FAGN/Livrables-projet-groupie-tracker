@@ -1,0 +1,197 @@
+{{define "ResultTrainerRarity"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" href="../static/css/result.css">
+    <link rel="icon" href="../static/img/site/pokeball.png">
+</head>
+
+<body>
+    <header>
+        <section>
+            <a href="/welcome" style="width: 33.33%;">
+                <div class="logo-header">
+                    <img src="../static/img/site/logo.png" alt="">
+                </div>
+            </a>
+            <div class="group">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+                    <g>
+                        <path
+                            d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                        </path>
+                    </g>
+                </svg>
+                <form class="body-search" action="/search/cards" method="GET">
+                    <label for="pokemonName" style="display: none;">Nom du Pokémon:</label>
+                    <input class="input" placeholder="Search" type="text" id="pokemonName" name="name" required>
+                    <button type="submit" style="display: none;">Rechercher</button>
+                </form>
+            </div>
+            <nav>
+                <ul>
+                    <li class="deroulant"><a href="#">FILTRE &ensp;</a>
+                        <ul class="sous">
+                            <li>
+                                <a class="contenaire-btn" href="/cards/filtre_releaseDate?q={{.DataSearch}}">
+                                    <input type="hidden" name="orderBy">
+                                    <button type="submit" class="btn-form">RELEASE DATE</button>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="contenaire-btn" href="/cards/filtre_rarity?q={{.DataSearch}}">
+                                    <input type="hidden" name="orderBy" value="rarity">
+                                    <button type="submit" class="btn-form">RARITY</button>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            {{if .DataCompte.AsAdmin}}
+            <div class="login-header">
+                <a href="/pokecount" class="href">
+                    <div class="login-div">
+                        <img src="{{.DataCompte.Picture}}" alt="">
+                        <p>PokéCount</p>
+                    </div>
+                </a>
+            </div>
+            {{else}}
+            {{if not .DataCompte.IsLoggedIn}}
+            <div class="login-header">
+                <a href="/login" class="href">
+                    <div class="login-div">
+                        <img src="../static/img/site/pokeball.png" alt="">
+                        <p>LOGIN</p>
+                    </div>
+                </a>
+            </div>
+            {{end}}
+            {{end}}
+        </section>
+    </header>
+    <section>
+        <div class="body-global" id="body-global">
+            <div class="img">
+                <img id="image1" class="pokemon-image" src="../static/img/site/loader/loader-1.png" alt="Image 1"
+                    height="150px" width="auto">
+                <img id="image2" class="pokemon-image hidden" src="../static/img/site/loader/loader-2.png" alt="Image 2"
+                    height="150px" width="auto">
+            </div>
+        </div>
+        <section class="section-cards">
+            <div class="card-global">
+                {{range .Cards}}
+                <a href="/card/{{.ID}}">
+                    <div class="cards">
+                        <button class="img-poke" type="submit"><img src="{{.Images.Large}}"
+                                alt="{{.Name}}.png"></button>
+                    </div>
+                </a>
+                {{ end }}
+            </div>
+        </section>
+        <div class="pagination-global">
+            {{if eq .CurrentPage 1}}
+            <section class="pagination-eq1">
+                <div>
+                    <form action="/cards/trainer_rarity?page={{.CurrentPage}}&move=Plus&q=supertype:energy"
+                        method="post">
+                        <input type="hidden" name="page" value="Moins">
+                        <input type="hidden" name="name" value="{{.DataSearch}}">
+                        <button class="bouton-page-next" type="submit">
+                            NEXT
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="48" d="M268 112l144 144-144 144M392 256H100" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </section>
+            {{else}}
+            <section class="pagination">
+                <div>
+                    <form action="/cards/trainer_rarity?page={{.CurrentPage}}&move=Moins&q=supertype:energy"
+                        method="post">
+                        <input type="hidden" name="page" value="Plus">
+                        <input type="hidden" name="name" value="{{.DataSearch}}">
+                        <button class="bouton-page-previous" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="48" d="M244 400L100 256l144-144M120 256h292" />
+                            </svg>
+                            PREVIOUS
+                        </button>
+                    </form>
+                </div>
+                <div>
+                    <form action="/cards/trainer_rarity?page={{.CurrentPage}}&move=Plus&q=supertype:energy"
+                        method="post">
+                        <input type="hidden" name="page" value="Moins">
+                        <input type="hidden" name="name" value="{{.DataSearch}}">
+                        <button class="bouton-page-next" type="submit">
+                            NEXT
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="48" d="M268 112l144 144-144 144M392 256H100" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </section>
+            {{end}}
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Disable pointer events on all elements inside the header
+            var header = document.querySelector('header');
+            var headerChildren = header.getElementsByTagName('*');
+            for (var i = 0; i < headerChildren.length; i++) {
+                headerChildren[i].style.pointerEvents = 'none';
+            }
+    
+            // Add your existing animation logic here
+            var image1 = document.getElementById("image1");
+            var image2 = document.getElementById("image2");
+            var isImage1Visible = true;
+    
+            setInterval(function () {
+                if (isImage1Visible) {
+                    image1.classList.add("hidden");
+                    image2.classList.remove("hidden");
+                } else {
+                    image1.classList.remove("hidden");
+                    image2.classList.add("hidden");
+                }
+    
+                isImage1Visible = !isImage1Visible;
+            }, 150);
+        });
+    
+        window.addEventListener("load", function () {
+            document.getElementById("body-global").style.display = "none";
+            document.body.style.overflow = "auto"; // Restore scrolling
+    
+            // Enable pointer events on all elements inside the header
+            var header = document.querySelector('header');
+            var headerChildren = header.getElementsByTagName('*');
+            for (var i = 0; i < headerChildren.length; i++) {
+                headerChildren[i].style.pointerEvents = 'auto';
+            }
+        });
+    
+        // Disable scrolling until the page is fully loaded
+        document.body.style.overflow = "hidden";
+    </script>
+</body>
+
+</html>
+{{end}}

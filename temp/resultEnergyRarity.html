@@ -1,4 +1,4 @@
-{{define "result"}}
+{{define "ResultEnergyRarity"}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,14 +11,14 @@
 </head>
 
 <body>
-    <header id="header">
+    <header>
         <section>
-            <a href="/welcome" style="width: 25%;">
+            <a href="/welcome" style="width: 33.33%;">
                 <div class="logo-header">
                     <img src="../static/img/site/logo.png" alt="">
                 </div>
             </a>
-            <div class="group" style="width: 25%;">
+            <div class="group">
                 <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
                     <g>
                         <path
@@ -32,7 +32,7 @@
                     <button type="submit" style="display: none;">Rechercher</button>
                 </form>
             </div>
-            <nav style="width: 25%;">
+            <nav>
                 <ul>
                     <li class="deroulant"><a href="#">FILTRE &ensp;</a>
                         <ul class="sous">
@@ -53,7 +53,7 @@
                 </ul>
             </nav>
             {{if .DataCompte.AsAdmin}}
-            <div class="login-header" style="width: 25%;">
+            <div class="login-header">
                 <a href="/pokecount" class="href">
                     <div class="login-div">
                         <img src="{{.DataCompte.Picture}}" alt="">
@@ -63,7 +63,7 @@
             </div>
             {{else}}
             {{if not .DataCompte.IsLoggedIn}}
-            <div class="login-header" style="width: 25%;">
+            <div class="login-header">
                 <a href="/login" class="href">
                     <div class="login-div">
                         <img src="../static/img/site/pokeball.png" alt="">
@@ -97,15 +97,58 @@
             </div>
         </section>
         <div class="pagination-global">
-            <div>
-                <a href="/result?move=before">Précedent</a>
-            </div>
-            <div>
-                <a href="/result?move=next">Suivant</a>
-            </div>
+            {{if eq .CurrentPage 1}}
+            <section class="pagination-eq1">
+                <div>
+                    <form action="/cards/energy_rarity?page={{.CurrentPage}}&move=Plus&q=supertype:energy"
+                        method="post">
+                        <input type="hidden" name="page" value="Moins">
+                        <input type="hidden" name="name" value="{{.DataSearch}}">
+                        <button class="bouton-page-next" type="submit">
+                            NEXT
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="48" d="M268 112l144 144-144 144M392 256H100" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </section>
+            {{else}}
+            <section class="pagination">
+                <div>
+                    <form action="/cards/energy_rarity?page={{.CurrentPage}}&move=Moins&q=supertype:energy"
+                        method="post">
+                        <input type="hidden" name="page" value="Plus">
+                        <input type="hidden" name="name" value="{{.DataSearch}}">
+                        <button class="bouton-page-previous" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="48" d="M244 400L100 256l144-144M120 256h292" />
+                            </svg>
+                            PREVIOUS
+                        </button>
+                    </form>
+                </div>
+                <div>
+                    <form action="/cards/energy_rarity?page={{.CurrentPage}}&move=Plus&q=supertype:energy"
+                        method="post">
+                        <input type="hidden" name="page" value="Moins">
+                        <input type="hidden" name="name" value="{{.DataSearch}}">
+                        <button class="bouton-page-next" type="submit">
+                            NEXT
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="48" d="M268 112l144 144-144 144M392 256H100" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </section>
+            {{end}}
         </div>
-
     </section>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Disable pointer events on all elements inside the header
