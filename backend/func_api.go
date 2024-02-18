@@ -15,20 +15,23 @@ import (
 
 var CurrentPage = 1 //Variable globale pour définir à quelle page on se trouve
 
-var CurrentPagePokeAll = 1 // Variable pour la categorie pokemon all 
-var CurrentPagePokeRarity = 1 // Variable pour la categorie pokemon rarity
+var CurrentPagePokeAll = 1         // Variable pour la categorie pokemon all
+var CurrentPagePokeRarity = 1      // Variable pour la categorie pokemon rarity
 var CurrentPagePokeReleaseDate = 1 // Variable pour la categorie pokemon Release Date
 
-var CurrentPageTrainAll = 1 // Variable pour la categorie trainer all
-var CurrentPageTrainRarity = 1 // Variable pour la categorie trainer rarity
+var CurrentPageTrainAll = 1         // Variable pour la categorie trainer all
+var CurrentPageTrainRarity = 1      // Variable pour la categorie trainer rarity
 var CurrentPageTrainReleaseDate = 1 // Variable pour la categorie trainer Release Date
 
-var CurrentPageEnerAll = 1 // Variable pour la categorie energie all
-var CurrentPageEnerRarity = 1 // Variable pour la categorie energie rarity
+var CurrentPageEnerAll = 1         // Variable pour la categorie energie all
+var CurrentPageEnerRarity = 1      // Variable pour la categorie energie rarity
 var CurrentPageEnerReleaseDate = 1 // Variable pour la categorie energie Release Date
+
+var CurrentPageSet = 1 // Variable pour les Sets
 
 type TempTestResult struct {
 	Cards       []*tcg.PokemonCard
+	Sets        []*tcg.Set
 	DataSearch  string
 	DataCompte  IndexData
 	CurrentPage int
@@ -861,4 +864,67 @@ func SearchEnergyReleaseDate(w http.ResponseWriter, r *http.Request) {
 	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageEnerReleaseDate}
 
 	temp.Temp.ExecuteTemplate(w, "ResultEnergyRelease", data)
+}
+
+func SetsPokemon(w http.ResponseWriter, r *http.Request) {
+	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
+	session := GetSession() != Session{}
+	isAdmin := IsAdmin()
+	user := GetSession()
+
+	fmt.Println(user.Username)
+
+	filedata, err := os.ReadFile("./json/accounts.json")
+	if err != nil {
+		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		return
+	}
+
+	var DataDecode Accounts
+
+	json.Unmarshal(filedata, &DataDecode)
+
+	var picture string
+
+	for _, i := range DataDecode.Comptes {
+
+		if i.Username == user.Username {
+			picture = i.Picture
+		}
+	}
+
+	datacompte := IndexData{
+		Picture:    picture,
+		IsLoggedIn: session,
+		AsAdmin:    isAdmin,
+	}
+
+	// Récupérer la valeur de la page à partir des paramètres de la requête
+	CurrentPageStr := r.URL.Query().Get("page")
+	fmt.Println("dede", CurrentPageStr)
+
+	move := r.URL.Query().Get("move")
+
+	if move == "Plus" {
+		CurrentPageSet++
+	} else if move == "Moins" {
+		CurrentPageSet--
+	}
+
+	// Retrieve the query parameter from the URL
+	query := r.URL.Query().Get("q")
+
+	// Modify the query to include the order by parameter
+	sets, err := c.GetSets(
+		request.Query("legalities.standard:legal"),
+		request.PageSize(10),
+		request.Page(CurrentPageSet),
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	data := TempTestResult{Sets: sets, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageSet}
+
+	temp.Temp.ExecuteTemplate(w, "ResultSets", data)
 }

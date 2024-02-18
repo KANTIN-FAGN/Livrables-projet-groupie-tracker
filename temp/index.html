@@ -99,22 +99,42 @@
             </nav>
             {{if .AsAdmin}}
             <div class="login-header">
-                <a href="/pokecount" class="href">
-                    <div class="login-div">
-                        <img src="{{.Picture}}" alt="">
-                        <p>PokéCount</p>
+                <div class="login-global">
+                    <div class="set">
+                        <form class="contenaire-btn" action="/sets" method="GET">
+                            <input type="hidden" name="q" value="supertype:energy">
+                            <input type="hidden" name="orderBy" value="name">
+                            <button type="submit" class="btn-form">SETS</button>
+                        </form>
                     </div>
-                </a>
+                    <div>
+                        <a href="/pokecount" class="href">
+                            <div class="login-div">
+                                <img src="{{.Picture}}" alt="">
+                                <p>PokéCount</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
             {{else}}
             {{if not .IsLoggedIn}}
             <div class="login-header">
-                <a href="/login" class="href">
-                    <div class="login-div">
-                        <img src="../static/img/site/pokeball.png" alt="">
-                        <p>LOGIN</p>
+                <div class="login-global">
+                    <div class="set">
+                        <form class="contenaire-btn" action="/search/sets" method="GET">
+                            <button type="submit" class="btn-form">SETS</button>
+                        </form>
                     </div>
-                </a>
+                    <div>
+                        <a href="/login" class="href">
+                            <div class="login-div">
+                                <img src="../static/img/site/pokeball.png" alt="">
+                                <p>LOGIN</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
             {{end}}
             {{end}}

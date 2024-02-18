@@ -29,14 +29,24 @@ func Initserv() {
 	http.HandleFunc("/pokecount", controlleur.ProfilPage)
 	http.HandleFunc("/deconnexion", controlleur.Deconnexion)
 
-	// route pour la recherche
+	// route pour la recherche de carte
 	http.HandleFunc("/search/cards", backend.SearchPokemonName)
+	
+
+	// route pour la recherche de sets
+	http.HandleFunc("/search/sets", backend.SetsPokemon)
+
+	// recherche des cartes pokemon
 	http.HandleFunc("/cards/pokemon", backend.SearchPokemonAll)
 	http.HandleFunc("/cards/pokemon_rarity", backend.SearchPokemonRarity)
 	http.HandleFunc("/cards/pokemon_releaseDate", backend.SearchPokemonReleaseDate)
+
+	// recherche des cartes trainer
 	http.HandleFunc("/cards/trainer", backend.SearchTrainerAll)
 	http.HandleFunc("/cards/trainer_rarity", backend.SearchTrainerRarity)
 	http.HandleFunc("/cards/trainer_releaseDate", backend.SearchTrainerReleaseDate)
+
+	// recherche des cartes energie
 	http.HandleFunc("/cards/energy", backend.SearchEnergyAll)
 	http.HandleFunc("/cards/energy_rarity", backend.SearchEnergyRarity)
 	http.HandleFunc("/cards/energy_releaseDate", backend.SearchEnergyReleaseDate)
