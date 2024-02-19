@@ -35,6 +35,8 @@ func Initserv() {
 
 	// route pour la recherche de sets
 	http.HandleFunc("/search/sets", backend.SetsPokemon)
+	http.HandleFunc("/sets/rarity", backend.SetsPokemonRarity)
+	http.HandleFunc("/sets/releasedate", backend.SetsPokemonReleaseDate)
 
 	// recherche des cartes pokemon
 	http.HandleFunc("/cards/pokemon", backend.SearchPokemonAll)

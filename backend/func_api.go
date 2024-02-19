@@ -28,6 +28,8 @@ var CurrentPageEnerRarity = 1      // Variable pour la categorie energie rarity
 var CurrentPageEnerReleaseDate = 1 // Variable pour la categorie energie Release Date
 
 var CurrentPageSet = 1 // Variable pour les Sets
+var CurrentPageSetsRarity = 1 // Variable pour les Sets par rareté
+var CurrentPageSetsReleaseDate = 1 // Variable pour les Sets par date de vente
 
 type TempTestResult struct {
 	Cards       []*tcg.PokemonCard
@@ -916,7 +918,6 @@ func SetsPokemon(w http.ResponseWriter, r *http.Request) {
 
 	// Modify the query to include the order by parameter
 	sets, err := c.GetSets(
-		request.Query("legalities.standard:legal"),
 		request.PageSize(10),
 		request.Page(CurrentPageSet),
 	)
@@ -928,3 +929,128 @@ func SetsPokemon(w http.ResponseWriter, r *http.Request) {
 
 	temp.Temp.ExecuteTemplate(w, "ResultSets", data)
 }
+func SetsPokemonRarity(w http.ResponseWriter, r *http.Request) {
+	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
+	session := GetSession() != Session{}
+	isAdmin := IsAdmin()
+	user := GetSession()
+
+	fmt.Println(user.Username)
+
+	filedata, err := os.ReadFile("./json/accounts.json")
+	if err != nil {
+		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		return
+	}
+
+	var DataDecode Accounts
+
+	json.Unmarshal(filedata, &DataDecode)
+
+	var picture string
+
+	for _, i := range DataDecode.Comptes {
+
+		if i.Username == user.Username {
+			picture = i.Picture
+		}
+	}
+
+	datacompte := IndexData{
+		Picture:    picture,
+		IsLoggedIn: session,
+		AsAdmin:    isAdmin,
+	}
+
+	// Récupérer la valeur de la page à partir des paramètres de la requête
+	CurrentPageStr := r.URL.Query().Get("page")
+	fmt.Println("dede", CurrentPageStr)
+
+	move := r.URL.Query().Get("move")
+
+	if move == "Plus" {
+		CurrentPageSet++
+	} else if move == "Moins" {
+		CurrentPageSet--
+	}
+
+	// Retrieve the query parameter from the URL
+	query := r.URL.Query().Get("q")
+
+	// Modify the query to include the order by parameter
+	sets, err := c.GetSets(
+		request.OrderBy("rarity"),
+		request.PageSize(10),
+		request.Page(CurrentPageSetsRarity),
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	data := TempTestResult{Sets: sets, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageSetsRarity}
+
+	temp.Temp.ExecuteTemplate(w, "ResultSets", data)
+}
+func SetsPokemonReleaseDate(w http.ResponseWriter, r *http.Request) {
+	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
+	session := GetSession() != Session{}
+	isAdmin := IsAdmin()
+	user := GetSession()
+
+	fmt.Println(user.Username)
+
+	filedata, err := os.ReadFile("./json/accounts.json")
+	if err != nil {
+		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		return
+	}
+
+	var DataDecode Accounts
+
+	json.Unmarshal(filedata, &DataDecode)
+
+	var picture string
+
+	for _, i := range DataDecode.Comptes {
+
+		if i.Username == user.Username {
+			picture = i.Picture
+		}
+	}
+
+	datacompte := IndexData{
+		Picture:    picture,
+		IsLoggedIn: session,
+		AsAdmin:    isAdmin,
+	}
+
+	// Récupérer la valeur de la page à partir des paramètres de la requête
+	CurrentPageStr := r.URL.Query().Get("page")
+	fmt.Println("dede", CurrentPageStr)
+
+	move := r.URL.Query().Get("move")
+
+	if move == "Plus" {
+		CurrentPageSet++
+	} else if move == "Moins" {
+		CurrentPageSet--
+	}
+
+	// Retrieve the query parameter from the URL
+	query := r.URL.Query().Get("q")
+
+	// Modify the query to include the order by parameter
+	sets, err := c.GetSets(
+		request.OrderBy("releaseDate"),
+		request.PageSize(10),
+		request.Page(CurrentPageSetsReleaseDate),
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	data := TempTestResult{Sets: sets, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageSetsReleaseDate}
+
+	temp.Temp.ExecuteTemplate(w, "ResultSets", data)
+}
+

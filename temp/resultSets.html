@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>szdzd</title>
+    <title>Sets</title>
     <link rel="stylesheet" href="../static/css/resultSets.css">
     <link rel="stylesheet" href="../static/css/sets.css">
 </head>
@@ -37,9 +37,13 @@
                     <li class="deroulant"><a href="#">FILTRE &ensp;</a>
                         <ul class="sous">
                             <li>
-                                <a class="contenaire-btn" href="/cards/filtre_rarity?q={{.DataSearch}}">
-                                    <input type="hidden" name="orderBy" value="rarity">
+                                <a class="contenaire-btn" href="/sets/rarity">
                                     <button type="submit" class="btn-form">RARITY</button>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="contenaire-btn" href="/sets/releasedate">
+                                    <button type="submit" class="btn-form">RELEASE DATE</button>
                                 </a>
                             </li>
                         </ul>
@@ -98,7 +102,7 @@
             {{if eq .CurrentPage 1}}
             <section class="pagination-eq1">
                 <div>
-                    <form action="/search/cards?page={{.CurrentPage}}&move=Plus&q=supertype:energy" method="post">
+                    <form action="/search/sets?page={{.CurrentPage}}&move=Plus" method="post">
                         <input type="hidden" name="page" value="Moins">
                         <input type="hidden" name="name" value="{{.DataSearch}}">
                         <button class="bouton-page-next" type="submit">
@@ -114,7 +118,7 @@
             {{else}}
             <section class="pagination">
                 <div>
-                    <form action="/search/cards?page={{.CurrentPage}}&move=Moins&q=supertype:energy" method="post">
+                    <form action="/search/sets?page={{.CurrentPage}}&move=Moins" method="post">
                         <input type="hidden" name="page" value="Plus">
                         <input type="hidden" name="name" value="{{.DataSearch}}">
                         <button class="bouton-page-previous" type="submit">
@@ -127,7 +131,7 @@
                     </form>
                 </div>
                 <div>
-                    <form action="/search/cards?page={{.CurrentPage}}&move=Plus&q=supertype:energy" method="post">
+                    <form action="/search/sets?page={{.CurrentPage}}&move=Plus" method="post">
                         <input type="hidden" name="page" value="Moins">
                         <input type="hidden" name="name" value="{{.DataSearch}}">
                         <button class="bouton-page-next" type="submit">
