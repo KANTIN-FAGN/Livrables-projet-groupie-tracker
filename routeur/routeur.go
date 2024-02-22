@@ -56,6 +56,9 @@ func Initserv() {
 	// Ajout d'une carte en favorie
 	http.HandleFunc("/treatement/fav", backend.AddToFav)
 
+	// supprime un carte de favorie 
+	http.HandleFunc("/treatement/delete", backend.DeleteCardHandler)
+
 	// Filtre pour la recherche des pokemon
 	http.HandleFunc("/cards/filtre_rarity", backend.FiltreRarity)
 	http.HandleFunc("/cards/filtre_releaseDate", backend.FiltreReleaseDate)

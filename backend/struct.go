@@ -5,12 +5,13 @@ var GlobalAccount AccountCreation
 
 // Account est une structure qui stock toutes les données d'un compte
 type Account struct {
-	Picture  string `json:"picture"`
-	Username string `json:"username"`
-	Password string `json:"password"`
-	Email    string `json:"email"`
-	State    string `json:"state"`
-	Salt     string `json:"salt"`
+	Picture  string   `json:"picture"`
+	Username string   `json:"username"`
+	Password string   `json:"password"`
+	Email    string   `json:"email"`
+	FavCard  []FavoriteCard `json:"favCard"`
+	State    string   `json:"state"`
+	Salt     string   `json:"salt"`
 }
 
 // Accounts est une structure qui stock une liste d'Account
@@ -30,10 +31,10 @@ type IndexData struct {
 	Picture    string
 	Username   string
 	Email      string
+	FavCards   []FavoriteCard
 	IsLoggedIn bool
 	AsAdmin    bool
 }
-
 
 // MailCodeData est une structure qui gère les données envoyées à la page de vérification mail
 type MailCodeData struct {

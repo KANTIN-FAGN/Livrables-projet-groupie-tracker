@@ -118,8 +118,8 @@
                         </div>
                         <div class="hhhhh">
                             {{range .Weaknesses}}
-                            <img src="../static/img/site/type/pokemonCard/{{.Type}}.png" alt="Metal Pokemon" width="30px"
-                                height="30px">
+                            <img src="../static/img/site/type/pokemonCard/{{.Type}}.png" alt="Metal Pokemon"
+                                width="30px" height="30px">
                             <p>{{.Value}}</p>
                             {{end}}
                         </div>
@@ -131,11 +131,12 @@
                         </div>
                         <div>
                             {{range .RetreatCost}}
-                                {{if eq . "Colorless"}}
-                                    <img src="../static/img/site/type/pokemonCard/colorless.png" alt="Colorless Pokemon" width="30px" height="30px">
-                                {{else}}
-                                    <p>N/A</p>
-                                {{end}}
+                            {{if eq . "Colorless"}}
+                            <img src="../static/img/site/type/pokemonCard/colorless.png" alt="Colorless Pokemon"
+                                width="30px" height="30px">
+                            {{else}}
+                            <p>N/A</p>
+                            {{end}}
                             {{end}}
                         </div>
                     </div>
@@ -166,8 +167,9 @@
                 </div>
             </section>
         </div>
-       
+
     </section>
+    {{if $.DataCompte.AsAdmin}}
     <section class="bouton-section">
         <form action="/treatement/fav" method="post">
             <input type="hidden" name="pokemonID" value="{{.ID}}">
@@ -183,8 +185,22 @@
             </button>
         </form>
     </section>
+    {{else}}
+    {{if not $.DataCompte.IsLoggedIn}}
+    <section class="bouton-section">
+        <a href="/login" class="href">
+            <button>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    </svg> Login for add {{.Name}} in your PokeDex
+                </span>
+            </button>
+        </a>
+    </section>
     {{end}}
-    <footer>
+    {{end}}
+    {{end}}
+    <footer style="margin-top: 100px;">
         <div class="footer-reseaux">
             <div class="footer-titre">
                 <p>Nous suivre :</p>

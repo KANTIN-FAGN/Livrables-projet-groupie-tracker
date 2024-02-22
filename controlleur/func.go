@@ -66,25 +66,31 @@ func ProfilPage(w http.ResponseWriter, r *http.Request) {
 
 	var DataDecode backend.Accounts
 
-	json.Unmarshal(filedata, &DataDecode)
+	err = json.Unmarshal(filedata, &DataDecode)
+	if err != nil {
+		fmt.Println("Erreur lors du parsing du JSON :", err.Error())
+		return
+	}
 
 	var picture string
 	var username string
 	var email string
+	var favCards []backend.FavoriteCard
 
 	for _, i := range DataDecode.Comptes {
-
 		if i.Username == user.Username {
 			picture = i.Picture
 			username = i.Username
 			email = i.Email
+			favCards = i.FavCard
 		}
 	}
 
 	data := backend.IndexData{
-		Picture:  picture,
-		Username: username,
-		Email:    email,
+		Picture:    picture,
+		Username:   username,
+		Email:      email,
+		FavCards:   favCards,
 	}
 
 	temp.Temp.ExecuteTemplate(w, "profil", data)

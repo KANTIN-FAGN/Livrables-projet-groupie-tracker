@@ -1052,4 +1052,3 @@ func SetsPokemonReleaseDate(w http.ResponseWriter, r *http.Request) {
 
 	temp.Temp.ExecuteTemplate(w, "ResultSetsRelease", data)
 }
-

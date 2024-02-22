@@ -9,7 +9,6 @@ import (
 	"net/http"
 	"os"
 	"pokemon/structure"
-	"strings"
 )
 
 var ToSend []structure.TypePokemon
@@ -28,7 +27,6 @@ func PokemonProfilFire(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
-
 func PokemonProfilBug(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
 	var nbImgbug int
@@ -43,7 +41,6 @@ func PokemonProfilBug(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
-
 func PokemonProfilWater(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
 	var nbImgwater int
@@ -58,7 +55,6 @@ func PokemonProfilWater(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
-
 func PokemonProfilDragon(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
 	var nbImgdragon int
@@ -73,7 +69,6 @@ func PokemonProfilDragon(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
-
 func PokemonProfilElectric(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
 	var nbImgelectric int
@@ -88,7 +83,6 @@ func PokemonProfilElectric(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
-
 func PokemonProfilFairy(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
 	var nbImgfairy int
@@ -103,7 +97,6 @@ func PokemonProfilFairy(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
-
 func PokemonProfilFighting(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
 	var nbImgfighting int
@@ -118,7 +111,6 @@ func PokemonProfilFighting(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
-
 func PokemonProfilGhost(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
 	var nbImgghost int
@@ -133,7 +125,6 @@ func PokemonProfilGhost(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
-
 func PokemonProfilGrass(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
 	var nbImggrass int
@@ -148,7 +139,6 @@ func PokemonProfilGrass(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
-
 func PokemonProfilGround(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
 	var nbImgground int
@@ -163,7 +153,6 @@ func PokemonProfilGround(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
-
 func PokemonProfilIce(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
 	var nbImgice int
@@ -178,7 +167,6 @@ func PokemonProfilIce(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
-
 func PokemonProfilNormal(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
 	var nbImgnormal int
@@ -193,7 +181,6 @@ func PokemonProfilNormal(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
-
 func PokemonProfilPoison(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
 	var nbImgpoison int
@@ -208,7 +195,6 @@ func PokemonProfilPoison(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
-
 func PokemonProfilPsychic(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
 	var nbImgpsychic int
@@ -223,7 +209,6 @@ func PokemonProfilPsychic(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
-
 func PokemonProfilRock(w http.ResponseWriter, r *http.Request) {
 	ToSend = ToSend[:0]
 	var nbImgrock int
@@ -237,21 +222,6 @@ func PokemonProfilRock(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
-}
-
-// IsIDPresent vérifie si un id est présent dans une liste d'id
-func IsIDPresent(id int, ids []int) bool {
-	for _, existingID := range ids {
-		if existingID == id {
-			return true
-		}
-	}
-	return false
-}
-
-// TitleContains vérifie si une chaine de caractère substr est contenue dans une chaine s
-func TitleContains(s, substr string) bool {
-	return strings.Contains(strings.ToLower(s), strings.ToLower(substr))
 }
 
 // GetAccountState récupère le statut d'un utilisateur par son pseudonyme dans le fichier
@@ -269,7 +239,6 @@ func GetAccountState(username string) string {
 
 	return ""
 }
-
 // GetAccountMail récupère le mail d'un utilisateur par son pseudonyme dans le fichier
 func GetAccountMail(username string) string {
 	file, _ := os.ReadFile("./json/accounts.json")
@@ -285,12 +254,10 @@ func GetAccountMail(username string) string {
 
 	return ""
 }
-
 // SetSession paramètre la session utilisateur globale active sur le site
 func SetSession(session Session) {
 	GlobalSession = session
 }
-
 // GetSession renvoie la session utilisateur globale active sur le site
 func GetSession() Session {
 	return GlobalSession
@@ -300,7 +267,6 @@ func GetSession() Session {
 func ClearSession() {
 	GlobalSession = Session{}
 }
-
 // ClearAccount vide la variable temporaire GlobalAccount pour la création de compte
 func ClearAccount() {
 	GlobalAccount = AccountCreation{}
@@ -310,14 +276,14 @@ func ClearAccount() {
 func AddAccountToFile(account AccountCreation, filePath string) error {
 	jsonFile, err := os.ReadFile(filePath)
 	if err != nil {
-		return fmt.Errorf("Erreur lors de la lecture du fichier JSON : %v", err)
+		fmt.Println("Erreur lors de la lecture du fichier JSON")
 	}
 
 	var data map[string][]map[string]interface{}
 	err = json.Unmarshal(jsonFile, &data)
 	fmt.Println(data)
 	if err != nil {
-		return fmt.Errorf("Erreur lors du parsing du JSON : %v", err)
+		fmt.Println("Erreur lors du parsing du JSON")
 	}
 
 	salt, err := GenerateSalt()
@@ -367,7 +333,6 @@ func GetUsernameByEmail(emailToFind string) string {
 
 	return ""
 }
-
 // GetEmailsFromJSON permet de récupérer la liste des emails présents dans le fichier json
 func GetEmailsFromJSON(filePath string) []string {
 	fileContent, _ := os.ReadFile(filePath)
@@ -383,7 +348,6 @@ func GetEmailsFromJSON(filePath string) []string {
 
 	return emails
 }
-
 // GetUsersFromJSON permet de récupérer la liste des noms d'utilisateurs présents dans le fichier json
 func GetUsersFromJSON(filePath string) []string {
 	fileContent, _ := os.ReadFile(filePath)
@@ -409,7 +373,6 @@ func GenerateSalt() (string, error) {
 	}
 	return base64.URLEncoding.EncodeToString(salt), nil
 }
-
 // HashPassword permet de hasher un mot de passe avec un sel prédéfini
 func HashPassword(password string, salt string) string {
 	hasher := sha256.New()
@@ -430,7 +393,6 @@ func CheckRememberStatus(filename string) (bool, string) {
 
 	return false, ""
 }
-
 // SetRememberActive permet d'ajouter une sauvegarde de session avec le nom d'utilisateur de la session active
 func SetRememberActive(username string, filename string) error {
 	content, _ := os.ReadFile(filename)
@@ -443,13 +405,12 @@ func SetRememberActive(username string, filename string) error {
 
 	newContent, err := json.MarshalIndent(data, "", "  ")
 	if err != nil {
-		return fmt.Errorf("Erreur lors de la création du nouveau contenu JSON : %v", err)
+		fmt.Println("Erreur lors de la création du nouveau contenu JSON")
 	}
 
 	os.WriteFile(filename, newContent, 0644)
 	return nil
 }
-
 // ClearRemember permet de supprimer la sauvegarde de session active
 func ClearRemember(filename string) error {
 	content, _ := os.ReadFile(filename)
@@ -518,7 +479,7 @@ func AddToFav(w http.ResponseWriter, r *http.Request) {
 	// Encodez les données mises à jour au format JSON
 	newData, err := json.MarshalIndent(accounts, "", "  ")
 	if err != nil {
-		fmt.Errorf("Erreur lors de la conversion en JSON : %v", err)
+		fmt.Println("Erreur lors de la conversion en JSON :")
 		// Gérez l'erreur ici (par exemple, renvoyez une réponse d'erreur à l'utilisateur)
 		return
 	}
@@ -526,7 +487,7 @@ func AddToFav(w http.ResponseWriter, r *http.Request) {
 	// Écrivez les données mises à jour dans le fichier JSON
 	err = os.WriteFile("./json/accounts.json", newData, 0644)
 	if err != nil {
-		fmt.Errorf("Erreur lors de l'écriture dans le fichier JSON : %v", err)
+		fmt.Println("Erreur lors de l'écriture dans le fichier JSON :")
 		// Gérez l'erreur ici (par exemple, renvoyez une réponse d'erreur à l'utilisateur)
 		return
 	}
@@ -535,3 +496,63 @@ func AddToFav(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/pokecount", http.StatusSeeOther)
 }
 
+func TreatementDeleteCard(username, cardID string) error {
+	filepath := "./json/accounts.json"
+
+	// Charger les données depuis le fichier JSON
+	data, err := os.ReadFile(filepath)
+	if err != nil {
+		return err
+	}
+
+	var accounts Accounts
+	err = json.Unmarshal(data, &accounts)
+	if err != nil {
+		return err
+	}
+
+	// Trouver l'utilisateur dans la liste
+	for i, acc := range accounts.Comptes {
+		if acc.Username == username {
+			// Trouver la carte dans les favoris de l'utilisateur
+			for j, favCard := range acc.FavCard {
+				if favCard.ID == cardID {
+					// Supprimer la carte
+					accounts.Comptes[i].FavCard = append(acc.FavCard[:j], acc.FavCard[j+1:]...)
+					// Encoder les données au format JSON
+					newData, err := json.MarshalIndent(accounts, "", "  ")
+					if err != nil {
+						return err
+					}
+					// Écrire les données mises à jour dans le fichier JSON
+					err = os.WriteFile(filepath, newData, 0644)
+					if err != nil {
+						return err
+					}
+					return nil // Carte supprimée avec succès
+				}
+			}
+		}
+	}
+
+	return fmt.Errorf("Carte non trouvée pour l'utilisateur %s avec l'ID %s", username, cardID)
+}
+
+func DeleteCardHandler(w http.ResponseWriter, r *http.Request) {
+	// Récupérer les paramètres nécessaires (par exemple, l'ID de la carte et le nom d'utilisateur)
+	cardID := r.FormValue("cardID")
+	username := r.FormValue("username")
+
+	fmt.Println(cardID)
+
+	// Supprimer la carte
+	err := TreatementDeleteCard(username, cardID)
+	if err != nil {
+		// Gérer l'erreur (par exemple, renvoyer une réponse d'erreur à l'utilisateur)
+		http.Redirect(w, r, "/error-page", http.StatusSeeOther)
+		return
+	}
+
+	// Rediriger l'utilisateur vers "/pokecount"
+	http.Redirect(w, r, "/pokecount", http.StatusSeeOther)
+}

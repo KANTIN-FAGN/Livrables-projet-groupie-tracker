@@ -2,55 +2,61 @@
   "comptes": [
     {
       "picture": "../static/img/POKEMON/fire/3.png",
-      "username": "testuser",
-      "email": "testuser@gmail.com",
-      "password": "9JMqTXfs_P4UCMhnFskEYgEkXxkeZLajmguidDDI6-4=",
-      "state": "admin",
-      "salt": "zOHspaUpajULcfHyjxRERQ==",
-      "favCard": []
-    },
-    {
-      "picture": "../static/img/POKEMON/psychic/9.png",
-      "username": "KAVTIV",
+      "username": "kantin",
       "email": "kantin.fagn@gmail.com",
-      "password": "KFZTV1PP25_6OUgqAUwdbMsaS24J-kAL6Z90Hil332E=",
+      "password": "Hwcu8bxwY_ePESPl0IwDG3i44QBxwRW-9T1tzshAoig=",
       "state": "member",
-      "salt": "t26BkwSdqnISsPA673FVaw==",
+      "salt": "ZMd9dmcAjlrszc_X5FJVZQ==",
       "favCard": [
         {
-          "id": "gym2-2",
-          "name": "Blaine's Charizard",
-          "image": "https://images.pokemontcg.io/gym2/2_hires.png"
-        }
-      ]
-    },
-    {
-      "picture": "../static/img/POKEMON/fire/4.png",
-      "username": "kweentinoux",
-      "email": "kweentinoux@icloud.com",
-      "password": "LnRapr3FnepJFcVvXAnP_o6ttqXwqtegg4_NZElWax4=",
-      "state": "member",
-      "salt": "1QhzLNWVyDmOPDfgIlfLLg==",
-      "favCard": [
-        {
-          "id": "gym2-2",
-          "name": "Blaine's Charizard",
-          "image": "https://images.pokemontcg.io/gym2/2_hires.png"
+          "id": "base1-1",
+          "name": "Alakazam",
+          "image": "https://images.pokemontcg.io/base1/1_hires.png"
         },
         {
-          "id": "smp-SM110",
-          "name": "Ash's Pikachu",
-          "image": "https://images.pokemontcg.io/smp/SM110_hires.png"
+          "id": "base1-2",
+          "name": "Blastoise",
+          "image": "https://images.pokemontcg.io/base1/2_hires.png"
         },
         {
-          "id": "xyp-XY93",
-          "name": "Celebi",
-          "image": "https://images.pokemontcg.io/xyp/XY93_hires.png"
+          "id": "base1-3",
+          "name": "Chansey",
+          "image": "https://images.pokemontcg.io/base1/3_hires.png"
         },
         {
-          "id": "swsh45-17",
-          "name": "Reshiram",
-          "image": "https://images.pokemontcg.io/swsh45/17_hires.png"
+          "id": "base1-4",
+          "name": "Charizard",
+          "image": "https://images.pokemontcg.io/base1/4_hires.png"
+        },
+        {
+          "id": "base1-5",
+          "name": "Clefairy",
+          "image": "https://images.pokemontcg.io/base1/5_hires.png"
+        },
+        {
+          "id": "base1-7",
+          "name": "Hitmonchan",
+          "image": "https://images.pokemontcg.io/base1/7_hires.png"
+        },
+        {
+          "id": "base1-8",
+          "name": "Machamp",
+          "image": "https://images.pokemontcg.io/base1/8_hires.png"
+        },
+        {
+          "id": "base1-9",
+          "name": "Magneton",
+          "image": "https://images.pokemontcg.io/base1/9_hires.png"
+        },
+        {
+          "id": "base1-10",
+          "name": "Mewtwo",
+          "image": "https://images.pokemontcg.io/base1/10_hires.png"
+        },
+        {
+          "id": "base1-6",
+          "name": "Gyarados",
+          "image": "https://images.pokemontcg.io/base1/6_hires.png"
         }
       ]
     }
