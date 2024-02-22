@@ -98,7 +98,7 @@
             </div>
         </section>
         <div class="pagination-global">
-            {{if eq .CurrentPage 1}}
+            {{if le .CurrentPage 1}}
             <section class="pagination-eq1">
                 <div>
                     <form action="/cards/trainer_rarity?page={{.CurrentPage}}&move=Plus&q=supertype:energy"

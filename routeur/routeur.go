@@ -31,12 +31,14 @@ func Initserv() {
 
 	// route pour la recherche de carte
 	http.HandleFunc("/search/cards", backend.SearchPokemonName)
-	
 
 	// route pour la recherche de sets
 	http.HandleFunc("/search/sets", backend.SetsPokemon)
 	http.HandleFunc("/sets/rarity", backend.SetsPokemonRarity)
 	http.HandleFunc("/sets/releasedate", backend.SetsPokemonReleaseDate)
+
+	// route pour chercher les cartes du sets selectionner
+	http.HandleFunc("/sets/", backend.CardsPokemonSets)
 
 	// recherche des cartes pokemon
 	http.HandleFunc("/cards/pokemon", backend.SearchPokemonAll)
@@ -56,7 +58,7 @@ func Initserv() {
 	// Ajout d'une carte en favorie
 	http.HandleFunc("/treatement/fav", backend.AddToFav)
 
-	// supprime un carte de favorie 
+	// supprime un carte de favorie
 	http.HandleFunc("/treatement/delete", backend.DeleteCardHandler)
 
 	// Filtre pour la recherche des pokemon

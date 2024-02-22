@@ -43,8 +43,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="contenaire-btn" href="/sets/releasedate">
-                                    <button type="submit" class="btn-form">RELEASE DATE</button>
+                                <a class="contenaire-btn" href="/search/sets">
+                                    <button type="submit" class="btn-form">NAME</button>
                                 </a>
                             </li>
                         </ul>
@@ -83,24 +83,26 @@
                     height="150px" width="auto">
             </div>
         </div>
-        <div class="body-g">
+        <div class="sets-global">
             {{range .Sets}}
-            <div class="set-global">
-                <div class="logo">
-                    <img src="{{.Images.Logo}}" alt="">
-                </div>
-                <div class="info">
-                    <img class="symbol" src="{{.Images.Symbol}}" alt="">
-                    <div class="name_release">
-                        <p>{{.Name}}</p>
-                        <p>Released {{.ReleaseDate}}</p>
+            <a class="body-g" href="/sets/{{.ID}}">
+                <div class="set-global">
+                    <div class="logo">
+                        <img src="{{.Images.Logo}}" alt="">
+                    </div>
+                    <div class="info">
+                        <img class="symbol" src="{{.Images.Symbol}}" alt="">
+                        <div class="name_release">
+                            <p>{{.Name}}</p>
+                            <p>Released {{.ReleaseDate}}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
             {{end}}
         </div>
         <div class="pagination-global">
-            {{if eq .CurrentPage 1}}
+            {{if le .CurrentPage 1}}
             <section class="pagination-eq1">
                 <div>
                     <form action="/sets/releasedate?page={{.CurrentPage}}&move=Plus" method="post">

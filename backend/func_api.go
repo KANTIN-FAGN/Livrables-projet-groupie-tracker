@@ -27,9 +27,11 @@ var CurrentPageEnerAll = 1         // Variable pour la categorie energie all
 var CurrentPageEnerRarity = 1      // Variable pour la categorie energie rarity
 var CurrentPageEnerReleaseDate = 1 // Variable pour la categorie energie Release Date
 
-var CurrentPageSet = 1 // Variable pour les Sets
-var CurrentPageSetsRarity = 1 // Variable pour les Sets par rareté
+var CurrentPageSet = 1             // Variable pour les Sets
+var CurrentPageSetsRarity = 1      // Variable pour les Sets par rareté
 var CurrentPageSetsReleaseDate = 1 // Variable pour les Sets par date de vente
+
+var CurrentPageSetsCard = 1 // Variable pour les cartes du sets
 
 type TempTestResult struct {
 	Cards       []*tcg.PokemonCard
@@ -44,8 +46,6 @@ func DisplayPokemonCards(w http.ResponseWriter, r *http.Request) {
 	session := GetSession() != Session{}
 	isAdmin := IsAdmin()
 	user := GetSession()
-
-	fmt.Println(user.Username)
 
 	filedata, err := os.ReadFile("./json/accounts.json")
 	if err != nil {
@@ -1051,4 +1051,58 @@ func SetsPokemonReleaseDate(w http.ResponseWriter, r *http.Request) {
 	data := TempTestResult{Sets: sets, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageSetsReleaseDate}
 
 	temp.Temp.ExecuteTemplate(w, "ResultSetsRelease", data)
+}
+
+func CardsPokemonSets(w http.ResponseWriter, r *http.Request) {
+	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
+	session := GetSession() != Session{}
+	isAdmin := IsAdmin()
+	user := GetSession()
+
+	filedata, err := os.ReadFile("./json/accounts.json")
+	if err != nil {
+		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		return
+	}
+
+	var DataDecode Accounts
+
+	json.Unmarshal(filedata, &DataDecode)
+
+	var picture string
+
+	for _, i := range DataDecode.Comptes {
+
+		if i.Username == user.Username {
+			picture = i.Picture
+		}
+	}
+
+	datacompte := IndexData{
+		Picture:    picture,
+		IsLoggedIn: session,
+		AsAdmin:    isAdmin,
+	}
+
+	move := r.URL.Query().Get("move")
+
+	if move == "Plus" {
+		CurrentPageSetsCard++
+	} else if move == "Moins" {
+		CurrentPageSetsCard--
+	}
+
+	SetsID := strings.TrimPrefix(r.URL.Path, "/sets/")
+
+	cards, err := c.GetCards(
+		request.Query("set.id:"+SetsID),
+		request.PageSize(10),
+		request.Page(CurrentPageSetsCard),
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	data := TempTestResult{Cards: cards, DataSearch: SetsID, DataCompte: datacompte, CurrentPage: CurrentPageSetsCard}
+
+	temp.Temp.ExecuteTemplate(w, "ResultSetsCard", data)
 }
