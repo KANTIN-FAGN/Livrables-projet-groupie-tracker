@@ -13,10 +13,14 @@ func Initserv() {
 	css := http.FileServer(http.Dir("./assets"))
 	http.Handle("/static/", http.StripPrefix("/static/", css))
 
+	// route relative a la page d'accueil
 	http.HandleFunc("/welcome", controlleur.IndexPage)
 
 	// route relative connexion du compte
 	http.HandleFunc("/login", controlleur.LoginPage)
+
+	// route relative a la page ABOUT
+	http.HandleFunc("/about", controlleur.AboutPage)
 
 	// route relative à la création du compte
 	http.HandleFunc("/login_credits", controlleur.GetCreds)

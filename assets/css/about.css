@@ -1,0 +1,68 @@
+.pres-global {
+    padding-top: 50px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titre-pres {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: #363636;
+    margin-bottom: 25px;
+}
+
+.pres {
+    width: 65%;
+    padding-bottom: 60px;
+}
+
+.corp-pres-titre {
+    width: 50%;
+    display: flex;
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+
+.corp-pres-description,
+.corp-pres-fonc,
+.corp-pres-uti,
+.corp-pres-acess,
+.corp-pres-doc {
+    margin-bottom: 25px;
+}
+
+.corp-pres-fonc-detail {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info-site {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.titre-maquette,
+.titre-tache {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: #363636;
+    margin-bottom: 25px;
+}
+
+.maquette-global,
+.tache-global {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

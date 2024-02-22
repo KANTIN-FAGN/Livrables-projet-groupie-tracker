@@ -1,11 +1,256 @@
+{{define "about"}}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A propos</title>
+    <title>ABOUT</title>
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
+    <link rel="stylesheet" href="../static/css/about.css">
 </head>
+
 <body>
-    
+    <header>
+        <section>
+            <a href="/welcome" style="width: 33.33%;">
+                <div class="logo-header">
+                    <img src="../static/img/site/logo.png" alt="">
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li class="deroulant"><a href="#">POKÉMON &ensp;</a>
+                        <ul class="sous">
+                            <li>
+                                <form class="contenaire-btn" action="/cards/pokemon" method="GET">
+                                    <input type="hidden" name="q" value="supertype:pokemon">
+                                    <input type="hidden" name="orderBy" value="name">
+                                    <button type="submit" class="btn-form">ALL</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="contenaire-btn" action="/cards/pokemon_rarity" method="GET">
+                                    <input type="hidden" name="q" value="supertype:pokemon">
+                                    <input type="hidden" name="orderBy" value="rarity">
+                                    <button type="submit" class="btn-form">RARITY</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="contenaire-btn" action="/cards/pokemon_releaseDate" method="GET">
+                                    <input type="hidden" name="q" value="supertype:pokemon">
+                                    <input type="hidden" name="orderBy" value="set.releaseDate">
+                                    <button type="submit" class="btn-form">RELEASE DATE</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="deroulant"><a href="#">TRAINER &ensp;</a>
+                        <ul class="sous">
+                            <li>
+                                <form class="contenaire-btn" action="/cards/trainer" method="GET">
+                                    <input type="hidden" name="q" value="supertype:trainer">
+                                    <input type="hidden" name="orderBy" value="name">
+                                    <button type="submit" class="btn-form">ALL</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="contenaire-btn" action="/cards/trainer_rarity" method="GET">
+                                    <input type="hidden" name="q" value="supertype:trainer">
+                                    <input type="hidden" name="orderBy" value="rarity">
+                                    <button type="submit" class="btn-form">RARITY</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="contenaire-btn" action="/cards/trainer_releaseDate" method="GET">
+                                    <input type="hidden" name="q" value="supertype:trainer">
+                                    <input type="hidden" name="orderBy" value="set.releaseDate">
+                                    <button type="submit" class="btn-form">RELEASE DATE</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="deroulant"><a href="#">ENERGY &ensp;</a>
+                        <ul class="sous">
+                            <li>
+                                <form class="contenaire-btn" action="/cards/energy" method="GET">
+                                    <input type="hidden" name="q" value="supertype:energy">
+                                    <input type="hidden" name="orderBy" value="name">
+                                    <button type="submit" class="btn-form">ALL</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="contenaire-btn" action="/cards/energy_rarity" method="GET">
+                                    <input type="hidden" name="q" value="supertype:energy">
+                                    <input type="hidden" name="orderBy" value="rarity">
+                                    <button type="submit" class="btn-form">RARITY</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form class="contenaire-btn" action="/cards/energy_releaseDate" method="GET">
+                                    <input type="hidden" name="q" value="supertype:energy">
+                                    <input type="hidden" name="orderBy" value="set.releaseDate">
+                                    <button type="submit" class="btn-form">RELEASE DATE</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            {{if .AsAdmin}}
+            <div class="login-header">
+                <div class="login-global">
+                    <div class="set">
+                        <form class="contenaire-btn" action="/search/sets" method="GET">
+                            <button type="submit" class="btn-form">SETS</button>
+                        </form>
+                    </div>
+                    <div>
+                        <a href="/pokecount" class="href">
+                            <div class="login-div">
+                                <img src="{{.Picture}}" alt="">
+                                <p>PokéCount</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{else}}
+            {{if not .IsLoggedIn}}
+            <div class="login-header">
+                <div class="login-global">
+                    <div class="set">
+                        <form class="contenaire-btn" action="/search/sets" method="GET">
+                            <button type="submit" class="btn-form">SETS</button>
+                        </form>
+                    </div>
+                    <div>
+                        <a href="/login" class="href">
+                            <div class="login-div">
+                                <img src="../static/img/site/pokeball.png" alt="">
+                                <p>LOGIN</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{end}}
+            {{end}}
+        </section>
+    </header>
+    <section class="pres-global">
+        <div class="titre-pres">
+            PRÉSENTATION DE L'API
+        </div>
+        <section class="pres">
+            <div class="corp-pres-titre">
+                <p>API du JCC Pokémon</p>
+            </div>
+            <div class="corp-pres-description">
+                <p>L'API du JCC Pokémon est une interface de programmation permettant aux développeurs d'accéder à des
+                    données liées au Jeu de Cartes à Collectionner Pokémon. Cette API offre un moyen structuré et facile
+                    à utiliser pour récupérer des informations sur les cartes, les decks, les sets, les tournois, et
+                    d'autres éléments associés au monde du JCC Pokémon.</p>
+            </div>
+            <div class="corp-pres-fonc">
+                <div class="corp-pres-titre">
+                    <p>Fonctionnalités clés</p>
+                </div>
+                <div class="corp-pres-fonc-detail">
+                    <p><strong>Informations sur les cartes : </strong>L'API offre des détails exhaustifs sur
+                        chaque carte, y
+                        compris son nom, son type, sa rareté, ses attaques, ses faiblesses, et d'autres
+                        attributs.</p>
+                    <p><strong>Données sur les decks : </strong>Les développeurs peuvent accéder aux
+                        détails des decks de cartes, y compris la composition, les stratégies recommandées, et
+                        les performances passées.</p>
+                    <p><strong>Sets de cartes : </strong>Obtenez des informations sur les ensembles de cartes, y
+                        compris les nouvelles versions, les éditions spéciales et les extensions.</p>
+                </div>
+            </div>
+            <div class="corp-pres-uti">
+                <div class="corp-pres-titre">
+                    <p>Utilisation</p>
+                </div>
+                <div>
+                    <p>Les développeurs peuvent utiliser cette API pour créer des applications, des sites web ou des
+                        outils qui offrent des informations enrichissantes sur l'univers du JCC Pokémon. Cela peut
+                        inclure des applications d'aide à la construction de decks, des sites web de suivi de tournois,
+                        des analyses de méta-jeu, et bien plus encore.</p>
+                </div>
+            </div>
+            <div class="corp-pres-acess">
+                <div class="corp-pres-titre">
+                    <p>Accès</p>
+                </div>
+                <div>
+                    <p>L'accès à l'API du JCC Pokémon peut nécessiter une clé d'API, soumise à des conditions
+                        d'utilisation. Les développeurs peuvent obtenir cette clé en s'inscrivant auprès du fournisseur
+                        de l'API.</p>
+                </div>
+            </div>
+            <div class="corp-pres-doc">
+                <div class="corp-pres-titre">
+                    <p>Documentation</p>
+                </div>
+                <div>
+                    <p>La <a href="https://docs.pokemontcg.io/">documentation de l'API</a> fournit des détails complets
+                        sur les points d'extrémité disponibles,
+                        les paramètres de requête, les exemples de réponse, et d'autres informations techniques pour
+                        faciliter l'intégration.</p>
+                </div>
+            </div>
+            <div class="corp-pres-resu">
+                <p>En résumé, l'API du JCC Pokémon est un outil puissant pour les développeurs passionnés par l'univers
+                    du JCC Pokémon, offrant un accès structuré à des données riches et variées pour créer des
+                    expériences innovantes et informatives.</p>
+            </div>
+        </section>
+        <section class="info-site">
+            <div class="maquette-global">
+                <div class="titre-maquette">
+                    <p>MAQUETTES</p>
+                </div>
+                <a href="https://drive.google.com/drive/folders/10anwzQad414HsnC28twIiV26VLWFVS4X?usp=drive_link">Lien vers les maquettes</a>
+            </div>
+            <div class="tache-global">
+                <div class="titre-tache">
+                    <p>LISTES DES TACHES</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1o4_AzRgry4eoWpon4mfMWTCchFAyhLyh/view?usp=drive_link">Lien vers la liste des tâches</a>
+            </div>
+        </section>
+    </section>
+    <footer>
+        <div class="footer-reseaux">
+            <div class="footer-titre">
+                <p>Nous suivre :</p>
+            </div>
+            <div class="reseaux">
+                <a href="https://discord.gg/xXJckdxc">
+                    <img src="../static/img/site/footer/Discord.png" alt="Discord">
+                </a>
+            </div>
+        </div>
+        <div class="footer-logo">
+            <img src="../static/img/site/pokelog.png" alt="">
+            <p>@Copyright PokeCenter2024</p>
+        </div>
+        <div class="footer-documents">
+            <div class="doc">
+                <a href="https://docs.pokemontcg.io/">
+                    DOCUMENTATION API
+                </a>
+            </div>
+            <div class="a-propos">
+                <a href="">
+                    ABOUT
+                </a>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>
+{{end}}

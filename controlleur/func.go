@@ -53,6 +53,41 @@ func IndexPage(w http.ResponseWriter, r *http.Request) {
 	temp.Temp.ExecuteTemplate(w, "accueil", data)
 }
 
+func AboutPage(w http.ResponseWriter, r *http.Request) {
+	session := backend.GetSession() != backend.Session{}
+	isAdmin := backend.IsAdmin()
+	user := backend.GetSession()
+
+	fmt.Println(user.Username)
+
+	filedata, err := os.ReadFile("./json/accounts.json")
+	if err != nil {
+		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		return
+	}
+
+	var DataDecode backend.Accounts
+
+	json.Unmarshal(filedata, &DataDecode)
+
+	var picture string
+
+	for _, i := range DataDecode.Comptes {
+
+		if i.Username == user.Username {
+			picture = i.Picture
+		}
+	}
+
+	data := backend.IndexData{
+		Picture:    picture,
+		IsLoggedIn: session,
+		AsAdmin:    isAdmin,
+	}
+
+	temp.Temp.ExecuteTemplate(w, "about", data)
+}
+
 func ProfilPage(w http.ResponseWriter, r *http.Request) {
 	user := backend.GetSession()
 
