@@ -148,7 +148,6 @@ func FiltreRarity(w http.ResponseWriter, r *http.Request) {
 
 	temp.Temp.ExecuteTemplate(w, "result", data)
 }
-
 func FiltreReleaseDate(w http.ResponseWriter, r *http.Request) {
 	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
 	session := GetSession() != Session{}
@@ -989,7 +988,7 @@ func SetsPokemonRarity(w http.ResponseWriter, r *http.Request) {
 
 	data := TempTestResult{Sets: sets, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageSetsRarity}
 
-	temp.Temp.ExecuteTemplate(w, "ResultSets", data)
+	temp.Temp.ExecuteTemplate(w, "ResultSetsRarity", data)
 }
 func SetsPokemonReleaseDate(w http.ResponseWriter, r *http.Request) {
 	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
@@ -1051,6 +1050,6 @@ func SetsPokemonReleaseDate(w http.ResponseWriter, r *http.Request) {
 
 	data := TempTestResult{Sets: sets, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageSetsReleaseDate}
 
-	temp.Temp.ExecuteTemplate(w, "ResultSets", data)
+	temp.Temp.ExecuteTemplate(w, "ResultSetsRelease", data)
 }
 

@@ -8,6 +8,7 @@
     <title>Result</title>
     <link rel="stylesheet" href="../static/css/result.css">
     <link rel="icon" href="../static/img/site/pokeball.png">
+    <link rel="stylesheet" href="../static/css/footer.css">
 </head>
 
 <body>
@@ -37,13 +38,13 @@
                     <li class="deroulant"><a href="#">FILTRE &ensp;</a>
                         <ul class="sous">
                             <li>
-                                <a class="contenaire-btn" href="/cards/filtre_releaseDate?q={{.DataSearch}}">
+                                <a class="contenaire-btn" href="/cards/trainer_releaseDate?q={{.DataSearch}}">
                                     <input type="hidden" name="orderBy">
                                     <button type="submit" class="btn-form">RELEASE DATE</button>
                                 </a>
                             </li>
                             <li>
-                                <a class="contenaire-btn" href="/cards/filtre_rarity?q={{.DataSearch}}">
+                                <a class="contenaire-btn" href="/cards/trainer_rarity?q={{.DataSearch}}">
                                     <input type="hidden" name="orderBy" value="rarity">
                                     <button type="submit" class="btn-form">RARITY</button>
                                 </a>
@@ -148,7 +149,34 @@
             {{end}}
         </div>
     </section>
-
+    <footer style="margin-top: 100px;">
+        <div class="footer-reseaux">
+            <div class="footer-titre">
+                <p>Nous suivre :</p>
+            </div>
+            <div class="reseaux">
+                <a href="https://discord.gg/xXJckdxc">
+                    <img src="../static/img/site/footer/Discord.png" alt="Discord">
+                </a>
+            </div>
+        </div>
+        <div class="footer-logo">
+            <img src="../static/img/site/pokelog.png" alt="">
+            <p>@Copyright PokeCenter2024</p>
+        </div>
+        <div class="footer-documents">
+            <div class="doc">
+                <a href="https://docs.pokemontcg.io/">
+                    DOCUMENTATION API
+                </a>
+            </div>
+            <div class="a-propos">
+                <a href="">
+                    A PROPOS
+                </a>
+            </div>
+        </div>
+    </footer>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Disable pointer events on all elements inside the header

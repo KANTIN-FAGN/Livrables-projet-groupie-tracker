@@ -8,6 +8,7 @@
     <title>Welcome</title>
     <link rel="stylesheet" href="../static/css/index.css">
     <link rel="icon" href="../static/img/site/pokeball.png">
+    <link rel="stylesheet" href="../static/css/footer.css">
 </head>
 
 <body>
@@ -101,9 +102,7 @@
             <div class="login-header">
                 <div class="login-global">
                     <div class="set">
-                        <form class="contenaire-btn" action="/sets" method="GET">
-                            <input type="hidden" name="q" value="supertype:energy">
-                            <input type="hidden" name="orderBy" value="name">
+                        <form class="contenaire-btn" action="/search/sets" method="GET">
                             <button type="submit" class="btn-form">SETS</button>
                         </form>
                     </div>
@@ -142,7 +141,7 @@
         </section>
     </header>
 
-    <section class="body-global">
+    <section class="body-global" style="height: 100vh;">
         <div class="body">
             <div class="body-image">
                 <img src="../static/img/site/pokemon.png" alt="">
@@ -165,6 +164,34 @@
             </div>
         </div>
     </section>
+    <footer>
+        <div class="footer-reseaux">
+            <div class="footer-titre">
+                <p>Nous suivre :</p>
+            </div>
+            <div class="reseaux">
+                <a href="https://discord.gg/xXJckdxc">
+                    <img src="../static/img/site/footer/Discord.png" alt="Discord">
+                </a>
+            </div>
+        </div>
+        <div class="footer-logo">
+            <img src="../static/img/site/pokelog.png" alt="">
+            <p>@Copyright PokeCenter2024</p>
+        </div>
+        <div class="footer-documents">
+            <div class="doc">
+                <a href="https://docs.pokemontcg.io/">
+                    DOCUMENTATION API
+                </a>
+            </div>
+            <div class="a-propos">
+                <a href="">
+                    A PROPOS
+                </a>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

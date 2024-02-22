@@ -249,13 +249,12 @@ func IsIDPresent(id int, ids []int) bool {
 	return false
 }
 
-
 // TitleContains vérifie si une chaine de caractère substr est contenue dans une chaine s
 func TitleContains(s, substr string) bool {
 	return strings.Contains(strings.ToLower(s), strings.ToLower(substr))
 }
 
-// GetAccountState récupère le statut d'un utilisateur par son pseudonyme dans le fichier accounts.json
+// GetAccountState récupère le statut d'un utilisateur par son pseudonyme dans le fichier
 func GetAccountState(username string) string {
 	file, _ := os.ReadFile("./json/accounts.json")
 
@@ -271,7 +270,7 @@ func GetAccountState(username string) string {
 	return ""
 }
 
-// GetAccountMail récupère le mail d'un utilisateur par son pseudonyme dans le fichier accounts.json
+// GetAccountMail récupère le mail d'un utilisateur par son pseudonyme dans le fichier
 func GetAccountMail(username string) string {
 	file, _ := os.ReadFile("./json/accounts.json")
 
@@ -473,23 +472,66 @@ func IsAdmin() bool {
 }
 
 func AddToFav(w http.ResponseWriter, r *http.Request) {
-    // Récupérez les informations du formulaire
-    pokemonID := r.FormValue("pokemonID")
-    pokemonName := r.FormValue("pokemonName")
-    pokemonImage := r.FormValue("pokemonImage")
+	// Récupérez les informations du formulaire
+	pokemonID := r.FormValue("pokemonID")
+	pokemonName := r.FormValue("pokemonName")
+	pokemonImage := r.FormValue("pokemonImage")
 
-	session := GetSession() != Session{}
-	isAdmin := IsAdmin()
+	// Obtenez l'utilisateur de la session
 	user := GetSession()
 
-	fmt.Println(user.Username, "1")
-	fmt.Println(isAdmin, "2")
-	fmt.Println(session, "3")
+	// Chargez la liste des utilisateurs depuis le fichier JSON
+	var accounts struct {
+		Comptes []AccountCreation `json:"comptes"`
+	}
+	dataFile, err := os.ReadFile("./json/accounts.json")
+	if err != nil {
+		fmt.Println("Erreur lors de la lecture du fichier JSON :", err.Error())
+		return
+	}
 
-	fmt.Println(pokemonID , "4")
-	fmt.Println(pokemonName, "5")
-	fmt.Println(pokemonImage, "6")
+	err = json.Unmarshal(dataFile, &accounts)
+	if err != nil {
+		fmt.Println("Erreur lors du parsing du JSON : ", err.Error())
+		return
+	}
 
-    // Redirigez l'utilisateur vers son profil
-    http.Redirect(w, r, "/pokecount", http.StatusSeeOther)
+	// Trouvez le bon utilisateur dans la liste (son index)
+	var userIndex int = -1
+	for i, u := range accounts.Comptes {
+		if u.Username == user.Username {
+			userIndex = i
+			break
+		}
+	}
+
+	if userIndex == -1 {
+		fmt.Println("Utilisateur non trouvé dans la liste.")
+		// Gérez l'erreur ici (par exemple, renvoyez une réponse d'erreur à l'utilisateur)
+		http.Redirect(w, r, "/error-page", http.StatusSeeOther)
+		return
+	}
+
+	// Ajoutez la nouvelle carte Pokemon à la liste des favoris de l'utilisateur
+	accounts.Comptes[userIndex].FavCards = append(accounts.Comptes[userIndex].FavCards, FavoriteCard{pokemonID, pokemonName, pokemonImage})
+
+	// Encodez les données mises à jour au format JSON
+	newData, err := json.MarshalIndent(accounts, "", "  ")
+	if err != nil {
+		fmt.Errorf("Erreur lors de la conversion en JSON : %v", err)
+		// Gérez l'erreur ici (par exemple, renvoyez une réponse d'erreur à l'utilisateur)
+		return
+	}
+
+	// Écrivez les données mises à jour dans le fichier JSON
+	err = os.WriteFile("./json/accounts.json", newData, 0644)
+	if err != nil {
+		fmt.Errorf("Erreur lors de l'écriture dans le fichier JSON : %v", err)
+		// Gérez l'erreur ici (par exemple, renvoyez une réponse d'erreur à l'utilisateur)
+		return
+	}
+
+	// Redirigez l'utilisateur vers son profil
+	http.Redirect(w, r, "/pokecount", http.StatusSeeOther)
 }
+

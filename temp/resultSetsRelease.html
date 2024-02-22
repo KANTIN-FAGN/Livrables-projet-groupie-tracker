@@ -1,13 +1,13 @@
-{{define "ResultEnergyRarity"}}
+{{define "ResultSetsRelease"}}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Result</title>
-    <link rel="stylesheet" href="../static/css/result.css">
-    <link rel="icon" href="../static/img/site/pokeball.png">
+    <title>Sets</title>
+    <link rel="stylesheet" href="../static/css/resultSets.css">
+    <link rel="stylesheet" href="../static/css/sets.css">
     <link rel="stylesheet" href="../static/css/footer.css">
 </head>
 
@@ -38,15 +38,13 @@
                     <li class="deroulant"><a href="#">FILTRE &ensp;</a>
                         <ul class="sous">
                             <li>
-                                <a class="contenaire-btn" href="/cards/energy_releaseDate?q={{.DataSearch}}">
-                                    <input type="hidden" name="orderBy">
-                                    <button type="submit" class="btn-form">RELEASE DATE</button>
+                                <a class="contenaire-btn" href="/sets/rarity">
+                                    <button type="submit" class="btn-form">RARITY</button>
                                 </a>
                             </li>
                             <li>
-                                <a class="contenaire-btn" href="/cards/energy?q={{.DataSearch}}">
-                                    <input type="hidden" name="orderBy" value="rarity">
-                                    <button type="submit" class="btn-form">ALL</button>
+                                <a class="contenaire-btn" href="/sets/releasedate">
+                                    <button type="submit" class="btn-form">RELEASE DATE</button>
                                 </a>
                             </li>
                         </ul>
@@ -85,24 +83,27 @@
                     height="150px" width="auto">
             </div>
         </div>
-        <section class="section-cards">
-            <div class="card-global">
-                {{range .Cards}}
-                <a href="/card/{{.ID}}">
-                    <div class="cards">
-                        <button class="img-poke" type="submit"><img src="{{.Images.Large}}"
-                                alt="{{.Name}}.png"></button>
+        <div class="body-g">
+            {{range .Sets}}
+            <div class="set-global">
+                <div class="logo">
+                    <img src="{{.Images.Logo}}" alt="">
+                </div>
+                <div class="info">
+                    <img class="symbol" src="{{.Images.Symbol}}" alt="">
+                    <div class="name_release">
+                        <p>{{.Name}}</p>
+                        <p>Released {{.ReleaseDate}}</p>
                     </div>
-                </a>
-                {{ end }}
+                </div>
             </div>
-        </section>
+            {{end}}
+        </div>
         <div class="pagination-global">
             {{if eq .CurrentPage 1}}
             <section class="pagination-eq1">
                 <div>
-                    <form action="/cards/energy_rarity?page={{.CurrentPage}}&move=Plus&q=supertype:energy"
-                        method="post">
+                    <form action="/sets/releasedate?page={{.CurrentPage}}&move=Plus" method="post">
                         <input type="hidden" name="page" value="Moins">
                         <input type="hidden" name="name" value="{{.DataSearch}}">
                         <button class="bouton-page-next" type="submit">
@@ -118,8 +119,7 @@
             {{else}}
             <section class="pagination">
                 <div>
-                    <form action="/cards/energy_rarity?page={{.CurrentPage}}&move=Moins&q=supertype:energy"
-                        method="post">
+                    <form action="/sets/releasedate?page={{.CurrentPage}}&move=Moins" method="post">
                         <input type="hidden" name="page" value="Plus">
                         <input type="hidden" name="name" value="{{.DataSearch}}">
                         <button class="bouton-page-previous" type="submit">
@@ -132,8 +132,7 @@
                     </form>
                 </div>
                 <div>
-                    <form action="/cards/energy_rarity?page={{.CurrentPage}}&move=Plus&q=supertype:energy"
-                        method="post">
+                    <form action="/sets/releasedate?page={{.CurrentPage}}&move=Plus" method="post">
                         <input type="hidden" name="page" value="Moins">
                         <input type="hidden" name="name" value="{{.DataSearch}}">
                         <button class="bouton-page-next" type="submit">
@@ -219,6 +218,7 @@
         // Disable scrolling until the page is fully loaded
         document.body.style.overflow = "hidden";
     </script>
+
 </body>
 
 </html>

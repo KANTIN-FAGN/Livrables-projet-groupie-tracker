@@ -8,6 +8,7 @@
     <title>PokeCard</title>
     <link rel="icon" href="../static/img/site/pokeball.png">
     <link rel="stylesheet" href="../static/css/cards.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
 </head>
 
 <body>
@@ -165,23 +166,52 @@
                 </div>
             </section>
         </div>
-        {{end}}
+       
     </section>
     <section class="bouton-section">
         <form action="/treatement/fav" method="post">
-            <input type="hidden" name="pokemonID" value="{{range .Cards}}{{.ID}}{{end}}">
-            <input type="hidden" name="pokemonName" value="{{range .Cards}}{{.Name}}{{end}}">
-            <input type="hidden" name="pokemonImage" value="{{range .Cards}}{{.Images.Large}}{{end}}">
+            <input type="hidden" name="pokemonID" value="{{.ID}}">
+            <input type="hidden" name="pokemonName" value="{{.Name}}">
+            <input type="hidden" name="pokemonImage" value="{{.Images.Large}}">
             <button>
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                         <path fill="none" d="M0 0h24v24H0z"></path>
                         <path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path>
-                    </svg> Add {{range .Cards}}{{.Name}}{{end}} in your PokeDex
+                    </svg> Add {{.Name}} in your PokeDex
                 </span>
             </button>
         </form>
     </section>
+    {{end}}
+    <footer>
+        <div class="footer-reseaux">
+            <div class="footer-titre">
+                <p>Nous suivre :</p>
+            </div>
+            <div class="reseaux">
+                <a href="https://discord.gg/xXJckdxc">
+                    <img src="../static/img/site/footer/Discord.png" alt="Discord">
+                </a>
+            </div>
+        </div>
+        <div class="footer-logo">
+            <img src="../static/img/site/pokelog.png" alt="">
+            <p>@Copyright PokeCenter2024</p>
+        </div>
+        <div class="footer-documents">
+            <div class="doc">
+                <a href="https://docs.pokemontcg.io/">
+                    DOCUMENTATION API
+                </a>
+            </div>
+            <div class="a-propos">
+                <a href="">
+                    A PROPOS
+                </a>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

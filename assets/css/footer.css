@@ -1,0 +1,71 @@
+footer {
+    width: 100%;
+    height: 10em;
+    background-color: #3e3e3e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.reseaux {
+    width: 50px;
+    height: 50px;
+}
+
+
+.reseaux a img {
+    width: 40px;
+    height: 40px;
+    transition: filter 0.3s ease;
+}
+
+.reseaux a img:hover {
+    content:url("../img/site/footer/Discord-hover.png");
+}
+
+.footer-reseaux {
+    padding-left: 25px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    color: #fcfcfc;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    color: #fcfcfc;
+}
+
+.footer-documents {
+    padding-right: 25px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:flex-end;
+    gap: 15px;
+}
+
+.footer-logo img {
+    width: 60px;
+    height: 60px;
+}
+
+.a-propos a,
+.doc a {
+    text-decoration: none;
+    color: #fcfcfc;
+}
+
+.a-propos a:hover,
+.doc a:hover {
+   text-decoration: underline;
+}
