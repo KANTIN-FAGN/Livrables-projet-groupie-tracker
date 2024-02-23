@@ -3,10 +3,8 @@
     {
       "picture": "../static/img/POKEMON/fire/3.png",
       "username": "kantin",
-      "email": "kantin.fagn@gmail.com",
       "password": "Hwcu8bxwY_ePESPl0IwDG3i44QBxwRW-9T1tzshAoig=",
-      "state": "member",
-      "salt": "ZMd9dmcAjlrszc_X5FJVZQ==",
+      "email": "kantin.fagn@gmail.com",
       "favCard": [
         {
           "id": "base1-1",
@@ -17,11 +15,6 @@
           "id": "base1-2",
           "name": "Blastoise",
           "image": "https://images.pokemontcg.io/base1/2_hires.png"
-        },
-        {
-          "id": "base1-3",
-          "name": "Chansey",
-          "image": "https://images.pokemontcg.io/base1/3_hires.png"
         },
         {
           "id": "base1-4",
@@ -58,7 +51,9 @@
           "name": "Gyarados",
           "image": "https://images.pokemontcg.io/base1/6_hires.png"
         }
-      ]
+      ],
+      "state": "member",
+      "salt": "ZMd9dmcAjlrszc_X5FJVZQ=="
     }
   ]
 }

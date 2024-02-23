@@ -59,8 +59,9 @@
     <section class="body-global_card">
         {{range .Cards}}
         <div class="info-card-global">
-            <div class="img">
+            <div class="img" id="card">
                 <img src="{{.Images.Large}}" alt="{{.Name}}">
+                <div class="glow"></div>
             </div>
             <section class="info-maxi-global">
                 <div class="name-info">
@@ -192,7 +193,7 @@
             <button>
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    </svg> Login for add {{.Name}} in your PokeDex
+                    </svg> Login to add {{.Name}} in your PokeDex
                 </span>
             </button>
         </a>
@@ -228,6 +229,43 @@
             </div>
         </div>
     </footer>
+    <script>
+        const card = document.getElementById("card");
+        let bounds;
+    
+        function rotateToMouse(e) {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            const leftX = mouseX - bounds.x;
+            const topY = mouseY - bounds.y;
+            const center = {
+                x: leftX - bounds.width / 2,
+                y: topY - bounds.height / 2
+            };
+    
+            // Ajustez le calcul pour créer l'effet 3D souhaité
+            card.style.transform = `
+                perspective(1000px)
+                rotateX(${center.y / 10}deg)
+                rotateY(${-center.x / 10}deg)
+            `;
+    
+            // Ajoutez la classe pour l'effet de brillance
+            card.classList.add('shine');
+        }
+    
+        card.addEventListener('mouseenter', () => {
+            bounds = card.getBoundingClientRect();
+            document.addEventListener('mousemove', rotateToMouse);
+        });
+    
+        card.addEventListener('mouseleave', () => {
+            document.removeEventListener('mousemove', rotateToMouse);
+            card.style.transform = '';
+            // Supprimez la classe pour l'effet de brillance
+            card.classList.remove('shine');
+        });
+    </script>
 </body>
 
 </html>

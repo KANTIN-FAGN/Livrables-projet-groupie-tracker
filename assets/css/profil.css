@@ -253,7 +253,7 @@ section {
 
 .deck .img:hover img {
     cursor: pointer;
-    filter: blur(5px);
+    filter: blur(2px);
 }
 
 .deck .img:hover .buttons {
