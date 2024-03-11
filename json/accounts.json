@@ -1,59 +1,24 @@
 {
   "comptes": [
     {
-      "picture": "../static/img/POKEMON/fire/3.png",
-      "username": "kantin",
-      "password": "Hwcu8bxwY_ePESPl0IwDG3i44QBxwRW-9T1tzshAoig=",
+      "picture": "../static/img/POKEMON/ghost/3.png",
+      "username": "KANTIN",
       "email": "kantin.fagn@gmail.com",
+      "password": "M0HecmnQrjTOAI6q2feCrsVlpP6BdUCFvevzMzTI378=",
+      "state": "member",
+      "salt": "AAcwwo05HHhBL4GStOPYRg==",
       "favCard": [
         {
-          "id": "base1-1",
-          "name": "Alakazam",
-          "image": "https://images.pokemontcg.io/base1/1_hires.png"
+          "id": "swsh9-17",
+          "name": "Charizard V",
+          "image": "https://images.pokemontcg.io/swsh9/17_hires.png"
         },
         {
-          "id": "base1-2",
-          "name": "Blastoise",
-          "image": "https://images.pokemontcg.io/base1/2_hires.png"
-        },
-        {
-          "id": "base1-4",
-          "name": "Charizard",
-          "image": "https://images.pokemontcg.io/base1/4_hires.png"
-        },
-        {
-          "id": "base1-5",
-          "name": "Clefairy",
-          "image": "https://images.pokemontcg.io/base1/5_hires.png"
-        },
-        {
-          "id": "base1-7",
-          "name": "Hitmonchan",
-          "image": "https://images.pokemontcg.io/base1/7_hires.png"
-        },
-        {
-          "id": "base1-8",
-          "name": "Machamp",
-          "image": "https://images.pokemontcg.io/base1/8_hires.png"
-        },
-        {
-          "id": "base1-9",
-          "name": "Magneton",
-          "image": "https://images.pokemontcg.io/base1/9_hires.png"
-        },
-        {
-          "id": "base1-10",
-          "name": "Mewtwo",
-          "image": "https://images.pokemontcg.io/base1/10_hires.png"
-        },
-        {
-          "id": "base1-6",
-          "name": "Gyarados",
-          "image": "https://images.pokemontcg.io/base1/6_hires.png"
+          "id": "sma-SV81",
+          "name": "Aether Foundation Employee",
+          "image": "https://images.pokemontcg.io/sma/SV81_hires.png"
         }
-      ],
-      "state": "member",
-      "salt": "ZMd9dmcAjlrszc_X5FJVZQ=="
+      ]
     }
   ]
 }

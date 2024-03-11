@@ -256,7 +256,7 @@ func MailVerifPage(w http.ResponseWriter, r *http.Request) {
 
 	rand.Seed(time.Now().UnixNano())
 
-	codeMail := rand.Intn(89999) + 10000
+	codeMail := rand.Intn(899999) + 100000
 	codeMailString := strconv.Itoa(codeMail)
 
 	smtpHost := "smtp.gmail.com"
