@@ -11,8 +11,15 @@
     font-family: 'gotham';
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
     background-color: #d6d6d6;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -345,4 +352,20 @@ input:hover {
     flex-direction: row;
     gap: 30px;
     width: 30%;
+}
+
+.bad-request-global {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.bad-request-global p {
+    font-size: 30px;
+}
+
+.body-global-general {
+    flex: 1;
 }

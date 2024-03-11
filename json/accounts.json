@@ -3,8 +3,10 @@
     {
       "picture": "../static/img/POKEMON/fire/3.png",
       "username": "kantin",
-      "password": "Hwcu8bxwY_ePESPl0IwDG3i44QBxwRW-9T1tzshAoig=",
       "email": "kantin.fagn@gmail.com",
+      "password": "Hwcu8bxwY_ePESPl0IwDG3i44QBxwRW-9T1tzshAoig=",
+      "state": "member",
+      "salt": "ZMd9dmcAjlrszc_X5FJVZQ==",
       "favCard": [
         {
           "id": "base1-1",
@@ -51,9 +53,32 @@
           "name": "Gyarados",
           "image": "https://images.pokemontcg.io/base1/6_hires.png"
         }
-      ],
+      ]
+    },
+    {
+      "picture": "../static/img/POKEMON/water/3.png",
+      "username": "Epikdimond",
+      "email": "nathanael.pivot@hotmail.com",
+      "password": "j8Kn814h9hrXTMUCGWa0Sz8SPngF3W0UItGiprqnmSw=",
       "state": "member",
-      "salt": "ZMd9dmcAjlrszc_X5FJVZQ=="
+      "salt": "ct87Ya0ecxR4pc4WezCHoQ==",
+      "favCard": [
+        {
+          "id": "sv3pt5-9",
+          "name": "Blastoise ex",
+          "image": "https://images.pokemontcg.io/sv3pt5/9_hires.png"
+        },
+        {
+          "id": "swsh12pt5-160",
+          "name": "Pikachu",
+          "image": "https://images.pokemontcg.io/swsh12pt5/160_hires.png"
+        },
+        {
+          "id": "swsh1-1",
+          "name": "Celebi V",
+          "image": "https://images.pokemontcg.io/swsh1/1_hires.png"
+        }
+      ]
     }
   ]
 }

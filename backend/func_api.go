@@ -244,7 +244,7 @@ func SearchPokemonName(w http.ResponseWriter, r *http.Request) {
 
 	// Récupérer la valeur de la page à partir des paramètres de la requête
 	CurrentPageStr := r.URL.Query().Get("page")
-	fmt.Println("dede", CurrentPageStr)
+	fmt.Println("Page : ", CurrentPageStr)
 
 	move := r.URL.Query().Get("move")
 
@@ -263,9 +263,9 @@ func SearchPokemonName(w http.ResponseWriter, r *http.Request) {
 		request.PageSize(10),
 		request.Page(CurrentPage),
 	)
-	fmt.Println(cards)
 	if err != nil {
-		log.Fatal(err)
+		http.Error(w, "Erreur lors de la requête API", http.StatusInternalServerError)
+		return
 	}
 
 	// Afficher les résultats

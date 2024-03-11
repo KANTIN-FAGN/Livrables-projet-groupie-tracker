@@ -256,7 +256,7 @@ func MailVerifPage(w http.ResponseWriter, r *http.Request) {
 
 	rand.Seed(time.Now().UnixNano())
 
-	codeMail := rand.Intn(89999) + 10000
+	codeMail := rand.Intn(899999) + 100000
 	codeMailString := strconv.Itoa(codeMail)
 
 	smtpHost := "smtp.gmail.com"
@@ -265,7 +265,7 @@ func MailVerifPage(w http.ResponseWriter, r *http.Request) {
 	password := "rkjq rwfu mhby zwyh"
 
 	to := []string{emailDestinataire}
-	subject := "PokéCenter verification code"
+	subject := "PokeCenter verification code"
 	body := "Hello " + username + ",\nHere is your verification code : " + codeMailString
 
 	auth := smtp.PlainAuth("", email, password, smtpHost)
