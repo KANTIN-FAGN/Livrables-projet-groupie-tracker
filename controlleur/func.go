@@ -265,7 +265,7 @@ func MailVerifPage(w http.ResponseWriter, r *http.Request) {
 	password := "rkjq rwfu mhby zwyh"
 
 	to := []string{emailDestinataire}
-	subject := "PokéCenter verification code"
+	subject := "PokeCenter verification code"
 	body := "Hello " + username + ",\nHere is your verification code : " + codeMailString
 
 	auth := smtp.PlainAuth("", email, password, smtpHost)

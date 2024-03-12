@@ -76,7 +76,13 @@
             {{end}}
         </section>
     </header>
-    <section>
+    <section class="body-global-general">
+        {{ if eq (len .Cards) 0 }}
+        <div class="bad-request-global">
+            <p>Hmmmm...we couldn't find any cards matching your search criteria!</p>
+            <img src="../static/img/site/bad-request.png" alt="">
+        </div>
+        {{else}}
         <div class="body-global" id="body-global">
             <div class="img">
                 <img id="image1" class="pokemon-image" src="../static/img/site/loader/loader-1.png" alt="Image 1"
@@ -101,8 +107,7 @@
             {{if le .CurrentPage 1}}
             <section class="pagination-eq1">
                 <div>
-                    <form action="/search/cards?page={{.CurrentPage}}&move=Plus&q=supertype:energy"
-                        method="post">
+                    <form action="/search/cards?page={{.CurrentPage}}&move=Plus&q=supertype:energy" method="post">
                         <input type="hidden" name="page" value="Moins">
                         <input type="hidden" name="name" value="{{.DataSearch}}">
                         <button class="bouton-page-next" type="submit">
@@ -118,8 +123,7 @@
             {{else}}
             <section class="pagination">
                 <div>
-                    <form action="/search/cards?page={{.CurrentPage}}&move=Moins&q=supertype:energy"
-                        method="post">
+                    <form action="/search/cards?page={{.CurrentPage}}&move=Moins&q=supertype:energy" method="post">
                         <input type="hidden" name="page" value="Plus">
                         <input type="hidden" name="name" value="{{.DataSearch}}">
                         <button class="bouton-page-previous" type="submit">
@@ -132,8 +136,7 @@
                     </form>
                 </div>
                 <div>
-                    <form action="/search/cards?page={{.CurrentPage}}&move=Plus&q=supertype:energy"
-                        method="post">
+                    <form action="/search/cards?page={{.CurrentPage}}&move=Plus&q=supertype:energy" method="post">
                         <input type="hidden" name="page" value="Moins">
                         <input type="hidden" name="name" value="{{.DataSearch}}">
                         <button class="bouton-page-next" type="submit">
@@ -148,6 +151,7 @@
             </section>
             {{end}}
         </div>
+        {{end}}
     </section>
     <footer style="margin-top: 100px;">
         <div class="footer-reseaux">
@@ -179,18 +183,11 @@
     </footer>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Disable pointer events on all elements inside the header
-            var header = document.querySelector('header');
-            var headerChildren = header.getElementsByTagName('*');
-            for (var i = 0; i < headerChildren.length; i++) {
-                headerChildren[i].style.pointerEvents = 'none';
-            }
-    
             // Add your existing animation logic here
             var image1 = document.getElementById("image1");
             var image2 = document.getElementById("image2");
             var isImage1Visible = true;
-    
+
             setInterval(function () {
                 if (isImage1Visible) {
                     image1.classList.add("hidden");
@@ -199,15 +196,15 @@
                     image1.classList.remove("hidden");
                     image2.classList.add("hidden");
                 }
-    
+
                 isImage1Visible = !isImage1Visible;
             }, 150);
         });
-    
+
         window.addEventListener("load", function () {
             document.getElementById("body-global").style.display = "none";
             document.body.style.overflow = "auto"; // Restore scrolling
-    
+
             // Enable pointer events on all elements inside the header
             var header = document.querySelector('header');
             var headerChildren = header.getElementsByTagName('*');
@@ -215,7 +212,7 @@
                 headerChildren[i].style.pointerEvents = 'auto';
             }
         });
-    
+
         // Disable scrolling until the page is fully loaded
         document.body.style.overflow = "hidden";
     </script>
