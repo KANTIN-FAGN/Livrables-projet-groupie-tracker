@@ -338,3 +338,29 @@ button:hover {
     justify-content: center;
     align-items: center;
 }
+
+.bouton-remove {
+    border: 2px solid #fb2424;
+    background-color: #fb2424;
+    border-radius: 0.9em;
+    padding: 0.8em 1.2em 0.8em 1em;
+    transition: all ease-in-out 0.2s;
+    font-size: 16px;
+}
+
+.bouton-remove span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 600;
+}
+
+.bouton-remove span svg {
+    rotate: 45deg;
+}
+
+.bouton-remove:hover {
+    cursor: pointer;
+    background-color: #e20000;
+}

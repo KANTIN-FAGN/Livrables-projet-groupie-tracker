@@ -83,33 +83,27 @@
                         <div class="titre-attack">
                             <p>ATTACKS</p>
                         </div>
+                        {{range .Attacks}}
                         <div class="name-attack">
                             <div class="display-attacks">
                                 <div class="icon-attacks">
-                                    {{range .Attacks}}
                                     {{range .Cost}}
                                     <img src="../static/img/site/type/pokemonCard/{{.}}.png" alt="Metal Pokemon"
-                                        width="30px" height="30px">
-                                    {{end}}
+                                        width="30px" height="30px"><br>
                                     {{end}}
                                 </div>
                                 <div class="name-of-attacks">
-                                    {{range .Attacks}}
                                     <p>{{.Name}}</p>
-                                    {{end}}
                                 </div>
                             </div>
                             <div class="damage-attacks">
-                                {{range .Attacks}}
                                 <p>{{.Damage}}</p>
-                                {{end}}
                             </div>
                         </div>
                         <div class="discription-attack">
-                            {{range .Attacks}}
                             <p>{{.Text}}</p>
-                            {{end}}
                         </div>
+                        {{end}}
                     </div>
                 </div>
                 <div class="petit-info-complementaire">
@@ -168,9 +162,33 @@
                 </div>
             </section>
         </div>
-
     </section>
     {{if $.DataCompte.AsAdmin}}
+    {{ $isFavorite := false }}
+    {{ $currentCardID := .ID }}
+
+    {{ range $.DataCompte.FavCards }}
+    {{ if eq $currentCardID .ID }}
+    {{ $isFavorite = true }}
+    {{ end }}
+    {{ end }}
+
+    {{ if $isFavorite }}
+    <section class="bouton-section">
+        <form action="/treatement/delete" method="post">
+            <input type="hidden" name="username" value="{{$.DataCompte.Username}}" />
+            <input type="hidden" name="cardID" value="{{.ID}}" />
+            <button class="bouton-remove">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="none" d="M0 0h24v24H0z"></path>
+                        <path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path>
+                    </svg> Remove {{.Name}} de votre Pokédex
+                </span>
+            </button>
+        </form>
+    </section>
+    {{ else if not $isFavorite }}
     <section class="bouton-section">
         <form action="/treatement/fav" method="post">
             <input type="hidden" name="pokemonID" value="{{.ID}}">
@@ -181,11 +199,12 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                         <path fill="none" d="M0 0h24v24H0z"></path>
                         <path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path>
-                    </svg> Add {{.Name}} in your PokeDex
+                    </svg> Add {{.Name}} à votre Pokédex
                 </span>
             </button>
         </form>
     </section>
+    {{end}}
     {{else}}
     {{if not $.DataCompte.IsLoggedIn}}
     <section class="bouton-section">
@@ -193,7 +212,7 @@
             <button>
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    </svg> Login to add {{.Name}} in your PokeDex
+                    </svg> Log in to add {{.Name}} in your PokeDex
                 </span>
             </button>
         </a>
@@ -232,7 +251,7 @@
     <script>
         const card = document.getElementById("card");
         let bounds;
-    
+
         function rotateToMouse(e) {
             const mouseX = e.clientX;
             const mouseY = e.clientY;
@@ -242,23 +261,23 @@
                 x: leftX - bounds.width / 2,
                 y: topY - bounds.height / 2
             };
-    
+
             // Ajustez le calcul pour créer l'effet 3D souhaité
             card.style.transform = `
-                perspective(1000px)
-                rotateX(${center.y / 10}deg)
-                rotateY(${-center.x / 10}deg)
-            `;
-    
+                    perspective(1000px)
+                    rotateX(${center.y / 10}deg)
+                    rotateY(${-center.x / 10}deg)
+                `;
+
             // Ajoutez la classe pour l'effet de brillance
             card.classList.add('shine');
         }
-    
+
         card.addEventListener('mouseenter', () => {
             bounds = card.getBoundingClientRect();
             document.addEventListener('mousemove', rotateToMouse);
         });
-    
+
         card.addEventListener('mouseleave', () => {
             document.removeEventListener('mousemove', rotateToMouse);
             card.style.transform = '';

@@ -58,11 +58,15 @@ func DisplayPokemonCards(w http.ResponseWriter, r *http.Request) {
 	json.Unmarshal(filedata, &DataDecode)
 
 	var picture string
+	var username string
+	var favCards []FavoriteCard
 
 	for _, i := range DataDecode.Comptes {
 
 		if i.Username == user.Username {
 			picture = i.Picture
+			favCards = i.FavCard
+			username = i.Username
 		}
 	}
 
@@ -70,6 +74,8 @@ func DisplayPokemonCards(w http.ResponseWriter, r *http.Request) {
 		Picture:    picture,
 		IsLoggedIn: session,
 		AsAdmin:    isAdmin,
+		FavCards:   favCards,
+		Username:   username,
 	}
 
 	PokemonID := strings.TrimPrefix(r.URL.Path, "/card/")
@@ -81,6 +87,8 @@ func DisplayPokemonCards(w http.ResponseWriter, r *http.Request) {
 	}
 	lstsearch = append(lstsearch, cards)
 	data := TempTestResult{Cards: lstsearch, DataSearch: PokemonID, DataCompte: datacompte}
+
+	fmt.Println(data)
 
 	temp.Temp.ExecuteTemplate(w, "cards", data)
 }

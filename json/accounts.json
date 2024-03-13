@@ -9,14 +9,19 @@
       "salt": "AAcwwo05HHhBL4GStOPYRg==",
       "favCard": [
         {
-          "id": "swsh9-17",
-          "name": "Charizard V",
-          "image": "https://images.pokemontcg.io/swsh9/17_hires.png"
+          "id": "swshp-SWSH101",
+          "name": "Blastoise V",
+          "image": "https://images.pokemontcg.io/swshp/SWSH101_hires.png"
         },
         {
-          "id": "sma-SV81",
-          "name": "Aether Foundation Employee",
-          "image": "https://images.pokemontcg.io/sma/SV81_hires.png"
+          "id": "bw1-26",
+          "name": "Reshiram",
+          "image": "https://images.pokemontcg.io/bw1/26_hires.png"
+        },
+        {
+          "id": "smp-SM137",
+          "name": "Reshiram-GX",
+          "image": "https://images.pokemontcg.io/smp/SM137_hires.png"
         }
       ]
     }
