@@ -23,8 +23,6 @@ func IndexPage(w http.ResponseWriter, r *http.Request) {
 	isAdmin := backend.IsAdmin()
 	user := backend.GetSession()
 
-	fmt.Println(user.Username)
-
 	filedata, err := os.ReadFile("./json/accounts.json")
 	if err != nil {
 		fmt.Println("Erreur lors de l'ouverture du fichier", err)
@@ -52,13 +50,10 @@ func IndexPage(w http.ResponseWriter, r *http.Request) {
 
 	temp.Temp.ExecuteTemplate(w, "accueil", data)
 }
-
 func AboutPage(w http.ResponseWriter, r *http.Request) {
 	session := backend.GetSession() != backend.Session{}
 	isAdmin := backend.IsAdmin()
 	user := backend.GetSession()
-
-	fmt.Println(user.Username)
 
 	filedata, err := os.ReadFile("./json/accounts.json")
 	if err != nil {
@@ -87,11 +82,8 @@ func AboutPage(w http.ResponseWriter, r *http.Request) {
 
 	temp.Temp.ExecuteTemplate(w, "about", data)
 }
-
 func ProfilPage(w http.ResponseWriter, r *http.Request) {
 	user := backend.GetSession()
-
-	fmt.Println(user.Username)
 
 	filedata, err := os.ReadFile("./json/accounts.json")
 	if err != nil {
@@ -130,7 +122,6 @@ func ProfilPage(w http.ResponseWriter, r *http.Request) {
 
 	temp.Temp.ExecuteTemplate(w, "profil", data)
 }
-
 func DisplayProfil(w http.ResponseWriter, r *http.Request) {
 	if backend.ToSend == nil { //Tosend type fire de base
 		var nbImgFire int
@@ -200,7 +191,6 @@ func GetCreds(w http.ResponseWriter, r *http.Request) {
 		if remember == "on" {
 			backend.SetRememberActive(username, "./json/rememberSession.json")
 		}
-		fmt.Println(session)
 		backend.SetSession(session)
 		http.Redirect(w, r, "/welcome", http.StatusSeeOther)
 	} else {
@@ -300,8 +290,6 @@ func VerifCode(w http.ResponseWriter, r *http.Request) {
 	codeRecu := r.FormValue("verificationCode")
 	codeEnvoye := backend.GlobalAccount.MailCode
 
-	fmt.Println(codeRecu)
-	fmt.Println(codeEnvoye)
 	fmt.Println("Verification du code")
 
 	if codeRecu == codeEnvoye {
@@ -316,7 +304,6 @@ func VerifCode(w http.ResponseWriter, r *http.Request) {
 func SuccessPage(w http.ResponseWriter, r *http.Request) {
 	backend.AddAccountToFile(backend.GlobalAccount, "./json/accounts.json")
 	backend.ClearAccount()
-	fmt.Println(backend.GlobalAccount)
 	temp.Temp.ExecuteTemplate(w, "success", nil)
 }
 

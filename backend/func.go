@@ -281,7 +281,6 @@ func AddAccountToFile(account AccountCreation, filePath string) error {
 
 	var data map[string][]map[string]interface{}
 	err = json.Unmarshal(jsonFile, &data)
-	fmt.Println(data)
 	if err != nil {
 		fmt.Println("Erreur lors du parsing du JSON")
 	}
@@ -427,7 +426,6 @@ func ClearRemember(filename string) error {
 
 	return nil
 }
-
 func IsAdmin() bool {
 	return GlobalSession.State == "member"
 }
@@ -537,13 +535,10 @@ func TreatementDeleteCard(username, cardID string) error {
 
 	return fmt.Errorf("Carte non trouvée pour l'utilisateur %s avec l'ID %s", username, cardID)
 }
-
 func DeleteCardHandler(w http.ResponseWriter, r *http.Request) {
 	// Récupérer les paramètres nécessaires (par exemple, l'ID de la carte et le nom d'utilisateur)
 	cardID := r.FormValue("cardID")
 	username := r.FormValue("username")
-
-	fmt.Println(cardID)
 
 	// Supprimer la carte
 	err := TreatementDeleteCard(username, cardID)

@@ -101,7 +101,7 @@
             {{if le .CurrentPage 1}}
             <section class="pagination-eq1">
                 <div>
-                    <form action="/cards/pokemon_rarity?page={{.CurrentPage}}&move=Plus&q=supertype:energy"
+                    <form action="/cards/pokemon_rarity?page={{.CurrentPage}}&move=Plus&q=supertype:pokemon"
                         method="post">
                         <input type="hidden" name="page" value="Moins">
                         <input type="hidden" name="name" value="{{.DataSearch}}">
@@ -118,7 +118,7 @@
             {{else}}
             <section class="pagination">
                 <div>
-                    <form action="/cards/pokemon_rarity?page={{.CurrentPage}}&move=Moins&q=supertype:energy"
+                    <form action="/cards/pokemon_rarity?page={{.CurrentPage}}&move=Moins&q=supertype:pokemon"
                         method="post">
                         <input type="hidden" name="page" value="Plus">
                         <input type="hidden" name="name" value="{{.DataSearch}}">
@@ -132,7 +132,8 @@
                     </form>
                 </div>
                 <div>
-                    <form action="/cards/pokemon_rarity?page={{.CurrentPage}}&move=Plus&q=supertype:energy"
+                    {{if eq .LenCards 10}}
+                    <form action="/cards/pokemon_rarity?page={{.CurrentPage}}&move=Plus&q=supertype:pokemon"
                         method="post">
                         <input type="hidden" name="page" value="Moins">
                         <input type="hidden" name="name" value="{{.DataSearch}}">
@@ -144,6 +145,7 @@
                             </svg>
                         </button>
                     </form>
+                    {{end}}
                 </div>
             </section>
             {{end}}

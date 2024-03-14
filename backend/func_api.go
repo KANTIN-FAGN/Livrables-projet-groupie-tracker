@@ -39,6 +39,7 @@ type TempTestResult struct {
 	DataSearch  string
 	DataCompte  IndexData
 	CurrentPage int
+	LenCards    int
 }
 
 func DisplayPokemonCards(w http.ResponseWriter, r *http.Request) {
@@ -88,8 +89,6 @@ func DisplayPokemonCards(w http.ResponseWriter, r *http.Request) {
 	lstsearch = append(lstsearch, cards)
 	data := TempTestResult{Cards: lstsearch, DataSearch: PokemonID, DataCompte: datacompte}
 
-	fmt.Println(data)
-
 	temp.Temp.ExecuteTemplate(w, "cards", data)
 }
 
@@ -123,10 +122,6 @@ func FiltreRarity(w http.ResponseWriter, r *http.Request) {
 		AsAdmin:    isAdmin,
 	}
 
-	// Récupérer la valeur de la page à partir des paramètres de la requête
-	CurrentPageStr := r.URL.Query().Get("page")
-	fmt.Println("dede", CurrentPageStr)
-
 	move := r.URL.Query().Get("move")
 
 	if move == "Plus" {
@@ -140,8 +135,6 @@ func FiltreRarity(w http.ResponseWriter, r *http.Request) {
 	// Récupérer le nom du Pokémon à partir des paramètres de la requête
 	PokemonName := r.URL.Query().Get("q")
 
-	fmt.Println(PokemonName)
-
 	cards, err := c.GetCards(
 		request.Query("name:"+PokemonName),
 		request.OrderBy("rarity"),
@@ -152,7 +145,7 @@ func FiltreRarity(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	data := TempTestResult{Cards: cards, DataSearch: PokemonName, DataCompte: datacompte, CurrentPage: CurrentPage}
+	data := TempTestResult{Cards: cards, DataSearch: PokemonName, DataCompte: datacompte, CurrentPage: CurrentPage, LenCards: len(cards)}
 
 	temp.Temp.ExecuteTemplate(w, "result", data)
 }
@@ -198,12 +191,8 @@ func FiltreReleaseDate(w http.ResponseWriter, r *http.Request) {
 		CurrentPage--
 	}
 
-	fmt.Println("currentPage")
-
 	// Récupérer le nom du Pokémon à partir des paramètres de la requête
 	PokemonName := r.URL.Query().Get("q")
-
-	fmt.Println(PokemonName)
 
 	cards, err := c.GetCards(
 		request.Query("name:"+PokemonName),
@@ -215,7 +204,7 @@ func FiltreReleaseDate(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	data := TempTestResult{Cards: cards, DataSearch: PokemonName, DataCompte: datacompte, CurrentPage: CurrentPage}
+	data := TempTestResult{Cards: cards, DataSearch: PokemonName, DataCompte: datacompte, CurrentPage: CurrentPage, LenCards: len(cards)}
 
 	temp.Temp.ExecuteTemplate(w, "result", data)
 }
@@ -250,10 +239,6 @@ func SearchPokemonName(w http.ResponseWriter, r *http.Request) {
 		AsAdmin:    isAdmin,
 	}
 
-	// Récupérer la valeur de la page à partir des paramètres de la requête
-	CurrentPageStr := r.URL.Query().Get("page")
-	fmt.Println("Page : ", CurrentPageStr)
-
 	move := r.URL.Query().Get("move")
 
 	if move == "Plus" {
@@ -277,7 +262,7 @@ func SearchPokemonName(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Afficher les résultats
-	data := TempTestResult{Cards: cards, DataSearch: PokemonName, DataCompte: datacompte, CurrentPage: CurrentPage}
+	data := TempTestResult{Cards: cards, DataSearch: PokemonName, DataCompte: datacompte, CurrentPage: CurrentPage, LenCards: len(cards)}
 	temp.Temp.ExecuteTemplate(w, "result", data)
 }
 
@@ -286,8 +271,6 @@ func SearchPokemonAll(w http.ResponseWriter, r *http.Request) {
 	session := GetSession() != Session{}
 	isAdmin := IsAdmin()
 	user := GetSession()
-
-	fmt.Println(user.Username)
 
 	filedata, err := os.ReadFile("./json/accounts.json")
 	if err != nil {
@@ -314,10 +297,6 @@ func SearchPokemonAll(w http.ResponseWriter, r *http.Request) {
 		AsAdmin:    isAdmin,
 	}
 
-	// Récupérer la valeur de la page à partir des paramètres de la requête
-	CurrentPageStr := r.URL.Query().Get("page")
-	fmt.Println("dede", CurrentPageStr)
-
 	move := r.URL.Query().Get("move")
 
 	if move == "Plus" {
@@ -328,8 +307,6 @@ func SearchPokemonAll(w http.ResponseWriter, r *http.Request) {
 
 	// Retrieve the query parameter from the URL
 	query := r.URL.Query().Get("q")
-
-	fmt.Println(query)
 
 	// Modify the query to include the order by parameter
 	cards, err := c.GetCards(
@@ -344,7 +321,7 @@ func SearchPokemonAll(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPagePokeAll}
+	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPagePokeAll, LenCards: len(cards)}
 
 	temp.Temp.ExecuteTemplate(w, "ResultPokemonAll", data)
 }
@@ -353,8 +330,6 @@ func SearchPokemonRarity(w http.ResponseWriter, r *http.Request) {
 	session := GetSession() != Session{}
 	isAdmin := IsAdmin()
 	user := GetSession()
-
-	fmt.Println(user.Username)
 
 	filedata, err := os.ReadFile("./json/accounts.json")
 	if err != nil {
@@ -380,10 +355,6 @@ func SearchPokemonRarity(w http.ResponseWriter, r *http.Request) {
 		IsLoggedIn: session,
 		AsAdmin:    isAdmin,
 	}
-
-	// Récupérer la valeur de la page à partir des paramètres de la requête
-	CurrentPageStr := r.URL.Query().Get("page")
-	fmt.Println("dede", CurrentPageStr)
 
 	move := r.URL.Query().Get("move")
 
@@ -409,7 +380,7 @@ func SearchPokemonRarity(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPagePokeRarity}
+	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPagePokeRarity, LenCards: len(cards)}
 
 	temp.Temp.ExecuteTemplate(w, "ResultPokemonRarity", data)
 }
@@ -418,8 +389,6 @@ func SearchPokemonReleaseDate(w http.ResponseWriter, r *http.Request) {
 	session := GetSession() != Session{}
 	isAdmin := IsAdmin()
 	user := GetSession()
-
-	fmt.Println(user.Username)
 
 	filedata, err := os.ReadFile("./json/accounts.json")
 	if err != nil {
@@ -445,10 +414,6 @@ func SearchPokemonReleaseDate(w http.ResponseWriter, r *http.Request) {
 		IsLoggedIn: session,
 		AsAdmin:    isAdmin,
 	}
-
-	// Récupérer la valeur de la page à partir des paramètres de la requête
-	CurrentPageStr := r.URL.Query().Get("page")
-	fmt.Println("dede", CurrentPageStr)
 
 	move := r.URL.Query().Get("move")
 
@@ -474,7 +439,7 @@ func SearchPokemonReleaseDate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPagePokeReleaseDate}
+	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPagePokeReleaseDate, LenCards: len(cards)}
 
 	temp.Temp.ExecuteTemplate(w, "ResultPokemonRelease", data)
 }
@@ -484,8 +449,6 @@ func SearchTrainerAll(w http.ResponseWriter, r *http.Request) {
 	session := GetSession() != Session{}
 	isAdmin := IsAdmin()
 	user := GetSession()
-
-	fmt.Println(user.Username)
 
 	filedata, err := os.ReadFile("./json/accounts.json")
 	if err != nil {
@@ -512,10 +475,6 @@ func SearchTrainerAll(w http.ResponseWriter, r *http.Request) {
 		AsAdmin:    isAdmin,
 	}
 
-	// Récupérer la valeur de la page à partir des paramètres de la requête
-	CurrentPageStr := r.URL.Query().Get("page")
-	fmt.Println("dede", CurrentPageStr)
-
 	move := r.URL.Query().Get("move")
 
 	if move == "Plus" {
@@ -526,8 +485,6 @@ func SearchTrainerAll(w http.ResponseWriter, r *http.Request) {
 
 	// Retrieve the query parameter from the URL
 	query := r.URL.Query().Get("q")
-
-	fmt.Println(query)
 
 	// Modify the query to include the order by parameter
 	cards, err := c.GetCards(
@@ -542,7 +499,7 @@ func SearchTrainerAll(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageTrainAll}
+	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageTrainAll, LenCards: len(cards)}
 
 	temp.Temp.ExecuteTemplate(w, "ResultTrainerAll", data)
 }
@@ -551,8 +508,6 @@ func SearchTrainerRarity(w http.ResponseWriter, r *http.Request) {
 	session := GetSession() != Session{}
 	isAdmin := IsAdmin()
 	user := GetSession()
-
-	fmt.Println(user.Username)
 
 	filedata, err := os.ReadFile("./json/accounts.json")
 	if err != nil {
@@ -578,10 +533,6 @@ func SearchTrainerRarity(w http.ResponseWriter, r *http.Request) {
 		IsLoggedIn: session,
 		AsAdmin:    isAdmin,
 	}
-
-	// Récupérer la valeur de la page à partir des paramètres de la requête
-	CurrentPageStr := r.URL.Query().Get("page")
-	fmt.Println("dede", CurrentPageStr)
 
 	move := r.URL.Query().Get("move")
 
@@ -607,7 +558,7 @@ func SearchTrainerRarity(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageTrainRarity}
+	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageTrainRarity, LenCards: len(cards)}
 
 	temp.Temp.ExecuteTemplate(w, "ResultTrainerRarity", data)
 }
@@ -616,8 +567,6 @@ func SearchTrainerReleaseDate(w http.ResponseWriter, r *http.Request) {
 	session := GetSession() != Session{}
 	isAdmin := IsAdmin()
 	user := GetSession()
-
-	fmt.Println(user.Username)
 
 	filedata, err := os.ReadFile("./json/accounts.json")
 	if err != nil {
@@ -643,10 +592,6 @@ func SearchTrainerReleaseDate(w http.ResponseWriter, r *http.Request) {
 		IsLoggedIn: session,
 		AsAdmin:    isAdmin,
 	}
-
-	// Récupérer la valeur de la page à partir des paramètres de la requête
-	CurrentPageStr := r.URL.Query().Get("page")
-	fmt.Println("dede", CurrentPageStr)
 
 	move := r.URL.Query().Get("move")
 
@@ -672,7 +617,7 @@ func SearchTrainerReleaseDate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageTrainReleaseDate}
+	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageTrainReleaseDate, LenCards: len(cards)}
 
 	temp.Temp.ExecuteTemplate(w, "ResultTrainerRelease", data)
 }
@@ -682,8 +627,6 @@ func SearchEnergyAll(w http.ResponseWriter, r *http.Request) {
 	session := GetSession() != Session{}
 	isAdmin := IsAdmin()
 	user := GetSession()
-
-	fmt.Println(user.Username)
 
 	filedata, err := os.ReadFile("./json/accounts.json")
 	if err != nil {
@@ -710,10 +653,6 @@ func SearchEnergyAll(w http.ResponseWriter, r *http.Request) {
 		AsAdmin:    isAdmin,
 	}
 
-	// Récupérer la valeur de la page à partir des paramètres de la requête
-	CurrentPageStr := r.URL.Query().Get("page")
-	fmt.Println("dede", CurrentPageStr)
-
 	move := r.URL.Query().Get("move")
 
 	if move == "Plus" {
@@ -724,8 +663,6 @@ func SearchEnergyAll(w http.ResponseWriter, r *http.Request) {
 
 	// Retrieve the query parameter from the URL
 	query := r.URL.Query().Get("q")
-
-	fmt.Println(query)
 
 	// Modify the query to include the order by parameter
 	cards, err := c.GetCards(
@@ -740,7 +677,7 @@ func SearchEnergyAll(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageEnerAll}
+	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageEnerAll, LenCards: len(cards)}
 
 	temp.Temp.ExecuteTemplate(w, "ResultEnergyAll", data)
 }
@@ -749,8 +686,6 @@ func SearchEnergyRarity(w http.ResponseWriter, r *http.Request) {
 	session := GetSession() != Session{}
 	isAdmin := IsAdmin()
 	user := GetSession()
-
-	fmt.Println(user.Username)
 
 	filedata, err := os.ReadFile("./json/accounts.json")
 	if err != nil {
@@ -776,10 +711,6 @@ func SearchEnergyRarity(w http.ResponseWriter, r *http.Request) {
 		IsLoggedIn: session,
 		AsAdmin:    isAdmin,
 	}
-
-	// Récupérer la valeur de la page à partir des paramètres de la requête
-	CurrentPageStr := r.URL.Query().Get("page")
-	fmt.Println("dede", CurrentPageStr)
 
 	move := r.URL.Query().Get("move")
 
@@ -805,7 +736,7 @@ func SearchEnergyRarity(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageEnerRarity}
+	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageEnerRarity, LenCards: len(cards)}
 
 	temp.Temp.ExecuteTemplate(w, "ResultEnergyRarity", data)
 }
@@ -814,8 +745,6 @@ func SearchEnergyReleaseDate(w http.ResponseWriter, r *http.Request) {
 	session := GetSession() != Session{}
 	isAdmin := IsAdmin()
 	user := GetSession()
-
-	fmt.Println(user.Username)
 
 	filedata, err := os.ReadFile("./json/accounts.json")
 	if err != nil {
@@ -841,10 +770,6 @@ func SearchEnergyReleaseDate(w http.ResponseWriter, r *http.Request) {
 		IsLoggedIn: session,
 		AsAdmin:    isAdmin,
 	}
-
-	// Récupérer la valeur de la page à partir des paramètres de la requête
-	CurrentPageStr := r.URL.Query().Get("page")
-	fmt.Println("dede", CurrentPageStr)
 
 	move := r.URL.Query().Get("move")
 
@@ -870,7 +795,7 @@ func SearchEnergyReleaseDate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageEnerReleaseDate}
+	data := TempTestResult{Cards: cards, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageEnerReleaseDate, LenCards: len(cards)}
 
 	temp.Temp.ExecuteTemplate(w, "ResultEnergyRelease", data)
 }
@@ -880,8 +805,6 @@ func SetsPokemon(w http.ResponseWriter, r *http.Request) {
 	session := GetSession() != Session{}
 	isAdmin := IsAdmin()
 	user := GetSession()
-
-	fmt.Println(user.Username)
 
 	filedata, err := os.ReadFile("./json/accounts.json")
 	if err != nil {
@@ -907,10 +830,6 @@ func SetsPokemon(w http.ResponseWriter, r *http.Request) {
 		IsLoggedIn: session,
 		AsAdmin:    isAdmin,
 	}
-
-	// Récupérer la valeur de la page à partir des paramètres de la requête
-	CurrentPageStr := r.URL.Query().Get("page")
-	fmt.Println("dede", CurrentPageStr)
 
 	move := r.URL.Query().Get("move")
 
@@ -932,7 +851,7 @@ func SetsPokemon(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	data := TempTestResult{Sets: sets, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageSet}
+	data := TempTestResult{Sets: sets, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageSet, LenCards: len(sets)}
 
 	temp.Temp.ExecuteTemplate(w, "ResultSets", data)
 }
@@ -941,8 +860,6 @@ func SetsPokemonRarity(w http.ResponseWriter, r *http.Request) {
 	session := GetSession() != Session{}
 	isAdmin := IsAdmin()
 	user := GetSession()
-
-	fmt.Println(user.Username)
 
 	filedata, err := os.ReadFile("./json/accounts.json")
 	if err != nil {
@@ -968,10 +885,6 @@ func SetsPokemonRarity(w http.ResponseWriter, r *http.Request) {
 		IsLoggedIn: session,
 		AsAdmin:    isAdmin,
 	}
-
-	// Récupérer la valeur de la page à partir des paramètres de la requête
-	CurrentPageStr := r.URL.Query().Get("page")
-	fmt.Println("dede", CurrentPageStr)
 
 	move := r.URL.Query().Get("move")
 
@@ -994,7 +907,7 @@ func SetsPokemonRarity(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	data := TempTestResult{Sets: sets, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageSetsRarity}
+	data := TempTestResult{Sets: sets, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageSetsRarity, LenCards: len(sets)}
 
 	temp.Temp.ExecuteTemplate(w, "ResultSetsRarity", data)
 }
@@ -1003,8 +916,6 @@ func SetsPokemonReleaseDate(w http.ResponseWriter, r *http.Request) {
 	session := GetSession() != Session{}
 	isAdmin := IsAdmin()
 	user := GetSession()
-
-	fmt.Println(user.Username)
 
 	filedata, err := os.ReadFile("./json/accounts.json")
 	if err != nil {
@@ -1031,10 +942,6 @@ func SetsPokemonReleaseDate(w http.ResponseWriter, r *http.Request) {
 		AsAdmin:    isAdmin,
 	}
 
-	// Récupérer la valeur de la page à partir des paramètres de la requête
-	CurrentPageStr := r.URL.Query().Get("page")
-	fmt.Println("dede", CurrentPageStr)
-
 	move := r.URL.Query().Get("move")
 
 	if move == "Plus" {
@@ -1056,7 +963,7 @@ func SetsPokemonReleaseDate(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	data := TempTestResult{Sets: sets, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageSetsReleaseDate}
+	data := TempTestResult{Sets: sets, DataSearch: query, DataCompte: datacompte, CurrentPage: CurrentPageSetsReleaseDate, LenCards: len(sets)}
 
 	temp.Temp.ExecuteTemplate(w, "ResultSetsRelease", data)
 }
@@ -1110,7 +1017,7 @@ func CardsPokemonSets(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	data := TempTestResult{Cards: cards, DataSearch: SetsID, DataCompte: datacompte, CurrentPage: CurrentPageSetsCard}
+	data := TempTestResult{Cards: cards, DataSearch: SetsID, DataCompte: datacompte, CurrentPage: CurrentPageSetsCard, LenCards: len(cards)}
 
 	temp.Temp.ExecuteTemplate(w, "ResultSetsCard", data)
 }

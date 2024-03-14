@@ -160,27 +160,17 @@ input:hover {
 .img .glow {
     position: absolute;
     width: 90%;
-    height: 96%;
+    min-height: 105.5%;
     left: 0;
     top: 0;
     background-image: radial-gradient(circle at 50% -20%, #ffffff22, #0000000f);
-    border-radius: 10px;
+    border-radius: 16px;
+    margin-top: 50px;
 }
 
 #card {
     /* Assurez-vous que le fond initial est transparent */
     background-color: transparent;
-}
-
-.glow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    margin-top: 51px;
-    height: 500px;
 }
 
 .info-card-global {
@@ -363,4 +353,10 @@ button:hover {
 .bouton-remove:hover {
     cursor: pointer;
     background-color: #e20000;
+}
+
+.icon-attacks {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
 }

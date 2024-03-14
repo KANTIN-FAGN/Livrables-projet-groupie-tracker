@@ -14,14 +14,29 @@
           "image": "https://images.pokemontcg.io/swshp/SWSH101_hires.png"
         },
         {
-          "id": "bw1-26",
-          "name": "Reshiram",
-          "image": "https://images.pokemontcg.io/bw1/26_hires.png"
-        },
-        {
           "id": "smp-SM137",
           "name": "Reshiram-GX",
           "image": "https://images.pokemontcg.io/smp/SM137_hires.png"
+        },
+        {
+          "id": "det1-5",
+          "name": "Charizard",
+          "image": "https://images.pokemontcg.io/det1/5_hires.png"
+        },
+        {
+          "id": "cel25c-113_A",
+          "name": "Reshiram",
+          "image": "https://images.pokemontcg.io/cel25c/113_A_hires.png"
+        },
+        {
+          "id": "swsh10-199",
+          "name": "Adaman",
+          "image": "https://images.pokemontcg.io/swsh10/199_hires.png"
+        },
+        {
+          "id": "si1-1",
+          "name": "Mew",
+          "image": "https://images.pokemontcg.io/si1/1_hires.png"
         }
       ]
     }

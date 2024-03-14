@@ -132,6 +132,7 @@
                     </form>
                 </div>
                 <div>
+                    {{if eq .LenCards 10}}
                     <form action="/cards/trainer_rarity?page={{.CurrentPage}}&move=Plus&q=supertype:trainer"
                         method="post">
                         <input type="hidden" name="page" value="Moins">
@@ -144,6 +145,7 @@
                             </svg>
                         </button>
                     </form>
+                    {{end}}
                 </div>
             </section>
             {{end}}

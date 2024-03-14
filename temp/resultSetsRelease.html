@@ -134,6 +134,7 @@
                     </form>
                 </div>
                 <div>
+                    {{if eq .LenCards 10}}
                     <form action="/sets/releasedate?page={{.CurrentPage}}&move=Plus" method="post">
                         <input type="hidden" name="page" value="Moins">
                         <input type="hidden" name="name" value="{{.DataSearch}}">
@@ -145,6 +146,7 @@
                             </svg>
                         </button>
                     </form>
+                    {{end}}
                 </div>
             </section>
             {{end}}
