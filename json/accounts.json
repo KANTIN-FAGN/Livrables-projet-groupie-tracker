@@ -37,6 +37,11 @@
           "id": "si1-1",
           "name": "Mew",
           "image": "https://images.pokemontcg.io/si1/1_hires.png"
+        },
+        {
+          "id": "sm10-20",
+          "name": "Reshiram \u0026 Charizard-GX",
+          "image": "https://images.pokemontcg.io/sm10/20_hires.png"
         }
       ]
     }

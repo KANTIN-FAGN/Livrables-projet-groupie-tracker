@@ -42,16 +42,14 @@ type TempTestResult struct {
 	LenCards    int
 }
 
-func DisplayPokemonCards(w http.ResponseWriter, r *http.Request) {
-	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
+func CheckSessions() (IndexData, error){
 	session := GetSession() != Session{}
-	isAdmin := IsAdmin()
 	user := GetSession()
 
 	filedata, err := os.ReadFile("./json/accounts.json")
 	if err != nil {
 		fmt.Println("Erreur lors de l'ouverture du fichier", err)
-		return
+		return IndexData{}, fmt.Errorf("Erreur lors de l'ouverture du fichier", err)
 	}
 
 	var DataDecode Accounts
@@ -61,6 +59,7 @@ func DisplayPokemonCards(w http.ResponseWriter, r *http.Request) {
 	var picture string
 	var username string
 	var favCards []FavoriteCard
+	var state bool
 
 	for _, i := range DataDecode.Comptes {
 
@@ -68,17 +67,28 @@ func DisplayPokemonCards(w http.ResponseWriter, r *http.Request) {
 			picture = i.Picture
 			favCards = i.FavCard
 			username = i.Username
+			state = i.State == "member"
 		}
 	}
 
 	datacompte := IndexData{
 		Picture:    picture,
 		IsLoggedIn: session,
-		AsAdmin:    isAdmin,
+		AsAdmin:    state,
 		FavCards:   favCards,
 		Username:   username,
 	}
 
+	return datacompte, nil
+}
+
+func DisplayPokemonCards(w http.ResponseWriter, r *http.Request) {
+	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
+	datacompte, err := CheckSessions() 
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
 	PokemonID := strings.TrimPrefix(r.URL.Path, "/card/")
 
 	var lstsearch []*tcg.PokemonCard
@@ -94,32 +104,10 @@ func DisplayPokemonCards(w http.ResponseWriter, r *http.Request) {
 
 func FiltreRarity(w http.ResponseWriter, r *http.Request) {
 	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
-	session := GetSession() != Session{}
-	isAdmin := IsAdmin()
-	user := GetSession()
-
-	filedata, err := os.ReadFile("./json/accounts.json")
+	datacompte, err := CheckSessions() 
 	if err != nil {
-		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		fmt.Println(err.Error())
 		return
-	}
-
-	var DataDecode Accounts
-
-	json.Unmarshal(filedata, &DataDecode)
-
-	var picture string
-
-	for _, i := range DataDecode.Comptes {
-		if i.Username == user.Username {
-			picture = i.Picture
-		}
-	}
-
-	datacompte := IndexData{
-		Picture:    picture,
-		IsLoggedIn: session,
-		AsAdmin:    isAdmin,
 	}
 
 	move := r.URL.Query().Get("move")
@@ -151,37 +139,11 @@ func FiltreRarity(w http.ResponseWriter, r *http.Request) {
 }
 func FiltreReleaseDate(w http.ResponseWriter, r *http.Request) {
 	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
-	session := GetSession() != Session{}
-	isAdmin := IsAdmin()
-	user := GetSession()
-
-	filedata, err := os.ReadFile("./json/accounts.json")
+	datacompte, err := CheckSessions() 
 	if err != nil {
-		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		fmt.Println(err.Error())
 		return
 	}
-
-	var DataDecode Accounts
-
-	json.Unmarshal(filedata, &DataDecode)
-
-	var picture string
-
-	for _, i := range DataDecode.Comptes {
-		if i.Username == user.Username {
-			picture = i.Picture
-		}
-	}
-
-	datacompte := IndexData{
-		Picture:    picture,
-		IsLoggedIn: session,
-		AsAdmin:    isAdmin,
-	}
-
-	// Récupérer la valeur de la page à partir des paramètres de la requête
-	CurrentPageStr := r.URL.Query().Get("page")
-	fmt.Println("dede", CurrentPageStr)
 
 	move := r.URL.Query().Get("move")
 
@@ -211,32 +173,10 @@ func FiltreReleaseDate(w http.ResponseWriter, r *http.Request) {
 
 func SearchPokemonName(w http.ResponseWriter, r *http.Request) {
 	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae") //token
-	session := GetSession() != Session{}                       //est connecté ou pas
-	isAdmin := IsAdmin()                                       // a les droits ou pas
-	user := GetSession()                                       //pour l'img
-
-	filedata, err := os.ReadFile("./json/accounts.json")
+	datacompte, err := CheckSessions() 
 	if err != nil {
-		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		fmt.Println(err.Error())
 		return
-	}
-
-	var DataDecode Accounts
-
-	json.Unmarshal(filedata, &DataDecode)
-
-	var picture string
-
-	for _, i := range DataDecode.Comptes {
-		if i.Username == user.Username {
-			picture = i.Picture //récupère la photo de profil
-		}
-	}
-
-	datacompte := IndexData{
-		Picture:    picture,
-		IsLoggedIn: session,
-		AsAdmin:    isAdmin,
 	}
 
 	move := r.URL.Query().Get("move")
@@ -268,33 +208,10 @@ func SearchPokemonName(w http.ResponseWriter, r *http.Request) {
 
 func SearchPokemonAll(w http.ResponseWriter, r *http.Request) {
 	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
-	session := GetSession() != Session{}
-	isAdmin := IsAdmin()
-	user := GetSession()
-
-	filedata, err := os.ReadFile("./json/accounts.json")
+	datacompte, err := CheckSessions() 
 	if err != nil {
-		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		fmt.Println(err.Error())
 		return
-	}
-
-	var DataDecode Accounts
-
-	json.Unmarshal(filedata, &DataDecode)
-
-	var picture string
-
-	for _, i := range DataDecode.Comptes {
-
-		if i.Username == user.Username {
-			picture = i.Picture
-		}
-	}
-
-	datacompte := IndexData{
-		Picture:    picture,
-		IsLoggedIn: session,
-		AsAdmin:    isAdmin,
 	}
 
 	move := r.URL.Query().Get("move")
@@ -386,35 +303,11 @@ func SearchPokemonRarity(w http.ResponseWriter, r *http.Request) {
 }
 func SearchPokemonReleaseDate(w http.ResponseWriter, r *http.Request) {
 	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
-	session := GetSession() != Session{}
-	isAdmin := IsAdmin()
-	user := GetSession()
-
-	filedata, err := os.ReadFile("./json/accounts.json")
+	datacompte, err := CheckSessions() 
 	if err != nil {
-		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		fmt.Println(err.Error())
 		return
 	}
-
-	var DataDecode Accounts
-
-	json.Unmarshal(filedata, &DataDecode)
-
-	var picture string
-
-	for _, i := range DataDecode.Comptes {
-
-		if i.Username == user.Username {
-			picture = i.Picture
-		}
-	}
-
-	datacompte := IndexData{
-		Picture:    picture,
-		IsLoggedIn: session,
-		AsAdmin:    isAdmin,
-	}
-
 	move := r.URL.Query().Get("move")
 
 	if move == "Plus" {
@@ -446,33 +339,10 @@ func SearchPokemonReleaseDate(w http.ResponseWriter, r *http.Request) {
 
 func SearchTrainerAll(w http.ResponseWriter, r *http.Request) {
 	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
-	session := GetSession() != Session{}
-	isAdmin := IsAdmin()
-	user := GetSession()
-
-	filedata, err := os.ReadFile("./json/accounts.json")
+	datacompte, err := CheckSessions() 
 	if err != nil {
-		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		fmt.Println(err.Error())
 		return
-	}
-
-	var DataDecode Accounts
-
-	json.Unmarshal(filedata, &DataDecode)
-
-	var picture string
-
-	for _, i := range DataDecode.Comptes {
-
-		if i.Username == user.Username {
-			picture = i.Picture
-		}
-	}
-
-	datacompte := IndexData{
-		Picture:    picture,
-		IsLoggedIn: session,
-		AsAdmin:    isAdmin,
 	}
 
 	move := r.URL.Query().Get("move")
@@ -505,33 +375,10 @@ func SearchTrainerAll(w http.ResponseWriter, r *http.Request) {
 }
 func SearchTrainerRarity(w http.ResponseWriter, r *http.Request) {
 	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
-	session := GetSession() != Session{}
-	isAdmin := IsAdmin()
-	user := GetSession()
-
-	filedata, err := os.ReadFile("./json/accounts.json")
+	datacompte, err := CheckSessions() 
 	if err != nil {
-		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		fmt.Println(err.Error())
 		return
-	}
-
-	var DataDecode Accounts
-
-	json.Unmarshal(filedata, &DataDecode)
-
-	var picture string
-
-	for _, i := range DataDecode.Comptes {
-
-		if i.Username == user.Username {
-			picture = i.Picture
-		}
-	}
-
-	datacompte := IndexData{
-		Picture:    picture,
-		IsLoggedIn: session,
-		AsAdmin:    isAdmin,
 	}
 
 	move := r.URL.Query().Get("move")
@@ -564,33 +411,10 @@ func SearchTrainerRarity(w http.ResponseWriter, r *http.Request) {
 }
 func SearchTrainerReleaseDate(w http.ResponseWriter, r *http.Request) {
 	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
-	session := GetSession() != Session{}
-	isAdmin := IsAdmin()
-	user := GetSession()
-
-	filedata, err := os.ReadFile("./json/accounts.json")
+	datacompte, err := CheckSessions() 
 	if err != nil {
-		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		fmt.Println(err.Error())
 		return
-	}
-
-	var DataDecode Accounts
-
-	json.Unmarshal(filedata, &DataDecode)
-
-	var picture string
-
-	for _, i := range DataDecode.Comptes {
-
-		if i.Username == user.Username {
-			picture = i.Picture
-		}
-	}
-
-	datacompte := IndexData{
-		Picture:    picture,
-		IsLoggedIn: session,
-		AsAdmin:    isAdmin,
 	}
 
 	move := r.URL.Query().Get("move")
@@ -624,33 +448,10 @@ func SearchTrainerReleaseDate(w http.ResponseWriter, r *http.Request) {
 
 func SearchEnergyAll(w http.ResponseWriter, r *http.Request) {
 	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
-	session := GetSession() != Session{}
-	isAdmin := IsAdmin()
-	user := GetSession()
-
-	filedata, err := os.ReadFile("./json/accounts.json")
+	datacompte, err := CheckSessions() 
 	if err != nil {
-		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		fmt.Println(err.Error())
 		return
-	}
-
-	var DataDecode Accounts
-
-	json.Unmarshal(filedata, &DataDecode)
-
-	var picture string
-
-	for _, i := range DataDecode.Comptes {
-
-		if i.Username == user.Username {
-			picture = i.Picture
-		}
-	}
-
-	datacompte := IndexData{
-		Picture:    picture,
-		IsLoggedIn: session,
-		AsAdmin:    isAdmin,
 	}
 
 	move := r.URL.Query().Get("move")
@@ -683,35 +484,11 @@ func SearchEnergyAll(w http.ResponseWriter, r *http.Request) {
 }
 func SearchEnergyRarity(w http.ResponseWriter, r *http.Request) {
 	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
-	session := GetSession() != Session{}
-	isAdmin := IsAdmin()
-	user := GetSession()
-
-	filedata, err := os.ReadFile("./json/accounts.json")
+	datacompte, err := CheckSessions() 
 	if err != nil {
-		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		fmt.Println(err.Error())
 		return
 	}
-
-	var DataDecode Accounts
-
-	json.Unmarshal(filedata, &DataDecode)
-
-	var picture string
-
-	for _, i := range DataDecode.Comptes {
-
-		if i.Username == user.Username {
-			picture = i.Picture
-		}
-	}
-
-	datacompte := IndexData{
-		Picture:    picture,
-		IsLoggedIn: session,
-		AsAdmin:    isAdmin,
-	}
-
 	move := r.URL.Query().Get("move")
 
 	if move == "Plus" {
@@ -742,35 +519,11 @@ func SearchEnergyRarity(w http.ResponseWriter, r *http.Request) {
 }
 func SearchEnergyReleaseDate(w http.ResponseWriter, r *http.Request) {
 	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
-	session := GetSession() != Session{}
-	isAdmin := IsAdmin()
-	user := GetSession()
-
-	filedata, err := os.ReadFile("./json/accounts.json")
+	datacompte, err := CheckSessions() 
 	if err != nil {
-		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		fmt.Println(err.Error())
 		return
 	}
-
-	var DataDecode Accounts
-
-	json.Unmarshal(filedata, &DataDecode)
-
-	var picture string
-
-	for _, i := range DataDecode.Comptes {
-
-		if i.Username == user.Username {
-			picture = i.Picture
-		}
-	}
-
-	datacompte := IndexData{
-		Picture:    picture,
-		IsLoggedIn: session,
-		AsAdmin:    isAdmin,
-	}
-
 	move := r.URL.Query().Get("move")
 
 	if move == "Plus" {
@@ -802,33 +555,10 @@ func SearchEnergyReleaseDate(w http.ResponseWriter, r *http.Request) {
 
 func SetsPokemon(w http.ResponseWriter, r *http.Request) {
 	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
-	session := GetSession() != Session{}
-	isAdmin := IsAdmin()
-	user := GetSession()
-
-	filedata, err := os.ReadFile("./json/accounts.json")
+	datacompte, err := CheckSessions() 
 	if err != nil {
-		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		fmt.Println(err.Error())
 		return
-	}
-
-	var DataDecode Accounts
-
-	json.Unmarshal(filedata, &DataDecode)
-
-	var picture string
-
-	for _, i := range DataDecode.Comptes {
-
-		if i.Username == user.Username {
-			picture = i.Picture
-		}
-	}
-
-	datacompte := IndexData{
-		Picture:    picture,
-		IsLoggedIn: session,
-		AsAdmin:    isAdmin,
 	}
 
 	move := r.URL.Query().Get("move")
@@ -857,35 +587,11 @@ func SetsPokemon(w http.ResponseWriter, r *http.Request) {
 }
 func SetsPokemonRarity(w http.ResponseWriter, r *http.Request) {
 	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
-	session := GetSession() != Session{}
-	isAdmin := IsAdmin()
-	user := GetSession()
-
-	filedata, err := os.ReadFile("./json/accounts.json")
+	datacompte, err := CheckSessions() 
 	if err != nil {
-		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		fmt.Println(err.Error())
 		return
 	}
-
-	var DataDecode Accounts
-
-	json.Unmarshal(filedata, &DataDecode)
-
-	var picture string
-
-	for _, i := range DataDecode.Comptes {
-
-		if i.Username == user.Username {
-			picture = i.Picture
-		}
-	}
-
-	datacompte := IndexData{
-		Picture:    picture,
-		IsLoggedIn: session,
-		AsAdmin:    isAdmin,
-	}
-
 	move := r.URL.Query().Get("move")
 
 	if move == "Plus" {
@@ -913,35 +619,11 @@ func SetsPokemonRarity(w http.ResponseWriter, r *http.Request) {
 }
 func SetsPokemonReleaseDate(w http.ResponseWriter, r *http.Request) {
 	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
-	session := GetSession() != Session{}
-	isAdmin := IsAdmin()
-	user := GetSession()
-
-	filedata, err := os.ReadFile("./json/accounts.json")
+	datacompte, err := CheckSessions() 
 	if err != nil {
-		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		fmt.Println(err.Error())
 		return
 	}
-
-	var DataDecode Accounts
-
-	json.Unmarshal(filedata, &DataDecode)
-
-	var picture string
-
-	for _, i := range DataDecode.Comptes {
-
-		if i.Username == user.Username {
-			picture = i.Picture
-		}
-	}
-
-	datacompte := IndexData{
-		Picture:    picture,
-		IsLoggedIn: session,
-		AsAdmin:    isAdmin,
-	}
-
 	move := r.URL.Query().Get("move")
 
 	if move == "Plus" {
@@ -970,33 +652,10 @@ func SetsPokemonReleaseDate(w http.ResponseWriter, r *http.Request) {
 
 func CardsPokemonSets(w http.ResponseWriter, r *http.Request) {
 	c := tcg.NewClient("f8165ff9-ad83-41ea-ba42-6fb0cc2835ae")
-	session := GetSession() != Session{}
-	isAdmin := IsAdmin()
-	user := GetSession()
-
-	filedata, err := os.ReadFile("./json/accounts.json")
+	datacompte, err := CheckSessions() 
 	if err != nil {
-		fmt.Println("Erreur lors de l'ouverture du fichier", err)
+		fmt.Println(err.Error())
 		return
-	}
-
-	var DataDecode Accounts
-
-	json.Unmarshal(filedata, &DataDecode)
-
-	var picture string
-
-	for _, i := range DataDecode.Comptes {
-
-		if i.Username == user.Username {
-			picture = i.Picture
-		}
-	}
-
-	datacompte := IndexData{
-		Picture:    picture,
-		IsLoggedIn: session,
-		AsAdmin:    isAdmin,
 	}
 
 	move := r.URL.Query().Get("move")

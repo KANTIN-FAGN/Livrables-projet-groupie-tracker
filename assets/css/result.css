@@ -334,8 +334,7 @@ input:hover {
     align-items: center;
     gap: 50px;
     width: 100%;
-    height: 15%;
-    margin-top: 50px;
+    padding-top: 100px;
 }
 
 .pagination {
