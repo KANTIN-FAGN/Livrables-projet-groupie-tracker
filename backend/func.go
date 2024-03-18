@@ -24,7 +24,6 @@ func PokemonProfilFire(w http.ResponseWriter, r *http.Request) {
 		ToSend = append(ToSend, toGive)
 	}
 
-	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 func PokemonProfilBug(w http.ResponseWriter, r *http.Request) {
@@ -38,7 +37,6 @@ func PokemonProfilBug(w http.ResponseWriter, r *http.Request) {
 		ToSend = append(ToSend, toGive)
 	}
 
-	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 func PokemonProfilWater(w http.ResponseWriter, r *http.Request) {
@@ -52,7 +50,6 @@ func PokemonProfilWater(w http.ResponseWriter, r *http.Request) {
 		ToSend = append(ToSend, toGive)
 	}
 
-	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 func PokemonProfilDragon(w http.ResponseWriter, r *http.Request) {
@@ -66,7 +63,6 @@ func PokemonProfilDragon(w http.ResponseWriter, r *http.Request) {
 		ToSend = append(ToSend, toGive)
 	}
 
-	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 func PokemonProfilElectric(w http.ResponseWriter, r *http.Request) {
@@ -80,7 +76,6 @@ func PokemonProfilElectric(w http.ResponseWriter, r *http.Request) {
 		ToSend = append(ToSend, toGive)
 	}
 
-	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 func PokemonProfilFairy(w http.ResponseWriter, r *http.Request) {
@@ -94,7 +89,6 @@ func PokemonProfilFairy(w http.ResponseWriter, r *http.Request) {
 		ToSend = append(ToSend, toGive)
 	}
 
-	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 func PokemonProfilFighting(w http.ResponseWriter, r *http.Request) {
@@ -108,7 +102,6 @@ func PokemonProfilFighting(w http.ResponseWriter, r *http.Request) {
 		ToSend = append(ToSend, toGive)
 	}
 
-	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 func PokemonProfilGhost(w http.ResponseWriter, r *http.Request) {
@@ -122,7 +115,6 @@ func PokemonProfilGhost(w http.ResponseWriter, r *http.Request) {
 		ToSend = append(ToSend, toGive)
 	}
 
-	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 func PokemonProfilGrass(w http.ResponseWriter, r *http.Request) {
@@ -136,7 +128,6 @@ func PokemonProfilGrass(w http.ResponseWriter, r *http.Request) {
 		ToSend = append(ToSend, toGive)
 	}
 
-	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 func PokemonProfilGround(w http.ResponseWriter, r *http.Request) {
@@ -150,7 +141,6 @@ func PokemonProfilGround(w http.ResponseWriter, r *http.Request) {
 		ToSend = append(ToSend, toGive)
 	}
 
-	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 func PokemonProfilIce(w http.ResponseWriter, r *http.Request) {
@@ -164,7 +154,6 @@ func PokemonProfilIce(w http.ResponseWriter, r *http.Request) {
 		ToSend = append(ToSend, toGive)
 	}
 
-	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 func PokemonProfilNormal(w http.ResponseWriter, r *http.Request) {
@@ -178,7 +167,6 @@ func PokemonProfilNormal(w http.ResponseWriter, r *http.Request) {
 		ToSend = append(ToSend, toGive)
 	}
 
-	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 func PokemonProfilPoison(w http.ResponseWriter, r *http.Request) {
@@ -192,7 +180,6 @@ func PokemonProfilPoison(w http.ResponseWriter, r *http.Request) {
 		ToSend = append(ToSend, toGive)
 	}
 
-	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 func PokemonProfilPsychic(w http.ResponseWriter, r *http.Request) {
@@ -206,7 +193,6 @@ func PokemonProfilPsychic(w http.ResponseWriter, r *http.Request) {
 		ToSend = append(ToSend, toGive)
 	}
 
-	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 func PokemonProfilRock(w http.ResponseWriter, r *http.Request) {
@@ -220,7 +206,6 @@ func PokemonProfilRock(w http.ResponseWriter, r *http.Request) {
 		ToSend = append(ToSend, toGive)
 	}
 
-	fmt.Println(ToSend)
 	http.Redirect(w, r, "/picture-profil", http.StatusSeeOther)
 }
 

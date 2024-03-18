@@ -3,10 +3,8 @@
     {
       "picture": "../static/img/POKEMON/ghost/3.png",
       "username": "KANTIN",
-      "email": "kantin.fagn@gmail.com",
       "password": "M0HecmnQrjTOAI6q2feCrsVlpP6BdUCFvevzMzTI378=",
-      "state": "member",
-      "salt": "AAcwwo05HHhBL4GStOPYRg==",
+      "email": "kantin.fagn@gmail.com",
       "favCard": [
         {
           "id": "swshp-SWSH101",
@@ -34,16 +32,18 @@
           "image": "https://images.pokemontcg.io/swsh10/199_hires.png"
         },
         {
-          "id": "si1-1",
-          "name": "Mew",
-          "image": "https://images.pokemontcg.io/si1/1_hires.png"
-        },
-        {
           "id": "sm10-20",
           "name": "Reshiram \u0026 Charizard-GX",
           "image": "https://images.pokemontcg.io/sm10/20_hires.png"
+        },
+        {
+          "id": "swsh4-127",
+          "name": "Aegislash VMAX",
+          "image": "https://images.pokemontcg.io/swsh4/127_hires.png"
         }
-      ]
+      ],
+      "state": "member",
+      "salt": "AAcwwo05HHhBL4GStOPYRg=="
     }
   ]
 }
