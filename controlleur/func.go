@@ -178,7 +178,6 @@ func GetCreds(w http.ResponseWriter, r *http.Request) {
 	for _, account := range accounts.Comptes {
 		if account.Email == mail {
 			if backend.HashPassword(password, account.Salt) == account.Password {
-				fmt.Println("here")
 				valid = true
 				break
 			}
@@ -289,8 +288,6 @@ func VerifCode(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	codeRecu := r.FormValue("verificationCode")
 	codeEnvoye := backend.GlobalAccount.MailCode
-
-	fmt.Println("Verification du code")
 
 	if codeRecu == codeEnvoye {
 		http.Redirect(w, r, "/success_code", http.StatusSeeOther)

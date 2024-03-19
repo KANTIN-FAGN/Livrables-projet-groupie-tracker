@@ -35,6 +35,11 @@
           "id": "sm10-20",
           "name": "Reshiram \u0026 Charizard-GX",
           "image": "https://images.pokemontcg.io/sm10/20_hires.png"
+        },
+        {
+          "id": "swsh4-127",
+          "name": "Aegislash VMAX",
+          "image": "https://images.pokemontcg.io/swsh4/127_hires.png"
         }
       ],
       "state": "member",
